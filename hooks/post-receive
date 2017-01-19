@@ -1,0 +1,54 @@
+#!/bin/sh
+
+#git 的钩子在运转的时分会调用 GIT_DIR 这个环境变量
+#若缺少会报错：remote: fatal: Not a git repository: ‘.’
+unset $(git rev-parse --local-env-vars)
+
+
+#此文件夹保存自动获取的代码
+
+igapperFrontend=/root/www/igapper/igapper-frontend
+
+
+#获取提交的信息 旧版本 新版版 分支名称
+while read oldrev newrev refname
+do  
+    branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+    #if [ "master" == "$branch" ]; then
+    #  echo current branch $branch
+    #fi
+done 
+
+echo -e "\033[32m current branch $branch \033[0m"
+
+#自动拉取提交的代码 
+cd $igapperFrontend
+if [ "master" == "$branch" ]; then
+    git checkout master
+    git pull origin master
+    echo -e "\033[32m pull branch master done... \033[0m"
+fi
+
+#如果不是master分支则迁出分支
+# if [ "master" != "$branch" ]; then
+#     git checkout $branch
+#     git pull origin $branch
+#     echo -e "\033[32m pull branch $branch done... \033[0m"
+# fi
+
+#gulp clean
+#echo -e "\033[32m clean old files done... \033[0m"
+#/home/nodejs/node/bin
+
+# cd $gulpPath
+# /home/nodejs/node/bin/gulp
+# echo -e "\033[32m gulp branch $branch done... \033[0m"
+
+
+# 重新打包前端页面
+cd $igapperFrontend
+npm run build
+echo -e "\033[32m build done... \033[0m"
+
+
+exit 0

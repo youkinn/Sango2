@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sango</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-title" content="test">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link rel="apple-touch-icon" sizes="114x114" href="logo.jpg"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="logo.jpg"/>
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/icons/style.css">
+</head>
+<body>
+<section id="app"></section>
+<!-- built files will be auto injected -->
+<!-- 我们应用需要的库 -->
+<script src="/static/lib/noframework.waypoints.min.js"></script>
+<script src="/static/lib/hammer.min.js"></script>
+<script src="/static/lib/vue.js"></script>
+<script src="/static/lib/vue-router.js"></script>
+<script src="/static/lib/vue-resource.js"></script>
+<script src="/static/lib/vue-touch.min.js"></script>
+<!-- 一些附加的库 -->
+<script src="/static/lib/jweixin.js"></script>
+<script src="/static/lib/utils.js"></script>
+
+<!--
+Vue 错误调试扩展
+使用
+Vue.silents = [ // 静默列表，不显示的错误关键词写到这就好。
+  'Error when evaluating expression',
+];
+
+Vue.warn = true; // 开启关闭本扩展。
+-->
+<script src="/static/lib/vue.warn.js"></script>
+<script>
+Vue.silents = [ // 静默列表，不显示的错误关键词写到这就好。
+  'Error when evaluating expression', // 不显示插值类错误，例如 {{obj.foo.bar}} 报错类型
+];
+</script>
+</body>
+</html>
