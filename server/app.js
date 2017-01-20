@@ -8,8 +8,11 @@ var logger = require('morgan');
 var PORT = process.env.PORT || 8002;
 var four0four = require('./utils/404')();
 var Promise = require('es6-promise').Promise
-const path = require('path');
-const mock = require('express-mockjs');
+var path = require('path');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var MongoStore = require('connect-mongo')(session);
+var mock = require('express-mockjs');
 
 var environment = process.env.NODE_ENV;
 
@@ -19,6 +22,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // mongodb
+// 这里因为mongoose的异步模块不可用，显示指定使用es6的Promise模块
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
@@ -28,6 +32,22 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   next();
 });
+
+// session设置
+// 文档：https://github.com/expressjs/session
+app.use(session({
+  secret: 'youkinn',
+  name: 'sango',                       // 这里的name值得是cookie的name，默认cookie的name是：connect.sid
+  cookie: { maxAge: 30 * 60 * 1000 },  // 设置maxAge是1800000ms，即1800s(半小时)后session和相应的cookie失效过期
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({         // 创建新的mongodb数据库
+    host: '127.0.0.1',            // 数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
+    port: 27017,                  // 数据库的端口号
+    db: 'sango',                  // 数据库的名称
+    mongooseConnection: mongoose.connection
+  })
+}));
 
 // mock json 数据
 // 文档: https://github.com/52cik/express-mockjs
