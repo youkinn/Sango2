@@ -3,6 +3,9 @@ var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 
+// 添加postcss-px2rem支持
+var px2rem = require('postcss-px2rem');
+
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -63,6 +66,7 @@ module.exports = {
     ]
   },
   vue: {
-    loaders: utils.cssLoaders()
+    loaders: utils.cssLoaders(),
+    postcss: [require('postcss-px2rem')({remUnit: 64})]
   }
 }
