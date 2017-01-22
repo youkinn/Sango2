@@ -32,7 +32,7 @@
                 username: '',
                 password: '',
                 infoMsg: ''
-            }
+            };
         },
         methods: {
             getUserList() {
@@ -77,7 +77,7 @@
             },
             deleteUser(username) {
                 var that = this;
-                Vue.ClientHttp().POST({ username }, "/api/deleteUser")
+                Vue.ClientHttp().POST({ username }, '/api/deleteUser')
                     .then((res) => {
                         alert(res.msg);
                         if (res.code == 10000) {
@@ -97,7 +97,7 @@
                     alert('密码不得为空');
                     return;
                 }
-                Vue.ClientHttp().POST({username, password}, "/api/updatePwd")
+                Vue.ClientHttp().POST({username, password}, '/api/updatePwd')
                     .then((res) => {
                         alert(res.msg);
                         if (res.code == 10000) {
@@ -109,7 +109,7 @@
         ready() {
             this.getUserList();
         }
-    }
+    };
 </script>
 
 <style scoped>

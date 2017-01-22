@@ -18,13 +18,13 @@
         },
         data() {
             return {
-                
-            }
+
+            };
         },
         methods: {
         },
         ready() {
             this.getUserInfo();
         }
-    }
+    };
 </script>

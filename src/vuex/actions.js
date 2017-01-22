@@ -1,5 +1,5 @@
 'use strict';
-import * as types from './mutation-types'
+import * as types from './mutation-types';
 
 export const getUserInfo = function ({ dispatch, state }, callback) {
   if(this.user.username == ''){

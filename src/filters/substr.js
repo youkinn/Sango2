@@ -10,9 +10,9 @@ export const substr = function(value, length, modifier) {
   output = value + '';
   if(output.length > length) {
     output = output.substring(0, length);
-    output += innerModifier
+    output += innerModifier;
   }
-  return output
+  return output;
 };
 
 // 日期转换
@@ -32,7 +32,7 @@ export const foreSubstr = function(value, length, modifier) {
     output = output.substring(len - length, len);
     output = innerModifier + output;
   }
-  return output
+  return output;
 };
 
 // 字符串的截取（指定字符数）

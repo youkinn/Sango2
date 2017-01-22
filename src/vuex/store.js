@@ -1,6 +1,6 @@
 'use strict';
-import Vuex from 'vuex'
-import User from './modules/user-info'
+import Vuex from 'vuex';
+import User from './modules/user-info';
 
 export default new Vuex.Store({
 
@@ -9,4 +9,4 @@ export default new Vuex.Store({
     User
   },
   strict: true
-})
+});

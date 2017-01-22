@@ -53,7 +53,7 @@ import httpUrlConfig from '../config/url.config';
           url = RUNNING_URL + subUrl;
         }
         else {
-          url = RUNNING_URL
+          url = RUNNING_URL;
         }
         // 判断是本地还是线上环境
         let option = {
@@ -91,7 +91,7 @@ import httpUrlConfig from '../config/url.config';
           url = RUNNING_URL + subUrl;
         }
         else {
-          url = RUNNING_URL
+          url = RUNNING_URL;
         }
         // 请求的配置
         let option = {};
@@ -110,7 +110,7 @@ import httpUrlConfig from '../config/url.config';
 
       // 处理成功情况
       function successHandler(res) {
-        if (typeof res.data == "string") {
+        if (typeof res.data == 'string') {
           try {
             res.data = JSON.parse(res.data);
           }
@@ -118,13 +118,13 @@ import httpUrlConfig from '../config/url.config';
             console.log(res.data);
             res.data = {
               code: 10001,
-              msg: "接口错误"
+              msg: '接口错误'
             };
           }
         }
         if (res.data.code == 20000) {
           //登录失效
-          //window.location.href = "/#/error";
+          //window.location.href = '/#/error';
         }
         return res.data;
       }
@@ -139,20 +139,20 @@ import httpUrlConfig from '../config/url.config';
       return {
         GET: GET,
         POST: POST
-      }
-    }
+      };
+    };
 
     Vue.ClientUrl = URL;
   }
 
-  if (typeof exports == "object") {
-    module.exports = install
-  } else if (typeof define == "function" && define.amd) {
+  if (typeof exports == 'object') {
+    module.exports = install;
+  } else if (typeof define == 'function' && define.amd) {
     define([], function() {
-      return install
-    })
+      return install;
+    });
   } else if (window.Vue) {
-    Vue.use(install)
+    Vue.use(install);
   }
 
 })();

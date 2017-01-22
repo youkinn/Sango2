@@ -10,7 +10,7 @@
 <script>
     'use strict';
     export default {
-    }
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -23,6 +23,6 @@
                 border: solid #ddd 1px;
             }
         }
-        
+
     }
 </style>
