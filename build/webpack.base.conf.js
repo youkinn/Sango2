@@ -28,6 +28,24 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.vue$/,
+        loader: 'eslint',
+        include: [
+          path.join(projectRoot, 'src')
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        include: [
+          path.join(projectRoot, 'src')
+        ],
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.vue$/,
@@ -64,6 +82,10 @@ module.exports = {
         }
       }
     ]
+  },
+  eslint: {
+    configFile: ".eslintrc",
+    emitWarnings: true
   },
   vue: {
     loaders: utils.cssLoaders(),
