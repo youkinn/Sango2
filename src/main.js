@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
+import Vuex from 'vuex';
 import App from './app';
 import RouteConf from './router/router';
 import HttpConf from './http/http';
@@ -11,6 +12,7 @@ import * as filter from './filters/substr';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(HttpConf);
+Vue.use(Vuex);
 
 // 使用自定义过滤器
 for(let p in filter){
