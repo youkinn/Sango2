@@ -34,7 +34,7 @@ module.exports = function (router) {
     /**
      * 删除用户
     */
-    router.post('/deleteUser', function (req, res) {
+    router.post('/auth/deleteUser', function (req, res) {
         var username = req.body.username;
         if (username == '') {
             res.json({ 'code': 10001, 'msg': '删除失败，用户名不能为空' });
@@ -53,7 +53,7 @@ module.exports = function (router) {
     /**
      * 修改密码
     */
-    router.post('/updatePwd', function (req, res) {
+    router.post('/auth/updatePwd', function (req, res) {
         var username = req.body.username;
         var password = req.body.password;
         User.findByUsername(username, function (err, result) {

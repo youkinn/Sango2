@@ -38,7 +38,7 @@
             getUserList() {
                 var that = this;
                 this.infoMsg = '';
-                Vue.ClientHttp().GET({}, '/api/getUserList')
+                Vue.ClientHttp(this).GET({}, '/api/getUserList')
                     .then((res) => {
                         if (res.code == 10000) {
                             that.userList = res.list;
@@ -52,7 +52,7 @@
                 }
                 var that = this;
                 this.infoMsg = '';
-                Vue.ClientHttp().POST({ username }, '/api/checkUsernameExit')
+                Vue.ClientHttp(this).POST({ username }, '/api/checkUsernameExit')
                     .then((res) => {
                         if (res.code == 10000) {
                             that.infoMsg = res.msg;
@@ -67,7 +67,7 @@
                     alert('请输入用户名和密码');
                     return;
                 }
-                Vue.ClientHttp().POST({ username, password }, '/api/addUser')
+                Vue.ClientHttp(this).POST({ username, password }, '/api/addUser')
                     .then((res) => {
                         alert(res.msg);
                         if (res.code == 10000) {
@@ -77,7 +77,7 @@
             },
             deleteUser(username) {
                 var that = this;
-                Vue.ClientHttp().POST({ username }, '/api/deleteUser')
+                Vue.ClientHttp(this).POST({ username }, '/api/auth/deleteUser')
                     .then((res) => {
                         alert(res.msg);
                         if (res.code == 10000) {
@@ -97,7 +97,7 @@
                     alert('密码不得为空');
                     return;
                 }
-                Vue.ClientHttp().POST({username, password}, '/api/updatePwd')
+                Vue.ClientHttp(this).POST({username, password}, '/api/auth/updatePwd')
                     .then((res) => {
                         alert(res.msg);
                         if (res.code == 10000) {

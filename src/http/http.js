@@ -19,7 +19,7 @@ import httpUrlConfig from '../config/url.config';
       URL = httpUrlConfig.production;
     }
 
-    Vue.ClientHttp = function() {
+    Vue.ClientHttp = function(vm) {
       let handle;
       // 测试环境的url  手机上访问不到loclhost路径 模拟数据 可能要实时更改
       let testIP = location.hostname;
@@ -121,9 +121,12 @@ import httpUrlConfig from '../config/url.config';
             };
           }
         }
-        if (res.data.code == 20000) {
-          //登录失效
-          //window.location.href = '/#/error';
+
+        //登录失效
+        if (res.data.code == 20001) {
+          if(vm) {
+            vm.$parent.$broadcast('forbidden');
+          }
         }
         return res.data;
       }

@@ -23,6 +23,14 @@ var router = new VueRouter({
   hashbang: false
 });
 
+router.beforeEach(function(transition) {
+  if(transition.to.path.startsWith('/personal')){
+    // 重定向 待修改
+    return;
+  }
+  transition.next();
+});
+
 // 路由部分
 router.map(RouteConf.route);
 
