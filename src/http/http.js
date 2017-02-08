@@ -115,7 +115,6 @@ import httpUrlConfig from '../config/url.config';
             res.data = JSON.parse(res.data);
           }
           catch (e) {
-            console.log(res.data);
             res.data = {
               code: 10001,
               msg: '接口错误'
@@ -131,7 +130,6 @@ import httpUrlConfig from '../config/url.config';
 
       // 处理失败失败情况
       function errorHandler(res) {
-        console.error('数据获取失败!');
         return res || {};
       }
 

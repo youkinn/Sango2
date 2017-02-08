@@ -27,7 +27,7 @@ UserSchema.pre('save', function (next) {
         this.meta.updateAt = Date.now();
     }
     next();
-})
+});
 
 // 查询的静态方法
 UserSchema.statics = {

@@ -1,5 +1,4 @@
-var json = require('../utils/json').json;
-var User = require("../database/models/User.js");
+var User = require('../database/models/User.js');
 
 module.exports = function (router) {
     /**
@@ -15,19 +14,19 @@ module.exports = function (router) {
         User.findByUsername(username, function (err, result) {
             if (err) {
                 res.json({ 'code': 90001, 'msg': err });
-                return
+                return;
             }
             if (result) {
                 res.json({ 'code': 10001, 'msg': '用户名已被占用' });
-                return
+                return;
             }
-            user.save(function (err, result) {
+            user.save(function (err) {
                 if (err) {
                     res.json({ 'code': 90001, 'msg': err });
-                    return
+                    return;
                 }
                 res.json({ 'code': 10000, 'msg': '添加用户成功' });
-                return
+                return;
             });
         });
     });
@@ -42,13 +41,13 @@ module.exports = function (router) {
             return;
         }
         var wherestr = { username };
-        User.remove(wherestr, function (err, result) {
+        User.remove(wherestr, function (err) {
             if (err) {
                 res.json({ 'code': 90001, 'msg': err });
-                return
+                return;
             }
             res.json({ 'code': 10000, 'msg': '删除成功' });
-        })
+        });
     });
 
     /**
@@ -60,7 +59,7 @@ module.exports = function (router) {
         User.findByUsername(username, function (err, result) {
             if (err) {
                 res.json({ 'code': 90001, 'msg': err });
-                return
+                return;
             }
             if (!result) {
                 res.json({ 'code': 10001, 'msg': '用户不存在' });
@@ -69,7 +68,7 @@ module.exports = function (router) {
             var wherestr = { username };
             var updatestr = { password };
 
-            User.update(wherestr, updatestr, function (err, result) {
+            User.update(wherestr, updatestr, function (err) {
                 if (err) {
                     res.json({ 'code': 10001, 'msg': err });
                     return;
@@ -87,11 +86,11 @@ module.exports = function (router) {
         User.findByUsername(username, function (err, result) {
             if (err) {
                 res.json({ 'code': 90001, 'msg': err });
-                return
+                return;
             }
             if (result) {
                 res.json({ 'code': 10000, 'msg': '该用户名已被占用' });
-                return
+                return;
             }
             res.json({ 'code': 10000, 'msg': '该用户名可用' });
         });
@@ -109,4 +108,4 @@ module.exports = function (router) {
             res.json({ 'code': 10000, 'list': users });
         });
     });
-};  
+};

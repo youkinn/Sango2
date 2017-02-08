@@ -13,7 +13,7 @@ module.exports = {
  * @param code
  * @private
  */
-function json(res, data, code, msg) {
+function json(res, data/*, code, msg*/) {
     //var result = {
     //    code: code || 10000,
     //    msg: msg || '',

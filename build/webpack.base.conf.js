@@ -1,7 +1,7 @@
-var path = require('path')
-var config = require('../config')
-var utils = require('./utils')
-var projectRoot = path.resolve(__dirname, '../')
+var path = require('path');
+var config = require('../config');
+var utils = require('./utils');
+var projectRoot = path.resolve(__dirname, '../');
 
 // 添加postcss-px2rem支持
 var px2rem = require('postcss-px2rem');
@@ -40,9 +40,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: [
-          path.join(projectRoot, 'src')
-        ],
         exclude: /node_modules/
       }
     ],
@@ -84,11 +81,11 @@ module.exports = {
     ]
   },
   eslint: {
-    configFile: ".eslintrc",
+    configFile: '.eslintrc',
     emitWarnings: true
   },
   vue: {
     loaders: utils.cssLoaders(),
     postcss: [require('postcss-px2rem')({remUnit: 64})]
   }
-}
+};

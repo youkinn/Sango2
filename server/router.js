@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var four0four = require('./utils/404')();
 
-var demo = require("./modules/demo");
+var demo = require('./modules/demo');
 
 demo(router);
 

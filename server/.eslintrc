@@ -1,12 +1,13 @@
 {
   "root": true,
-  "plugins": ['html'],
-  "extends": "eslint:recommended",
+  "plugins": ["node"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
   "env": {
-    "browser": true,
+    "node": true,
     "commonjs": true,
     "es6": true,
-    "amd": true
+    "amd": true,
+    "mongo": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
@@ -16,13 +17,11 @@
       "modules": true
     }
   },
-  "globals": {
-    "Vue": false
-  },
   "rules": {
+    "node/no-unsupported-features": [2, {"version": 4}],
     "quotes": [2, "single"],
     "semi": [2, "always"],
-    "no-console": 1,
+    "no-console": 0,
     "no-debugger": 1
   }
 }

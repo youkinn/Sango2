@@ -1,5 +1,5 @@
 <template>
-    <h3>index</h3>
+    <h3 @click="clickH">index</h3>
     <div class="selector">
         <div class="selector1">
             <div class="selector2"></div>
@@ -10,6 +10,16 @@
 <script>
     'use strict';
     export default {
+      data(){
+        return {
+          title: 'index'
+        };
+      },
+      methods:{
+        clickH(){
+          // console.log('test');
+        }
+      }
     };
 </script>
 

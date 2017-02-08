@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Hello from 'src/components/Hello'
+import Vue from 'vue';
+import Hello from 'src/components/Hello';
 
 describe('Hello.vue', () => {
   it('should render correct contents', () => {
@@ -10,5 +10,5 @@ describe('Hello.vue', () => {
       }
     }).$mount();
     expect(vm.$el.querySelector('.hello h1').textContent).to.contain('Hello World!');
-  })
-})
+  });
+});
