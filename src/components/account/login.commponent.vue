@@ -71,15 +71,9 @@
                 return true;
             },
             showRegister() {
-                if(this.disabled || !this.validate(1)){
-                    return;
-                }
                 this.updateDialogState({ nType: 1, nActionType: 1, bShow: true });
             },
             showForgetPwd() {
-                if(!this.validate()){
-                    return;
-                }
                 this.updateDialogState({ nType: 2, nActionType: 2, bShow: true });
             }
         },

@@ -99,7 +99,7 @@
                 }
                 Vue.ClientHttp(this).POST({username, password}, '/api/auth/updatePwd')
                     .then((res) => {
-                        alert(res.msg);
+                        // alert(res.msg);
                         if (res.code == 10000) {
                             that.getUserList();
                         }
