@@ -24,10 +24,10 @@ var router = new VueRouter({
 });
 
 router.beforeEach(function(transition) {
-  if(transition.to.path.startsWith('/personal')){
-    // 重定向 待修改
-    return;
-  }
+  // if(transition.to.path.startsWith('/personal')){
+  //   // 重定向 待修改
+  //   return;
+  // }
   transition.next();
 });
 
