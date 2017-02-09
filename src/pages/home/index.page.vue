@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="hotGame section">
-            <div class="headerContaner">
+            <div class="headerContainer">
                 <header-component title="热门游戏" link-text="进入游戏中心" link-url="/personal">
                     </headercomponent>
             </div>
@@ -12,23 +12,26 @@
         </div>
 
         <div class="sportsGames section">
-            <div class="headerContaner">
+            <div class="headerContainer">
                 <header-component title="玩游戏赢淘豆" link-text="更多" link-url="/personal">
                     </headercomponent>
             </div>
-            <div>
+            <div class="sportsGamesContainer">
                 <sports-games-component :games="playGames"></sports-games-component>
             </div>
             
         </div>
         <div class="one section">
-            <div class="headerContaner">
+            <div class="headerContainer">
                 <header-component title="1元夺宝">
                     </headercomponent>
             </div>
+            <div class="oneContainer">
+                <one-component></one-component>
+            </div>
         </div>
         <div class="hotNews section">
-            <div class="headerContaner">
+            <div class="headerContainer">
                 <header-component title="热门资讯">
                     </headercomponent>
             </div>
@@ -44,13 +47,15 @@
     import noticeComponent from './components/notice.component';
     import hotGamesComponent from './components/hotGames.component';
     import sportsGamesComponent from './components/sportsGames.component';
+    import oneComponent from './components/one.component';
     export default {
         components: {
             headerComponent,
             sliderComponent,
             noticeComponent,
             hotGamesComponent,
-            sportsGamesComponent
+            sportsGamesComponent,
+            oneComponent
         },
         data() {
             return {
@@ -134,7 +139,7 @@
         .one,
         .sportsGames,
         .hotNews {
-            .headerContaner {
+            .headerContainer {
                 border-top: solid #e5e5e5 1px;
                 /*px*/
                 border-bottom: solid #e5e5e5 1px;
@@ -155,6 +160,10 @@
                 margin-left: 30px;
                 color: #e5e5e5;
             }
+        }
+        .sportsGamesContainer,
+        .oneContainer{
+            border-bottom: solid #e5e5e5 1px;
         }
     }
 </style>

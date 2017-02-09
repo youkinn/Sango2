@@ -1,35 +1,28 @@
-<!--首页：热门游戏-->
+<!--首页：玩游戏赢淘豆-->
 <template>
     <div class="container">
-        <section class="recommend-game">
-
-            <!-- 游戏列表 -->
-            <ul class="recommend list">
-                <li class="item" v-for="item in games">
-                    <div class="imgWrapper">
-                        <img :src="item.imgUrl" alt="">
+        <ul class="recommend list">
+            <li class="item" v-for="item in games">
+                <div class="imgWrapper">
+                    <img :src="item.imgUrl" alt="">
+                </div>
+                <div class="content">
+                    <div class="title overflow-ellipsis">
+                        {{ item.title }} <span class="number">{{ item.number}}期</span>
                     </div>
-                    <div class="content">
-                        <div class="title overflow-ellipsis">
-                            {{ item.title }} <span class="number">{{ item.number}}期</span>
+                    <div class="detail">
+                        <div class="detailLeft">
+                            <div class="starttime">剩余时间:{{ item.lastTime }}</div>
+                            <div class="reward">奖励金额:<span class="amount"> {{ item.maxPrize }}</span>淘豆</div>
                         </div>
-                        <div class="detail am-flexbox">
-                            <div class="detailLeft am-flexbox-item am-flexbox">
-                                <div class="starttime">剩余时间:
-                                    <!--<app-home-cd :endtime="item.lastTime" :template-type="1" @timer-action="loadPlayGameList"></app-home-cd>-->
-                                    {{ item.lastTime }}
-                                </div>
-                                <div class="reward">奖励金额:<span class="amount"> {{ item.maxPrize | moneyWidthComma }}</span>淘豆</div>
-                            </div>
-                            <div class="detailRight am-flexbox">
-                                <a v-if="item.userInfo" class="link" @click.stop="gotoUrl(item.gameUrl + '&type=' + item.type)">继续</a>
-                                <a v-else class="link" @click.stop="gotoUrl(item.gameUrl + '&type=' + item.type)">参赛</a>
-                            </div>
+                        <div class="detailRight">
+                            <a v-if="item.userInfo" class="link">继续</a>
+                            <a v-else class="link">参加</a>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </section>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -64,28 +57,21 @@
     .container {
         padding-left: 30px;
         padding-right: 30px;
-    }
-    
-    .recommend-game {
-        padding: 0 0 20px 0;
         .list {
-            padding-left: .15rem;
+            font-family: SimSun;
             .item {
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                border-bottom: solid #e5e5e5 1px;
-                &:last-child {
-                    border-bottom: none;
-                    padding-bottom: 0;
+                padding-top: 19px;
+                padding-bottom: 19px;
+                &:first-child {
+                    border-bottom: solid #e5e5e5 1px;
                 }
                 .imgWrapper {
                     width: 86px;
                     height: 86px;
-                    margin-right: 10px;
-                    margin-bottom: 32px;
+                    margin-right: 20px;
+                    margin-bottom: 30px;
                     img {
                         width: 100%;
                         height: 100%;
@@ -93,17 +79,25 @@
                     }
                 }
                 .content {
-                    margin-left: .55rem;
+                    flex: 1;
+                    width: 474px;
                 }
                 .title {
+                    height: 42px;
+                    margin-bottom: 4px;
                     font-size: 32px;
+                    /*px*/
+                    color: #333;
                     .number {
                         font-size: 26px;
+                        /*px*/
                     }
                 }
                 .detail {
                     display: flex;
+                    align-items: center;
                     font-size: 28px;
+                    /*px*/
                     .detailLeft {
                         display: flex;
                         flex: 1;
@@ -117,8 +111,7 @@
                             color: #a5a5a5;
                         }
                         .starttime {
-                            margin-top: 8px;
-                            margin-bottom: 8px;
+                            margin-bottom: 6px;
                         }
                         .reward {
                             .amount {
@@ -137,6 +130,7 @@
                             line-height: 50px;
                             color: #333;
                             font-size: 26px;
+                            /*px*/
                             text-align: center;
                             border: 1px solid #ccc;
                             border-radius: 8px;
