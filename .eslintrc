@@ -17,7 +17,8 @@
     }
   },
   "globals": {
-    "Vue": false
+    "Vue": false,
+    "jiathis_mh5": false
   },
   "rules": {
     "quotes": [2, "single"],

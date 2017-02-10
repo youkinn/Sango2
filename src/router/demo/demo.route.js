@@ -11,6 +11,12 @@ let router = {
     component: function (resolve) {
       require(['../../pages/demo/vuex.page'], resolve);
     }
+  },
+  '/demo/share': {
+    name: 'share',
+    component: function (resolve) {
+      require(['../../pages/demo/share.page'], resolve);
+    }
   }
 };
 
