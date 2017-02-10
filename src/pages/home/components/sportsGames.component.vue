@@ -35,14 +35,14 @@
                     {
                         title: '全民斗战在神',
                         number: '1234567809',
-                        imgUrl: 'http://dummyimage.com/129x129',
+                        imgUrl: 'http://dummyimage.com/172x172',
                         lastTime: '06:33:01',
                         maxPrize: '900,000'
                     },
                     {
                         title: '全民斗战在神2',
                         number: '1234567809',
-                        imgUrl: 'http://dummyimage.com/129x129',
+                        imgUrl: 'http://dummyimage.com/172x172',
                         lastTime: '06:33:01',
                         maxPrize: '900,001'
                     }
@@ -65,7 +65,7 @@
                 padding-top: 19px;
                 padding-bottom: 19px;
                 &:first-child {
-                    border-bottom: solid #e5e5e5 1px;
+                    border-bottom: solid #e5e5e5 1px;/*no*/
                 }
                 .imgWrapper {
                     width: 86px;
@@ -73,8 +73,6 @@
                     margin-right: 20px;
                     margin-bottom: 30px;
                     img {
-                        width: 100%;
-                        height: 100%;
                         border-radius: 6px;
                     }
                 }
@@ -85,8 +83,7 @@
                 .title {
                     height: 42px;
                     margin-bottom: 4px;
-                    font-size: 32px;
-                    /*px*/
+                    font-size: 32px;/*px*/
                     color: #333;
                     .number {
                         font-size: 26px;
@@ -132,7 +129,7 @@
                             font-size: 26px;
                             /*px*/
                             text-align: center;
-                            border: 1px solid #ccc;
+                            border:solid #ccc 1px;/*no*/
                             border-radius: 8px;
                         }
                     }

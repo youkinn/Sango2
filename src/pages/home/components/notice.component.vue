@@ -13,11 +13,19 @@
 <script>
     'use strict';
     export default {
-        props: {
-            notices: {
-                type: Array,
-                default: [{}, {}]
-            }
+        data() {
+            return {
+                notices: [
+                    {
+                        content: '大迷糊**刚刚领取了倩女幽魂新春礼包/参与.......',
+                        linkUrl: ''
+                    },
+                    {
+                        content: '大迷糊**刚刚领取了倩女幽魂新春礼包/参与2.......',
+                        linkUrl: ''
+                    }
+                ]
+            };
         }
     };
 
@@ -30,11 +38,11 @@
         .noticeList {
             height: 84px;
             overflow-y: hidden;
-            font-size: 26px;/*px*/
+            font-size: 26px;
+            /*px*/
             li {
                 height: 84px;
                 line-height: 84px;
-
                 i {
                     margin-right: 11px;
                 }

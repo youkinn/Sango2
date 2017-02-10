@@ -6,18 +6,18 @@
                 <img :src="result.imgUrl" alt="">
             </div>
             <div class="content">
-                <div class="title">{{ result.goodsName }}</div>
-                <div class="progressBar clearfix">
+                <div class="title 1overflow-ellipsis">{{ result.goodsName }}</div>
+                <div class="progressBar">
                     <div class="progressBarWrapper">
                         <div class="bar progressBarCurrent" style="width: 3.00743%;">&nbsp;</div>
                         <div class="bar progressBarRest">&nbsp;</div>
                     </div>
-                    <div class="xx">
-                        <div class="totalAmount fl">总需8080</div>
-                        <div class="restAmount fr">剩余<span>7837</span></div>
+                    <div class="progressBarAmount">
+                        <div class="totalAmount">总需8080</div>
+                        <div class="restAmount">剩余<span>7837</span></div>
                     </div>
                 </div>
-                <a class="join" href="http://1.lly800.com/#/details/6">立即参与</a>
+                <a class="join" href="javascript:;">立即参与</a>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
                     goodsName: '移动50元充值卡 冲锋场',
                     total: 8080,
                     rest: 7873,
-                    imgUrl: 'http://dummyimage.com/300x300'
+                    imgUrl: 'http://dummyimage.com/400x400'
                 }
             };
         }
@@ -58,10 +58,7 @@
                 height: 200px;
                 padding-right: 40px;
                 overflow: hidden;
-                border-right: solid #dfdfdf 1px;
-                img {
-                    width: 100%;
-                }
+                border-right: solid #dfdfdf 1px;/*no*/
             }
             .content {
                 display: flex;
@@ -69,12 +66,15 @@
                 justify-content: space-between;
                 flex: 1;
                 align-items: stretch;
+                height: 178px;
                 margin-left: 40px;
                 .title {
-                    height: 58px;
+                    /*height: 58px;*/
+                    margin-bottom: 15px;
                     font-size: 26px;
                     /*px*/
                     color: #333;
+                    overflow: hidden;
                 }
                 .progressBar {
                     .bar {
@@ -88,13 +88,11 @@
                     .progressBarRest {
                         background-color: #dfdfdf;
                     }
-                    .xx {
+                    .progressBarAmount {
                         height: 70px;
                         display: flex;
+                        justify-content: space-between;
                         align-items: center;
-                        .totalAmount {
-                            margin-right: 73px;
-                        }
                         .totalAmount,
                         .restAmount {
                             font-size: 24px;
@@ -111,6 +109,7 @@
                     height: 50px;
                     line-height: 50px;
                     font-size: 26px;
+                    /*px*/
                     color: #fff;
                     background-color: #ff4a4a;
                     text-align: center;

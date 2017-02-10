@@ -1,7 +1,7 @@
 <!--首页：轮播图-->
 <template>
     <div class="container">
-        <img src="http://dummyimage.com/870x420" alt="">
+        <img src="http://dummyimage.com/1160x560" alt="">
     </div>
 </template>
 
@@ -15,12 +15,8 @@
 
 <style lang="scss" scoped>
     .container {
-        height: 280px;
         overflow: hidden;
         padding-left: 30px;
         padding-right: 30px;
-        img {
-            width: 100%;
-        }
     }
 </style>

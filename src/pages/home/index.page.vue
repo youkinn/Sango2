@@ -6,9 +6,9 @@
                     </headercomponent>
             </div>
             <slider-component></slider-component>
-            <notice-component :notices="noticeList"></notice-component>
+            <notice-component></notice-component>
             <div class="hr"></div>
-            <hot-games-component :games="hotGames"></hot-games-component>
+            <hot-games-component></hot-games-component>
         </div>
 
         <div class="sportsGames section">
@@ -19,7 +19,6 @@
             <div class="sportsGamesContainer">
                 <sports-games-component :games="playGames"></sports-games-component>
             </div>
-            
         </div>
         <div class="one section">
             <div class="headerContainer">
@@ -35,6 +34,7 @@
                 <header-component title="热门资讯">
                     </headercomponent>
             </div>
+            <hot-news-component></hot-news-component>
         </div>
     </div>
 
@@ -48,6 +48,7 @@
     import hotGamesComponent from './components/hotGames.component';
     import sportsGamesComponent from './components/sportsGames.component';
     import oneComponent from './components/one.component';
+    import hotNewsComponent from './components/hotNews.component';
     export default {
         components: {
             headerComponent,
@@ -55,74 +56,13 @@
             noticeComponent,
             hotGamesComponent,
             sportsGamesComponent,
-            oneComponent
+            oneComponent,
+            hotNewsComponent
         },
         data() {
             return {
-                title: 'index',
-                noticeList: [
-                    {
-                        content: '大迷糊**刚刚领取了倩女幽魂新春礼包/参与.......',
-                        linkUrl: ''
-                    },
-                    {
-                        content: '大迷糊**刚刚领取了倩女幽魂新春礼包/参与2.......',
-                        linkUrl: ''
-                    }
-                ],
-                hotGames: [
-                    {
-                        id: '1150',
-                        name: '传奇世界H5',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '幻城',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '大侠归来',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '口袋妖怪联盟',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '啪啪三国',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '2'
-                    },
-                    {
-                        id: '1150',
-                        name: '不思议迷宫',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '2'
-                    },
-                    {
-                        id: '1150',
-                        name: '愚公移山3',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '2'
-                    },
-                    {
-                        id: '1150',
-                        name: '全民穿越之宫',
-                        imgUrl: 'http://dummyimage.com/162x162',
-                        type: '2'
-                    }
-                ]
+                title: 'index'
             };
-        },
-        methods: {
         }
     };
 
@@ -140,14 +80,12 @@
         .sportsGames,
         .hotNews {
             .headerContainer {
-                border-top: solid #e5e5e5 1px;
-                /*px*/
-                border-bottom: solid #e5e5e5 1px;
-                /*px*/
+                border-top: solid #e5e5e5 1px;/*no*/
+                border-bottom: solid #e5e5e5 1px;/*no*/
             }
         }
         .hotGame {
-            border-bottom: solid #e5e5e5 1px;
+            border-bottom: solid #e5e5e5 1px;/*no*/
             /*px*/
             overflow: hidden;
             .hr {
@@ -156,14 +94,14 @@
                 /*px*/
                 line-height: 1px;
                 /*px*/
-                border-top: solid #e5e5e5 1px;
+                border-top: solid #e5e5e5 1px;/*no*/
                 margin-left: 30px;
                 color: #e5e5e5;
             }
         }
         .sportsGamesContainer,
-        .oneContainer{
-            border-bottom: solid #e5e5e5 1px;
+        .oneContainer {
+            border-bottom: solid #e5e5e5 1px;/*no*/
         }
     }
 </style>

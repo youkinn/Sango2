@@ -25,11 +25,59 @@
 <script>
     'use strict';
     export default {
-        props: {
-            games: {
-                type: Array,
-                default: [{}, {}]
-            }
+        data() {
+            return {
+                games: [
+                    {
+                        id: '1150',
+                        name: '传奇世界H5',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '1'
+                    },
+                    {
+                        id: '1150',
+                        name: '幻城',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '1'
+                    },
+                    {
+                        id: '1150',
+                        name: '大侠归来',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '1'
+                    },
+                    {
+                        id: '1150',
+                        name: '口袋妖怪联盟',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '1'
+                    },
+                    {
+                        id: '1150',
+                        name: '啪啪三国',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '2'
+                    },
+                    {
+                        id: '1150',
+                        name: '不思议迷宫',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '2'
+                    },
+                    {
+                        id: '1150',
+                        name: '愚公移山3',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '2'
+                    },
+                    {
+                        id: '1150',
+                        name: '全民穿越之宫',
+                        imgUrl: 'http://dummyimage.com/216x216',
+                        type: '2'
+                    }
+                ]
+            };
         }
     };
 
