@@ -1,7 +1,7 @@
 <template>
-    <app-header-component title="个人中心"></app-header-component>
-    <h3>personal index</h3>
-    <app-footer-component :index="3"></app-footer-component>
+    <app-header-component title="游戏中心"></app-header-component>
+    <h3>gameCenter index</h3>
+    <app-footer-component :index="1"></app-footer-component>
 </template>
 
 <script>

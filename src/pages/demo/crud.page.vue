@@ -1,4 +1,7 @@
 <template>
+    <app-header-component title="CRUD">
+        <i class="icon icon-notice" slot="one"></i>
+    </app-header-component>
     <label>账户：</label><input v-model="username" type="text" @blur="checkUsername" @keyup="checkUsername"><br>
     <label>密码：</label><input v-model="password" type="password"><br>
     <input type="button" value="添加新用户" @click.stop="addUser">
@@ -21,11 +24,18 @@
         </li>
     </ul>
     <div v-else>暂无用户</div>
+    <app-footer-component></app-footer-component>
 </template>
 
 <script>
     'use strict';
+    import AppHeaderComponent from '../../components/layout/header/header.component';
+    import AppFooterComponent from '../../components/layout/footer/footer.component';
     export default {
+        components: {
+            AppHeaderComponent,
+            AppFooterComponent
+        },
         data() {
             return {
                 userList: [],
@@ -113,4 +123,7 @@
 </script>
 
 <style scoped>
+    .icon-notice{
+        font-size: 40px;/*px*/
+    }
 </style>

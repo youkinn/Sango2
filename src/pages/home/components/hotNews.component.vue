@@ -45,7 +45,7 @@
                     <div class="content type4">
                         <div class="title overflow-ellipsis">{{ item.title }}</div>
                         <div class="contentPicture">
-                            <div v-for="subItem in item.imgUrl" class="imgWrapper">
+                            <div v-for="subItem in item.imgUrl" track-by="$index" class="imgWrapper">
                                 <img :src="subItem" alt="">
                             </div>
                         </div>

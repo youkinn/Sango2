@@ -64,3 +64,7 @@ img{
   white-space: normal;
 }
 
+v-cloak{
+  display: none;
+}
+

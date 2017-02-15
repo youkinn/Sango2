@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('fonts/icons.eot?mw28h6');
-  src:  url('fonts/icons.eot?mw28h6#iefix') format('embedded-opentype'),
-    url('fonts/icons.ttf?mw28h6') format('truetype'),
-    url('fonts/icons.woff?mw28h6') format('woff'),
-    url('fonts/icons.svg?mw28h6#icons') format('svg');
+  src:  url('fonts/icons.eot?magi4b');
+  src:  url('fonts/icons.eot?magi4b#iefix') format('embedded-opentype'),
+    url('fonts/icons.ttf?magi4b') format('truetype'),
+    url('fonts/icons.woff?magi4b') format('woff'),
+    url('fonts/icons.svg?magi4b#icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,11 +24,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-one:before {
+  content: "\e901";
+}
 .icon-arrow-left:before {
   content: "\e902";
 }
 .icon-notice:before {
   content: "\e903";
+}
+.icon-home:before {
+  content: "\e908";
+}
+.icon-mine:before {
+  content: "\e90b";
+}
+.icon-game:before {
+  content: "\e90d";
 }
 .icon-arrow-right:before {
   content: "\e90e";

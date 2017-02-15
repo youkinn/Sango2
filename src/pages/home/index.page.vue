@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <app-header-component title="首页"></app-header-component>
         <div class="hotGame section">
             <div class="headerContainer">
                 <header-component title="热门游戏" link-text="进入游戏中心" link-url="/personal">
@@ -37,11 +38,13 @@
             <hot-news-component></hot-news-component>
         </div>
     </div>
-
+    <app-footer-component :index="0"></app-footer-component>
 </template>
 
 <script>
     'use strict';
+    import AppHeaderComponent from '../../components/layout/header/header.component';
+    import AppFooterComponent from '../../components/layout/footer/footer.component';
     import headerComponent from './components/header.component';
     import sliderComponent from './components/slider.component';
     import noticeComponent from './components/notice.component';
@@ -51,6 +54,8 @@
     import hotNewsComponent from './components/hotNews.component';
     export default {
         components: {
+            AppHeaderComponent,
+            AppFooterComponent,
             headerComponent,
             sliderComponent,
             noticeComponent,
@@ -61,7 +66,7 @@
         },
         data() {
             return {
-                title: 'index'
+                title: '首页'
             };
         }
     };
@@ -102,6 +107,9 @@
         .sportsGamesContainer,
         .oneContainer {
             border-bottom: solid #e5e5e5 1px;/*no*/
+        }
+        .hotNews{
+            margin-bottom: 99px;
         }
     }
 </style>
