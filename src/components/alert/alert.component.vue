@@ -1,4 +1,4 @@
-<!-- -->
+<!-- Alert 弹框组件 -->
 <template>
     <div class="mark" v-if="isShow">
         <div class="alert-container">

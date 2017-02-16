@@ -33,6 +33,7 @@
     import AppHeaderComponent from '../../components/layout/header/header.component';
     import AppFooterComponent from '../../components/layout/footer/footer.component';
     import AlertComponent from '../../components/alert/alert.component';
+    
     export default {
         components: {
             AppHeaderComponent,
@@ -83,8 +84,10 @@
                 var password = this.password;
                 if(username == '' || password == ''){
                     // alert('请输入用户名和密码');
-                    that.alertMsg = '请输入用户名和密码';
-                    that.showAlert = true;
+                    // that.alertMsg = '请输入用户名和密码';
+                    // that.showAlert = true;
+                    // this.showToast = true;
+                    that.$root.$broadcast('toast', '请输入用户名和密码');
                     return;
                 }
                 Vue.ClientHttp(this).POST({ username, password }, '/api/addUser')
