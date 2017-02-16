@@ -1,7 +1,7 @@
 'use strict';
 
 import moment from 'moment/moment';
-// import Timeago from 'timeago.js';
+import Timeago from 'timeago.js';
 
 // 字符串的截取
 export const substr = function(value, length, modifier) {
@@ -60,7 +60,7 @@ export const substrByChar = function(value, limit, modifier, dir = 1) {
  * @param  {string} value: datetime
  * @return {string} 刚刚/12秒前/3分钟前/2小时前/4天前/3周前/6月前/3年前 or 12秒后/3分钟后/2小时后/24天后/6月后/3年后
  */
-// export const formatDateToTimeago = function(value) {
-//   if(value == '') return '';
-//   return new Timeago().format(value, 'zh_CN');
-// };
+export const formatDateToTimeago = function(value) {
+  if(value == '') return '';
+  return new Timeago().format(value, 'zh_CN');
+};

@@ -16,7 +16,8 @@ module.exports = function (router) {
                 res.json({ 'code': 10001, 'msg': '用户不存在' });
                 return;
             }
-            if(password !== result._doc.password){
+            var data = result.toJSON();
+            if(password !== data.password){
                 res.json({ 'code': 10001, 'msg': '密码不正确' });
                 return;
             }

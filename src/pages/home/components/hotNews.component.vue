@@ -11,7 +11,7 @@
                         </div>
                         <div class="info">
                             <span class="source">{{ item.source }}</span>
-                            <span class="publishTime">{{ item.publishTime }}</span>
+                            <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
                         </div>
                     </div>
                 </template>
@@ -24,7 +24,7 @@
                             <div class="title overflow-ellipsis-multiline">{{ item.title }}</div>
                             <div class="info">
                                 <span class="source">{{ item.source }}</span>
-                                <span class="publishTime">{{ item.publishTime }}</span>
+                                <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="info">
                             <span class="source">{{ item.source }}</span>
-                            <span class="publishTime">{{ item.publishTime }}</span>
+                            <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
                         </div>
                     </div>
                 </template>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="info">
                             <span class="source">{{ item.source }}</span>
-                            <span class="publishTime">{{ item.publishTime }}</span>
+                            <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
                         </div>
                     </div>
                 </template>
@@ -65,47 +65,24 @@
     export default {
         data() {
             return {
-                news: [
-                    {
-                        title: '质量上乘画风感人《武士崛起》交首付款',
-                        intro: '',
-                        link: '/news/38620',
-                        imgUrl: ['http://dummyimage.com/1160x376'],
-                        publishTime: '刚刚',
-                        source: 'DS女老师',
-                        type: '1'
-
-                    },
-                    {
-                        title: '正总手游网易的戏出品 国内顶IP......',
-                        intro: '技能、千种炫酷装备、告别文字战斗激情PK统百玩不厌...',
-                        link: '/news/38621',
-                        imgUrl: ['http://dummyimage.com/432x280'],
-                        publishTime: '2分钟前',
-                        source: '娱乐八卦新鲜事儿',
-                        type: '2'
-                    },
-                    {
-                        title: '西游神传九大逆天技能、千种炫酷装备',
-                        intro: '技能、千种炫酷装备、告别文字战斗激情PK统百玩不厌...',
-                        link: '/news/38621',
-                        imgUrl: ['http://dummyimage.com/1160x376'],
-                        publishTime: '4分钟前',
-                        source: '娱乐八卦',
-                        type: '3'
-                    },
-                    {
-                        title: '质量上乘画风感人《武士崛起》事前登录',
-                        intro: '技能、千种炫酷装备、告别文字战斗激情PK统百玩不厌...',
-                        link: '/news/38621',
-                        imgUrl: ['http://dummyimage.com/360x300', 'http://dummyimage.com/360x300', 'http://dummyimage.com/360x300'],
-                        publishTime: '刚刚',
-                        source: 'DS女老师',
-                        type: '4'
-
-                    }
-                ]
+                pageIndex: 0,
+                pageSize: 4,
+                news: []
             };
+        },
+        compiled(){
+            this.getNewsList();
+        },
+        methods: {
+            getNewsList() {
+                Vue.ClientHttp(this).POST({ pageIndex: parseInt(this.pageIndex), pageSize: this.pageSize }, '/api/getNewsList')
+                    .then((res) => {
+                        debugger;
+                        if (res.code == 10000) {
+                            this.news = res.result.data;
+                        }
+                    });
+            }
         }
     };
 
@@ -135,7 +112,7 @@
                     color: #a5a5a5;
                     font-weight: 500;
                 }
-                .source{
+                .source {
                     margin-right: 15px;
                 }
                 &.type1 {
@@ -159,8 +136,7 @@
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-
-                        .title{
+                        .title {
                             line-height: 40px;
                         }
                     }
