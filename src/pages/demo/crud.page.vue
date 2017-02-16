@@ -24,6 +24,7 @@
         </li>
     </ul>
     <div v-else>暂无用户</div>
+    <alert-component :is-show.sync="showAlert" :content="alertMsg" :single="true" @alert-right-btn-touched="test"></alert-component>
     <app-footer-component></app-footer-component>
 </template>
 
@@ -31,20 +32,27 @@
     'use strict';
     import AppHeaderComponent from '../../components/layout/header/header.component';
     import AppFooterComponent from '../../components/layout/footer/footer.component';
+    import AlertComponent from '../../components/alert/alert.component';
     export default {
         components: {
             AppHeaderComponent,
-            AppFooterComponent
+            AppFooterComponent,
+            AlertComponent
         },
         data() {
             return {
                 userList: [],
                 username: '',
                 password: '',
-                infoMsg: ''
+                infoMsg: '',
+                showAlert: false,
+                alertMsg: ''
             };
         },
         methods: {
+            test(){
+                console.log('clicked');
+            },
             getUserList() {
                 var that = this;
                 this.infoMsg = '';
@@ -74,12 +82,16 @@
                 var username = this.username;
                 var password = this.password;
                 if(username == '' || password == ''){
-                    alert('请输入用户名和密码');
+                    // alert('请输入用户名和密码');
+                    that.alertMsg = '请输入用户名和密码';
+                    that.showAlert = true;
                     return;
                 }
                 Vue.ClientHttp(this).POST({ username, password }, '/api/addUser')
                     .then((res) => {
-                        alert(res.msg);
+                        // alert(res.msg);
+                        that.alertMsg = res.msg;
+                        that.showAlert = true;
                         if (res.code == 10000) {
                             that.getUserList();
                         }
@@ -89,7 +101,9 @@
                 var that = this;
                 Vue.ClientHttp(this).POST({ username }, '/api/auth/deleteUser')
                     .then((res) => {
-                        alert(res.msg);
+                        // alert(res.msg);
+                        that.alertMsg = res.msg;
+                        that.showAlert = true;
                         if (res.code == 10000) {
                             that.getUserList();
                         }
@@ -104,7 +118,9 @@
                 var username = this.username;
                 var password = this.password;
                 if(password==''){
-                    alert('密码不得为空');
+                    // alert('密码不得为空');
+                    that.alertMsg = '密码不得为空';
+                    that.showAlert = true;
                     return;
                 }
                 Vue.ClientHttp(this).POST({username, password}, '/api/auth/updatePwd')
