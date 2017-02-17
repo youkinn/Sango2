@@ -1,8 +1,9 @@
 export default {
   test: {
-    getUserInfo: '/mock/getDemoData'
+    getUserInfo: '/mock/getDemoData',
+    getNewsList: '/api/getNewsList',
   },
   production: {
-    // getUserInfo: '/api/getDemoData' // undefined
+    
   }
 };

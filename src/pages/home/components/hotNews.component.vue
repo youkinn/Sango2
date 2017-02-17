@@ -1,8 +1,8 @@
 <!--首页：玩游戏赢淘豆-->
 <template>
     <div class="container">
-        <ul class="list">
-            <li class="item content" v-for="item in news">
+        <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
+            <li class="item content" v-for="item in news.list">
                 <template v-if="item.type == 1">
                     <div class="content type1">
                         <div class="title overflow-ellipsis">{{ item.title }}</div>
@@ -57,31 +57,39 @@
                 </template>
             </li>
         </ul>
+        <p v-show="news.loading" class="page-infinite-loading">
+            <spinner type="fading-circle"></spinner>加载中
+        </p>
     </div>
 </template>
 
 <script>
     'use strict';
+    import { InfiniteScroll, Spinner } from 'mint-ui';
+    import LoadData from '../../../components/loaddata/LoadData';
+
+    Vue.use(InfiniteScroll);
+    Vue.component('spinner', Spinner);
+
     export default {
+        components: {
+            InfiniteScroll,
+            Spinner
+        },
         data() {
             return {
-                pageIndex: 0,
-                pageSize: 4,
-                news: []
+                news: {}
             };
         },
-        compiled(){
-            this.getNewsList();
+        compiled() {
+            this.news = new LoadData({
+                url: Vue.ClientUrl.getNewsList,
+                pageSize: 5
+            });
         },
         methods: {
             getNewsList() {
-                Vue.ClientHttp(this).POST({ pageIndex: parseInt(this.pageIndex), pageSize: this.pageSize }, '/api/getNewsList')
-                    .then((res) => {
-                        debugger;
-                        if (res.code == 10000) {
-                            this.news = res.result.data;
-                        }
-                    });
+                this.news.getList(this);
             }
         }
     };
@@ -95,10 +103,8 @@
             padding-top: 28px;
             padding-right: 30px;
             padding-bottom: 28px;
-            &:not(:last-child) {
-                border-bottom: solid #e5e5e5 1px;
-                /*no*/
-            }
+            border-bottom: solid #e5e5e5 1px;
+            /*no*/
             .title {
                 font-size: 32px;
                 /*px*/

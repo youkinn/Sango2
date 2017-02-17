@@ -19,7 +19,7 @@ img{
 }
 
 /*****************工具类****************/
-/*浮动*/
+/* 浮动 */
 .fl{
   float: left;
 }
@@ -27,7 +27,7 @@ img{
   float: right;
 }
 
-/*清除浮动*/
+/* 清除浮动 */
 .clearfix {
   zoom: 1;
 }
@@ -38,8 +38,8 @@ img{
   height: 0;
 }
 
-/*超出显示省略号*/
-/*单行*/
+/* 超出显示省略号 */
+/* 单行 */
 .overflow-ellipsis { 
   display: block;
   overflow: hidden;
@@ -47,7 +47,7 @@ img{
   text-overflow: ellipsis;
 }
 
-/*多行*/
+/* 多行 */
 .overflow-ellipsis-multiline{ 
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -66,5 +66,19 @@ img{
 
 v-cloak{
   display: none;
+}
+
+/* 加载中 */
+.page-infinite-loading {
+  padding: .24rem 0;
+  text-align: center;
+}
+.mint-spinner-fading-circle {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .17rem;
+  width: 0.875rem!important;
+  height: 0.875rem!important;
 }
 
