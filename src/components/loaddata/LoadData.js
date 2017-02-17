@@ -33,7 +33,6 @@ class LoadData {
                         this.allLoaded = true;
                     }
                     setTimeout(()=> {
-                        debugger;
                         this.loading = false;
                     }, 1000);
                     if(typeof cb == 'function') cb();

@@ -28,7 +28,6 @@
         },
         compiled() {
             this.$on('toast', (message, type = 0, time = 2000)=> {
-                debugger;
                 this.message = message;
                 this.isShow = true;
                 this.type = type;

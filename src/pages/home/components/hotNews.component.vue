@@ -1,7 +1,7 @@
 <!--首页：玩游戏赢淘豆-->
 <template>
     <div class="container">
-        <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
+        <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="true">
             <li class="item content" v-for="item in news.list">
                 <template v-if="item.type == 1">
                     <div class="content type1">

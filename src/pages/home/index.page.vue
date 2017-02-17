@@ -12,7 +12,7 @@
             <hot-games-component></hot-games-component>
         </div>
 
-        <div class="sportsGames section">
+        <!--<div class="sportsGames section">
             <div class="headerContainer">
                 <header-component title="玩游戏赢淘豆" link-text="更多" link-url="/personal">
                     </headercomponent>
@@ -20,8 +20,8 @@
             <div class="sportsGamesContainer">
                 <sports-games-component :games="playGames"></sports-games-component>
             </div>
-        </div>
-        <div class="one section">
+        </div>-->
+        <!--<div class="one section">
             <div class="headerContainer">
                 <header-component title="1元夺宝">
                     </headercomponent>
@@ -29,7 +29,7 @@
             <div class="oneContainer">
                 <one-component></one-component>
             </div>
-        </div>
+        </div>-->
         <div class="hotNews section">
             <div class="headerContainer">
                 <header-component title="热门资讯">
