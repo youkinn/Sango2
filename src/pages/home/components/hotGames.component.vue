@@ -1,8 +1,8 @@
 <!--首页：热门游戏-->
 <template>
     <div class="container">
-        <ul v-if="games.length > 0" class="list" v-cloak>
-            <li class="item" v-for="item in games.slice(0,4)" v-link="'/tao-you/game-intro/' + item.gameID">
+        <ul v-if="games.list.length > 0" class="list" v-cloak>
+            <li class="item" v-for="item in games.list.slice(0,4)">
                 <div class="listImg">
                     <img :src="item.imgUrl" alt="">
                     <!--<img v-if="item.type == 1" class="h5Mark" src="/static/images/tao-you/home/h5.png" alt="">-->
@@ -10,8 +10,8 @@
                 <div class="name overflow-ellipsis">{{ item.name }}</div>
             </li>
         </ul>
-        <ul v-if="games.length > 4" class="list" v-cloak>
-            <li class="item" v-for="item in games.slice(4,8)" v-link="'/tao-you/game-intro/' + item.gameID">
+        <ul v-if="games.list.length > 4" class="list" v-cloak>
+            <li class="item" v-for="item in games.list.slice(4,8)">
                 <div class="listImg">
                     <img :src="item.imgUrl" alt="">
                     <!--<img v-if="item.type == 1" class="h5Mark" src="/static/images/tao-you/home/h5.png" alt="">-->
@@ -24,60 +24,24 @@
 
 <script>
     'use strict';
+    import LoadData from '../../../components/loaddata/LoadData';
     export default {
         data() {
             return {
-                games: [
-                    {
-                        id: '1150',
-                        name: '传奇世界H5',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '幻城',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '大侠归来',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '口袋妖怪联盟',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '1'
-                    },
-                    {
-                        id: '1150',
-                        name: '啪啪三国',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '2'
-                    },
-                    {
-                        id: '1150',
-                        name: '不思议迷宫',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '2'
-                    },
-                    {
-                        id: '1150',
-                        name: '愚公移山3',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '2'
-                    },
-                    {
-                        id: '1150',
-                        name: '全民穿越之宫',
-                        imgUrl: 'http://dummyimage.com/216x216',
-                        type: '2'
-                    }
-                ]
+                games: {}
             };
+        },
+        compiled() {
+            this.games = new LoadData({
+                url: Vue.ClientUrl.getGameList,
+                pageSize: 8
+            });
+            this.getGameList();
+        },
+        methods: {
+            getGameList() {
+                this.games.getList(this);
+            }
         }
     };
 
