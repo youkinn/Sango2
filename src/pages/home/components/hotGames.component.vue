@@ -51,6 +51,7 @@
     .container {
         padding-left: 30px;
         padding-right: 30px;
+        border-bottom: solid #e5e5e5 1px;/*no*/
         .list {
             &:last-child {
                 padding-bottom: 28px;

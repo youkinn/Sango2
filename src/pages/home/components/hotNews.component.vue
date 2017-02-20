@@ -2,7 +2,7 @@
 <template>
     <div class="container">
         <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="true">
-            <li class="item content" v-for="item in news.list">
+            <li class="item content" v-for="item in news.list" v-link="{name: 'dewsDetail', params: {id: item._id}}">
                 <template v-if="item.type == 1">
                     <div class="content type1">
                         <div class="title overflow-ellipsis">{{ item.title }}</div>
@@ -99,6 +99,7 @@
 <style lang="scss" scoped>
     .list {
         padding-left: 30px;
+        border-top: solid #e5e5e5 1px;/*no*/
         .item {
             padding-top: 28px;
             padding-right: 30px;

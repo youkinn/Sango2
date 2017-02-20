@@ -1,6 +1,6 @@
 'use strict';
 // 导入每个模块的路由
-import common from './common/common.route';
+import home from './home/home.route';
 import demo from './demo/demo.route';
 import personal from './personal/personal.route';
 import gameCenter from './gameCenter/gameCenter.route';
@@ -9,8 +9,8 @@ import gameCenter from './gameCenter/gameCenter.route';
 var route = {};
 
 // 合并路由
-Object.assign(route, common);
 Object.assign(route, demo);
+Object.assign(route, home);
 Object.assign(route, personal);
 Object.assign(route, gameCenter);
 

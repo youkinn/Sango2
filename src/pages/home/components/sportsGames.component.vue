@@ -57,6 +57,7 @@
     .container {
         padding-left: 30px;
         padding-right: 30px;
+        border-top: solid #e5e5e5 1px;/*no*/
         .list {
             font-family: SimSun;
             .item {

@@ -48,6 +48,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-top: solid #e5e5e5 1px;/*no*/
         .one {
             display: flex;
             justify-content: space-between;
