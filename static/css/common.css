@@ -68,6 +68,7 @@ v-cloak{
   display: none;
 }
 
+/*****************Mint ui样式修正****************/
 /* 加载中 */
 .page-infinite-loading {
   padding: .24rem 0;
@@ -80,5 +81,19 @@ v-cloak{
   margin-right: .17rem;
   width: 0.875rem!important;
   height: 0.875rem!important;
+}
+
+/* 轮播小点 */
+.swipe-indicators .swipe-indicator
+{
+  background-color: #ffffff;
+  width: .25rem;
+  height: .25rem;
+  margin: 0 .09rem;
+  opacity: .5;
+}
+.swipe-indicators .swipe-indicator.active
+{
+  opacity: 1;
 }
 
