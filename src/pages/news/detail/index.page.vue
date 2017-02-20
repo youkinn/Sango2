@@ -1,11 +1,11 @@
 <template>
-    <div class="container section">
+    <div class="container">
         <app-header-component title="资讯"></app-header-component>
         <div class="news-body section">
             <news-body-component></news-body-component>
         </div>
         <div class="comment-list section">
-            <header-component title="用户评论" link-text="评论"></header-component>
+            <header-component title="用户评论" link-text="评论" @click-action="showCommentDialog"></header-component>
             <comment-list-component></comment-list-component>
         </div>
         <div class="related-news section">
@@ -33,6 +33,11 @@
             CommentListComponent,
             RelatedNewsComponent,
             commentInputComponent
+        },
+        methods: {
+            showCommentDialog(){
+                this.$broadcast('showCommentDialog');
+            }
         }
     };
 </script>

@@ -2,7 +2,7 @@
 <template>
     <div class="header">
         <div class="title">{{ title }}</div>
-        <div class="linkText" v-if="linkText" v-link="linkUrl">
+        <div class="linkText" v-if="linkText" v-link="linkUrl" @click="clickHandle">
             {{ linkText }} <i class="icon icon-arrow-right"></i>
         </div>
     </div>
@@ -23,6 +23,11 @@
             linkUrl: {
                 type: String,
                 default: ''
+            }
+        },
+        methods: {
+            clickHandle(){
+                this.$dispatch('click-action');
             }
         }
     };

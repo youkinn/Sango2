@@ -1,16 +1,24 @@
 <template>
-    <div class="container">
+    <div class="container" @click.stop.prevent="showCommentDialog">
         <div class="input-wrapper">
             <input type="text" placeholder="我也来说几句..." readonly>
             <input type="button" value="发表">
         </div>
     </div>
+    <comment-dialog-component></comment-dialog-component>
 </template>
 
 <script>
     'use strict';
+    import commentDialogComponent from './commentDialog.component';
     export default {
         components: {
+            commentDialogComponent
+        },
+        methods: {
+            showCommentDialog(){
+                this.$broadcast('showCommentDialog');
+            }
         }
     };
 </script>
