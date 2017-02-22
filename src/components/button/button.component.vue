@@ -26,6 +26,7 @@
         border: solid #a5a5a5 1px;/*no*/
         font-size: 26px;/*px*/
         color: #333;
+        background-color: #fff;
         text-align: center;
         border-radius: 8px;
     }

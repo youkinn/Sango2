@@ -68,11 +68,6 @@
         border-top: solid #e5e5e5 1px;/*no*/
         border-bottom: solid #e5e5e5 1px;/*no*/
 
-        .list {
-            border-top: solid #e5e5e5 1px;
-            /*no*/
-        }
-
         .more {
             height: 89px;
             line-height: 89px;

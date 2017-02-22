@@ -62,7 +62,7 @@
     }
     .container {
         width: 100%;
-        background-color: #fff;
+        background-color: #f8f8f8;
         padding: 0 30px 40px 30px;
     }
     .header{
@@ -101,6 +101,8 @@
             border: none;
             font-size: 24px;
             color: #a5a5a5;
+            resize: none;
+            border-radius: 8px;
         }
     }
 
