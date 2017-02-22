@@ -9,7 +9,8 @@ module.exports = function (router) {
         var password = req.body.password;
         var user = new User({
             username,
-            password
+            password,
+            avatarPath: 'http://dummyimage.com/68x68'
         });
         User.findByUsername(username, function (err, result) {
             if (err) {

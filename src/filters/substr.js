@@ -19,7 +19,7 @@ export const substr = function(value, length, modifier) {
 export const formatDate = function(value, style) {
   var innerValue;
   innerValue = +(value || 0);
-  return moment(new Date(innerValue * 1000)).format(style);
+  return moment(new Date(innerValue)).format(style);
 };
 
 // 字符串的截取,向前截取

@@ -6,10 +6,10 @@
                     <div class="let">我也来说几句</div>
                     <div class="info">5/20</div>
                 </div>
-                <button-component :type="1" text="发表"></button-component>
+                <button-component :type="1" text="发表" @touch="publish"></button-component>
             </div>
             <div class="content">
-                <textarea v-el:ipt placeholder="发表自己的见解" autofocus></textarea>
+                <textarea v-el:ipt v-model="content" placeholder="发表自己的见解" autofocus></textarea>
             </div>
         </div>
     </div>
@@ -23,29 +23,54 @@
             isShow: {
                 type: Boolean,
                 default: false
+            },
+            commentList: {
+                type: Array,
+                default: []
             }
+        },
+        data() {
+            return {
+                content: ''
+            };
         },
         components: {
             ButtonComponent
         },
         methods: {
-            close(){
+            close() {
                 this.isShow = false;
+            },
+            publish() {
+                var newsId = this.$route.params.id;
+                var content = this.content;
+                var level = 0;
+                var parentId = 0;
+                console.log(newsId);
+                Vue.ClientHttp(this).POST({newsId, content, level, parentId}, '/api/auth/doComment')
+                    .then((res) => {
+                        if (res.code === 10000) {
+                            this.commentList = res.result.data;
+                            this.content = '';
+                            this.isShow = false;
+                        }
+                    });
             }
         },
-        compiled(){
-            this.$on('showCommentDialog', function() {
+        compiled() {
+            this.$on('showCommentDialog', function () {
                 this.isShow = true;
             });
         },
         watch: {
             'isShow': function (val/*, oldVal*/) {
-                if(val){
+                if (val) {
                     this.$els.ipt.focus();
                 }
             }
         }
     };
+
 </script>
 
 <style lang="scss" scoped>
@@ -60,39 +85,44 @@
         align-items: center;
         background-color: rgba(0, 0, 0, .5);
     }
+    
     .container {
         width: 100%;
         background-color: #f8f8f8;
         padding: 0 30px 40px 30px;
     }
-    .header{
+    
+    .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 86px;
     }
-    .left{
+    
+    .left {
         flex: 1;
         display: flex;
         align-items: baseline;
         height: 50px;
-
-        .let{
+        .let {
             margin-right: 30px;
-            font-size: 32px;/*px*/
+            font-size: 32px;
+            /*px*/
             color: #a5a5a5;
         }
-        .info{
-            font-size: 24px;/*px*/
+        .info {
+            font-size: 24px;
+            /*px*/
             color: #ccc;
         }
     }
-    .content{
+    
+    .content {
         height: 170px;
-        
-        border: solid #e2e2e2 1px;/*no*/
+        border: solid #e2e2e2 1px;
+        /*no*/
         border-radius: 8px;
-        textarea{
+        textarea {
             display: block;
             box-sizing: border-box;
             width: 100%;
@@ -105,8 +135,8 @@
             border-radius: 8px;
         }
     }
-
-    ::-webkit-input-placeholder{
+    
+    ::-webkit-input-placeholder {
         font-size: 24px;
         color: #a5a5a5;
     }

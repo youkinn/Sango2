@@ -5,19 +5,15 @@
             <input type="button" value="发表">
         </div>
     </div>
-    <comment-dialog-component></comment-dialog-component>
 </template>
 
 <script>
     'use strict';
-    import commentDialogComponent from './commentDialog.component';
+    
     export default {
-        components: {
-            commentDialogComponent
-        },
         methods: {
             showCommentDialog(){
-                this.$broadcast('showCommentDialog');
+                this.$parent.$broadcast('showCommentDialog');
             }
         }
     };

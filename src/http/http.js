@@ -125,7 +125,7 @@ import httpUrlConfig from '../config/url.config';
         //登录失效
         if (res.data.code == 20001) {
           if(vm) {
-            vm.$parent.$broadcast('forbidden');
+            vm.$root.$broadcast('forbidden');
           }
         }
         return res.data;

@@ -21,7 +21,7 @@ module.exports = function (router) {
                 res.json({ 'code': 10001, 'msg': '密码不正确' });
                 return;
             }
-            req.session.username = username;
+            req.session.user = data;
             res.json({ 'code': 10000, 'msg': '登录成功' });
         });
     });

@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
     username: { type: String },
     password: { type: String },
+    avatarPath: { type: String },
     meta: {
         createAt: {
             type: Date,

@@ -8,7 +8,7 @@ var game = require('./modules/game');
 
 // 没有挂载路径的中间件，通过该路由的每个请求都会执行该中间件
 router.use('/auth/', function (req, res, next) {
-  if (!req.session.username) {
+  if (!req.session.user) {
     res.json({ 'code': 20001, 'msg': '请先登录' });
     return;
   } else {

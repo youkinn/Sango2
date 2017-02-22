@@ -1,5 +1,5 @@
 <template>
-    <a v-if="type==1" class="btn-samll">{{ text }}</a>
+    <a v-if="type==1" class="btn-samll" @touchstart="touchHandle">{{ text }}</a>
 </template>
 
 <script>
@@ -13,6 +13,11 @@
             text: {
                 type: String,
                 default: ''
+            }
+        },
+        methods: {
+            touchHandle() {
+                this.$dispatch('touch');
             }
         }
     };

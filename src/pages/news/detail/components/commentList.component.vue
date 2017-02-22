@@ -1,53 +1,23 @@
 <template>
     <div class="container">
         <ul class="list">
-            <li class="item">
+            <li class="item" v-for="item in commentList.slice(0, 3)">
                 <div class="userinfo">
                     <div class="left">
-                        <img src="http://dummyimage.com/68x68" alt="">
+                        <img :src="item.avatarPath" alt="">
                     </div>
                     <div class="right">
-                        <div class="name">Xx这里有彩虹</div>
-                        <div class="publish-time">2016.08.24 10:50</div>
+                        <div class="name">{{ item.username }}</div>
+                        <div class="publish-time">{{ item.publishTime | formatDate 'YYYY.MM.DD HH:mm' }}</div>
                     </div>
                 </div>
                 <div class="content">
-                    上学而已......又不是坐牢，怎么弄的跟生离死别似的哈哈哈......
-                </div>
-                <div class="hr"></div>
-            </li>
-            <li class="item">
-                <div class="userinfo">
-                    <div class="left">
-                        <img src="http://dummyimage.com/68x68" alt="">
-                    </div>
-                    <div class="right">
-                        <div class="name">Xx这里有彩虹</div>
-                        <div class="publish-time">2016.08.24 10:50</div>
-                    </div>
-                </div>
-                <div class="content">
-                    上学而已......又不是坐牢，怎么弄的跟生离死别似的哈哈哈......
-                </div>
-                <div class="hr"></div>
-            </li>
-            <li class="item">
-                <div class="userinfo">
-                    <div class="left">
-                        <img src="http://dummyimage.com/68x68" alt="">
-                    </div>
-                    <div class="right">
-                        <div class="name">Xx这里有彩虹</div>
-                        <div class="publish-time">2016.08.24 10:50</div>
-                    </div>
-                </div>
-                <div class="content">
-                    上学而已......又不是坐牢，怎么弄的跟生离死别似的哈哈哈......
+                    {{ item.content }}
                 </div>
                 <div class="hr"></div>
             </li>
         </ul>
-        <div class="more">查看更多评论(24)</div>
+        <div class="more">查看更多评论({{ commentList.length }})</div>
     </div>
 
 </template>
@@ -55,7 +25,11 @@
 <script>
     'use strict';
     export default {
-        components: {
+        props: {
+            commentList: {
+                type: Array,
+                default: []
+            }
         }
     };
 

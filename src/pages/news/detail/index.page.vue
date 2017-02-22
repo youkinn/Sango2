@@ -2,17 +2,18 @@
     <div class="container">
         <app-header-component title="资讯"></app-header-component>
         <div class="news-body section">
-            <news-body-component></news-body-component>
+            <news-body-component :news.sync="news"></news-body-component>
         </div>
         <div class="comment-list section">
             <header-component title="用户评论" link-text="评论" @click-action="showCommentDialog"></header-component>
-            <comment-list-component></comment-list-component>
+            <comment-list-component :comment-list.sync="news.commentList"></comment-list-component>
         </div>
         <div class="related-news section">
             <header-component title="相关资讯"></header-component>
             <related-news-component></related-news-component>
         </div>
         <comment-input-component></comment-input-component>
+        <comment-dialog-component :comment-list.sync="news.commentList"></comment-dialog-component>
     </div>
 </template>
 
@@ -24,6 +25,7 @@
     import CommentListComponent from './components/commentList.component';
     import RelatedNewsComponent from './components/relatedNews.component';
     import commentInputComponent from '../common/commentInput.component';
+    import commentDialogComponent from '../common/commentDialog.component';
     
     export default {
         components: {
@@ -32,7 +34,13 @@
             NewsBodyComponent,
             CommentListComponent,
             RelatedNewsComponent,
-            commentInputComponent
+            commentInputComponent,
+            commentDialogComponent
+        },
+        data(){
+            return {
+                news: {}
+            };
         },
         methods: {
             showCommentDialog(){
