@@ -125,7 +125,7 @@
                         .link {
                             width: 90px;
                             height: 48px;
-                            line-height: 50px;
+                            line-height: 48px;
                             color: #333;
                             font-size: 26px;
                             /*px*/

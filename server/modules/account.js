@@ -55,7 +55,7 @@ module.exports = function (router) {
                     res.json({ 'code': 90001, 'msg': err });
                     return;
                 }
-                req.session.username = username;
+                req.session.user = data;
                 res.json({ 'code': 10000, 'msg': '注册成功' });
             });
         });

@@ -80,8 +80,9 @@
             }
         }
         
-        .hotGame {
+        .hotGame.section {
             overflow: hidden;
+            border-top: none;
             .hr {
                 width: 610px;
                 height: 1px;

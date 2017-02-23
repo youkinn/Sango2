@@ -1,8 +1,11 @@
 <template>
     <div class="container" @click.stop.prevent="showCommentDialog">
         <div class="input-wrapper">
-            <input type="text" placeholder="我也来说几句..." readonly>
-            <input type="button" value="发表">
+            <div class="comment-input" >
+                <input type="text" placeholder="我也来说几句..." readonly>
+            </div>
+            
+            <input class="publish" type="button" value="发表">
         </div>
     </div>
 </template>
@@ -43,17 +46,21 @@
             background-color: #fff;
         }
 
-        input[type=text]{
+        .comment-input{
             flex: 1;
-            border: solid #e5e5e5 1px;/*no*/
             margin-right: 30px;
-            font-size: 24px;/*px*/
-            color: #a5a5a5;
-            padding: 12px 20px;
-            border-radius: 8px;
+
+            input{
+                width: 100%;
+                border: solid #e5e5e5 1px;/*no*/
+                font-size: 24px;/*px*/
+                color: #a5a5a5;
+                padding: 12px 20px;
+                border-radius: 8px;
+            }
         }
 
-        input[type=button]{
+        .publish{
             width: 90px;
             height: 48px;
             line-height: 48px;

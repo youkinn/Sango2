@@ -86,6 +86,7 @@
     }
     
     .container {
+        box-sizing: border-box;
         width: 100%;
         background-color: #f8f8f8;
         padding: 0 30px 40px 30px;
