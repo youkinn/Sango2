@@ -17,7 +17,7 @@
 
 <script>
     'use strict';
-    import ButtonComponent from '../../../components/button/button.component';
+    import ButtonComponent from '../../../../components/button/button.component';
     export default {
         props: {
             isShow: {
@@ -46,7 +46,6 @@
                 var content = this.content;
                 var level = 0;
                 var parentId = 0;
-                console.log(newsId);
                 Vue.ClientHttp(this).POST({newsId, content, level, parentId}, '/api/auth/doComment')
                     .then((res) => {
                         if (res.code === 10000) {

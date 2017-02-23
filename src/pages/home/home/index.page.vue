@@ -32,9 +32,9 @@
 
 <script>
     'use strict';
-    import AppHeaderComponent from '../../components/layout/header/header.component';
-    import AppFooterComponent from '../../components/layout/footer/footer.component';
-    import HeaderComponent from '../common/header.component';
+    import AppHeaderComponent from '../../../components/layout/header/header.component';
+    import AppFooterComponent from '../../../components/layout/footer/footer.component';
+    import HeaderComponent from '../../common/header.component';
     import SliderComponent from './components/slider.component';
     import NoticeComponent from './components/notice.component';
     import HotGamesComponent from './components/hotGames.component';

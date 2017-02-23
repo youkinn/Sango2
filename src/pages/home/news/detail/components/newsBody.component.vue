@@ -30,10 +30,8 @@
         methods: {
             getDetail() {
                 var newsId = this.$route.params.id;
-                console.log(newsId);
                 Vue.ClientHttp(this).POST({newsId}, '/api/getNewsDetail')
                     .then((res) => {
-                        debugger;
                         if (res.code === 10000) {
                             this.news = res.result.data;
                         }

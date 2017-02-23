@@ -19,8 +19,8 @@
 
 <script>
     'use strict';
-    import AppHeaderComponent from '../../../components/layout/header/header.component';
-    import HeaderComponent from '../../common/header.component';
+    import AppHeaderComponent from '../../../../components/layout/header/header.component';
+    import HeaderComponent from '../../../common/header.component';
     import NewsBodyComponent from './components/newsBody.component';
     import CommentListComponent from './components/commentList.component';
     import RelatedNewsComponent from './components/relatedNews.component';

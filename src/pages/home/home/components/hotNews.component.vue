@@ -66,7 +66,7 @@
 <script>
     'use strict';
     import { InfiniteScroll, Spinner } from 'mint-ui';
-    import LoadData from '../../../components/loaddata/LoadData';
+    import LoadData from '../../../../components/loaddata/LoadData';
 
     Vue.use(InfiniteScroll);
     Vue.component('spinner', Spinner);
