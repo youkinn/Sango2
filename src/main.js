@@ -15,25 +15,18 @@ Vue.use(HttpConf);
 Vue.use(Vuex);
 
 // 使用自定义过滤器
-for(let p in filter){
+for (let p in filter) {
   Vue.filter(p, filter[p]);
 }
 
-var router = new VueRouter({
-  hashbang: false
+const routes = [...RouteConf.route];
+const router = new VueRouter({
+  //mode: 'history', //history模式
+  routes
 });
 
-router.beforeEach(function(transition) {
-  // if(transition.to.path.startsWith('/personal')){
-  //   // 重定向 待修改
-  //   return;
-  // }
-  transition.next();
+new Vue({
+  el: '#app',
+  router,
+  render: h => h(App)
 });
-
-// 路由部分
-router.map(RouteConf.route);
-
-// 启动整个应用
-router.start(App, '#app');
-
