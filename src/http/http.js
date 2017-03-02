@@ -14,8 +14,7 @@ import httpUrlConfig from '../config/url.config';
     let URL = {};
     if (0 === apiType) {
       URL = httpUrlConfig.test;
-    }
-    else if(1 === apiType) {
+    } else if (1 === apiType) {
       URL = httpUrlConfig.production;
     }
 
@@ -25,7 +24,7 @@ import httpUrlConfig from '../config/url.config';
       let testIP = location.hostname;
       let TEST_URL = 'http://' + testIP + ':8002';
       // 生产环境的url
-      let PRODUCTION_URL = 'http://interface.baidu.com';  // 根据实际设定
+      let PRODUCTION_URL = 'http://interface.baidu.com'; // 根据实际设定
       // 当前请求的url
       let RUNNING_URL = '';
 
@@ -48,11 +47,9 @@ import httpUrlConfig from '../config/url.config';
 
         if (independentUrl) {
           url = independentUrl;
-        }
-        else if (subUrl) {
+        } else if (subUrl) {
           url = RUNNING_URL + subUrl;
-        }
-        else {
+        } else {
           url = RUNNING_URL;
         }
         // 判断是本地还是线上环境
@@ -63,8 +60,7 @@ import httpUrlConfig from '../config/url.config';
         };
         if (0 === apiType) {
           // TODO
-        }
-        else {
+        } else {
           let subOption = {
             credentials: true
           };
@@ -72,7 +68,7 @@ import httpUrlConfig from '../config/url.config';
         }
 
         return Vue.http(option)
-               .then(successHandler, errorHandler);
+          .then(successHandler, errorHandler);
       }
 
       // POST方法
@@ -86,26 +82,23 @@ import httpUrlConfig from '../config/url.config';
         let url;
         if (independentUrl) {
           url = independentUrl;
-        }
-        else if (subUrl) {
+        } else if (subUrl) {
           url = RUNNING_URL + subUrl;
-        }
-        else {
+        } else {
           url = RUNNING_URL;
         }
         // 请求的配置
         let option = {};
         if (0 === apiType) {
           // TODO
-        }
-        else {
+        } else {
           let subOption = {
             credentials: true
           };
           Object.assign(option, subOption);
         }
         return Vue.http.post(url, data, option)
-               .then(successHandler, errorHandler);
+          .then(successHandler, errorHandler);
       }
 
       // 处理成功情况
@@ -113,8 +106,7 @@ import httpUrlConfig from '../config/url.config';
         if (typeof res.data == 'string') {
           try {
             res.data = JSON.parse(res.data);
-          }
-          catch (e) {
+          } catch (e) {
             res.data = {
               code: 10001,
               msg: '接口错误'
@@ -124,8 +116,8 @@ import httpUrlConfig from '../config/url.config';
 
         //登录失效
         if (res.data.code == 20001) {
-          if(vm) {
-            vm.$root.$broadcast('forbidden');
+          if (vm) {
+            bus.$emit('forbidden');
           }
         }
         return res.data;
@@ -157,4 +149,3 @@ import httpUrlConfig from '../config/url.config';
   }
 
 })();
-

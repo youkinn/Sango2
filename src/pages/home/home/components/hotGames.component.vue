@@ -1,7 +1,7 @@
 <!--首页：热门游戏-->
 <template>
   <div class="container">
-    <ul v-if="games.list.length > 0" class="list" v-cloak>
+    <ul v-if="games.list && games.list.length > 0" class="list" v-cloak>
       <li class="item" v-for="item in games.list.slice(0,4)">
         <div class="listImg">
           <img :src="item.imgUrl" alt="">
@@ -10,7 +10,7 @@
         <div class="name overflow-ellipsis">{{ item.name }}</div>
       </li>
     </ul>
-    <ul v-if="games.list.length > 4" class="list" v-cloak>
+    <ul v-if="games.list && games.list.length > 4" class="list" v-cloak>
       <li class="item" v-for="item in games.list.slice(4,8)">
         <div class="listImg">
           <img :src="item.imgUrl" alt="">
@@ -31,8 +31,7 @@ export default {
     };
   },
   mounted() {
-    this.games = new LoadData({
-      url: Vue.ClientUrl.getGameList,
+    this.games = new LoadData(Vue.ClientUrl.getGameList, {
       pageSize: 8
     });
     this.getGameList();

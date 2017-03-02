@@ -2,28 +2,27 @@
 import Vue from 'vue';
 
 class LoadData {
-  constructor(options = {}) {
+  constructor(url, options = {}) {
     this.loading = false;
     this.allLoaded = false;
     this.init = false;
     this.list = [];
-    this.url = options.url;
-    this.pageIndex = 0;
+    this.url = url;
+    this.pageIndex = 1;
     this.pageSize = options.pageSize || 10;
-    this.prama = options.prama || {};
+    this.parmas = options;
   }
 
   getList(that, cb) {
     if (this.loading || this.allLoaded) {
       return;
     }
-    var prama = Object.assign({}, { pageIndex: this.pageIndex, pageSize: this.pageSize }, this.prama);
+    var parmas = Object.assign({}, { pageIndex: this.pageIndex, pageSize: this.pageSize }, this.parmas);
     this.loading = true;
-    Vue.ClientHttp(that).POST(prama, this.url)
+    Vue.ClientHttp(that).POST(parmas, this.url)
       .then((res) => {
         this.init = true;
         if (res.code === 10000) {
-          debugger;
           this.list = this.list.concat(res.result.data);
           var length = res.result.data.length;
           if (length > 0) {

@@ -18,7 +18,8 @@
   },
   "globals": {
     "Vue": false,
-    "jiathis_mh5": false
+    "jiathis_mh5": false,
+    "bus": false
   },
   "rules": {
     "quotes": [2, "single"],

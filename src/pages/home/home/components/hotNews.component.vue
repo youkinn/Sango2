@@ -2,60 +2,62 @@
 <template>
   <div class="container">
     <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
-      <li class="item content" v-for="item in news.list" v-link="{name: 'dewsDetail', params: {id: item._id}}">
-        <template v-if="item.type == 1">
-          <div class="content type1">
-            <div class="title overflow-ellipsis">{{ item.title }}</div>
-            <div class="contentPicture">
-              <img :src="item.imgUrl" alt="">
-            </div>
-            <div class="info">
-              <span class="source">{{ item.source }}</span>
-              <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
-            </div>
-          </div>
-        </template>
-        <template v-if="item.type == 2">
-          <div class="content type2">
-            <div class="leftArea contentPicture">
-              <img :src="item.imgUrl" alt="">
-            </div>
-            <div class="rightArea">
-              <div class="title overflow-ellipsis-multiline">{{ item.title }}</div>
+      <router-link :to="{name: 'newsDetail', params: {id: item._id}}" v-for="item in news.list">
+        <li class="item content">
+          <template v-if="item.type == 1">
+            <div class="content type1">
+              <div class="title overflow-ellipsis">{{ item.title }}</div>
+              <div class="contentPicture">
+                <img :src="item.imgUrl" alt="">
+              </div>
               <div class="info">
                 <span class="source">{{ item.source }}</span>
                 <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
               </div>
             </div>
-          </div>
-        </template>
-        <template v-if="item.type == 3">
-          <div class="content type3">
-            <div class="title overflow-ellipsis">{{ item.title }}</div>
-            <div class="intro overflow-ellipsis-multiline">
-              {{ item.intro }}
-            </div>
-            <div class="info">
-              <span class="source">{{ item.source }}</span>
-              <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
-            </div>
-          </div>
-        </template>
-        <template v-if="item.type == 4">
-          <div class="content type4">
-            <div class="title overflow-ellipsis">{{ item.title }}</div>
-            <div class="contentPicture">
-              <div v-for="subItem in item.imgUrl" track-by="$index" class="imgWrapper">
-                <img :src="subItem" alt="">
+          </template>
+          <template v-if="item.type == 2">
+            <div class="content type2">
+              <div class="leftArea contentPicture">
+                <img :src="item.imgUrl" alt="">
+              </div>
+              <div class="rightArea">
+                <div class="title overflow-ellipsis-multiline">{{ item.title }}</div>
+                <div class="info">
+                  <span class="source">{{ item.source }}</span>
+                  <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
+                </div>
               </div>
             </div>
-            <div class="info">
-              <span class="source">{{ item.source }}</span>
-              <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
+          </template>
+          <template v-if="item.type == 3">
+            <div class="content type3">
+              <div class="title overflow-ellipsis">{{ item.title }}</div>
+              <div class="intro overflow-ellipsis-multiline">
+                {{ item.intro }}
+              </div>
+              <div class="info">
+                <span class="source">{{ item.source }}</span>
+                <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
+              </div>
             </div>
-          </div>
-        </template>
-      </li>
+          </template>
+          <template v-if="item.type == 4">
+            <div class="content type4">
+              <div class="title overflow-ellipsis">{{ item.title }}</div>
+              <div class="contentPicture">
+                <div v-for="(subItem, index) in item.imgUrl" :key="index" class="imgWrapper">
+                  <img :src="subItem" alt="">
+                </div>
+              </div>
+              <div class="info">
+                <span class="source">{{ item.source }}</span>
+                <span class="publishTime">{{ item.publishTime | formatDateToTimeago }}</span>
+              </div>
+            </div>
+          </template>
+        </li>
+      </router-link>
     </ul>
     <p v-show="news.loading" class="page-infinite-loading">
       <spinner type="fading-circle"></spinner>加载中
@@ -81,15 +83,16 @@ export default {
     };
   },
   mounted() {
-    this.news = new LoadData({
-      url: Vue.ClientUrl.getNewsList,
-      pageSize: 5
+    this.news = new LoadData(Vue.ClientUrl.getNewsList, {
+      pageSize: 300
     });
     this.getNewsList();
   },
   methods: {
     getNewsList() {
-      this.news.getList(this);
+      if (this.news.getList) {
+        this.news.getList(this);
+      }
     }
   }
 };

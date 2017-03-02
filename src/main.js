@@ -6,7 +6,8 @@ import Vuex from 'vuex';
 import App from './app';
 import RouteConf from './router/router';
 import HttpConf from './http/http';
-import * as filter from './filters/substr';
+import * as filters from './filter/filters';
+import * as directives from './directive/directives';
 
 // 使用相应的插件
 Vue.use(VueResource);
@@ -15,8 +16,13 @@ Vue.use(HttpConf);
 Vue.use(Vuex);
 
 // 使用自定义过滤器
-for (let p in filter) {
-  Vue.filter(p, filter[p]);
+for (let p in filters) {
+  Vue.filter(p, filters[p]);
+}
+
+// 自定义指令
+for (let p in directives) {
+  Vue.directive(p, directives[p]);
 }
 
 const routes = [...RouteConf.route];

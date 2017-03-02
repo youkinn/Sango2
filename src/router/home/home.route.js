@@ -7,8 +7,8 @@ let router = [{ // 首页
     }
   },
   { // 首页
-    name: 'dewsDetail',
-    path: 'news/:id',
+    name: 'newsDetail',
+    path: '/news/:id',
     component: function(resolve) {
       require(['../../pages/home/news/detail/index.page'], resolve);
     }

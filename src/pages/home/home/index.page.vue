@@ -2,9 +2,9 @@
   <div class="container">
     <app-header-component title="首页"></app-header-component>
     <div class="hotGame section">
-      <header-component title="热门游戏" link-text="进入游戏中心" link-url="/personal"></header-component>
+      <header-component title="热门游戏" link-text="进入游戏中心" :link-url="{name: 'personal'}"></header-component>
       <slider-component></slider-component>
-      <notice-component></notice-component>
+      <!--<notice-component></notice-component>-->
       <div class="hr"></div>
       <hot-games-component></hot-games-component>
     </div>
