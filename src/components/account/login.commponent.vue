@@ -61,6 +61,14 @@ export default {
             this.username = '';
             this.password = '';
             this.updateDialogState({ bShow: false });
+            this.$cookie.set('activeTime', res.activeTime, { expires: 1 });
+            if (this.$cookie.get('returnUrl')) {
+              let returnUrl = this.$cookie.get('returnUrl');
+              if (returnUrl) {
+                this.$cookie.delete('returnUrl');
+                this.$router.push(returnUrl);
+              }
+            }
           }
         });
     },

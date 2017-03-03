@@ -27,7 +27,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 // 允许跨域
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   next();
@@ -37,14 +37,14 @@ app.use(function (req, res, next) {
 // 文档：https://github.com/expressjs/session
 app.use(session({
   secret: 'youkinn',
-  name: 'sango',                       // 这里的name值得是cookie的name，默认cookie的name是：connect.sid
-  cookie: { maxAge: 30 * 60 * 1000 },  // 设置maxAge是1800000ms，即1800s(半小时)后session和相应的cookie失效过期
+  name: 'sango', // 这里的name值得是cookie的name，默认cookie的name是：connect.sid
+  cookie: { maxAge: 30 * 60 * 1000 }, // 设置maxAge是1800000ms，即1800s(半小时)后session和相应的cookie失效过期
   resave: false,
   saveUninitialized: true,
-  store: new MongoStore({         // 创建新的mongodb数据库
-    host: '127.0.0.1',            // 数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
-    port: 27017,                  // 数据库的端口号
-    db: 'sango',                  // 数据库的名称
+  store: new MongoStore({ // 创建新的mongodb数据库
+    host: '127.0.0.1', // 数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
+    port: 27017, // 数据库的端口号
+    db: 'sango', // 数据库的名称
     mongooseConnection: mongoose.connection
   })
 }));
@@ -65,7 +65,7 @@ switch (environment) {
     console.log('** BUILD **');
     app.use(express.static('./build/'));
     // Any invalid calls for templateUrls are under app/* and should return 404
-    app.use('/app/*', function (req, res) {
+    app.use('/app/*', function(req, res) {
       four0four.send404(req, res);
     });
     // Any deep link calls should return index.html
@@ -77,7 +77,7 @@ switch (environment) {
     app.use(express.static('./'));
     app.use(express.static('./tmp'));
     // Any invalid calls for templateUrls are under app/* and should return 404
-    app.use('/app/*', function (req, res) {
+    app.use('/app/*', function(req, res) {
       four0four.send404(req, res);
     });
     // Any deep link calls should return index.html
@@ -85,7 +85,7 @@ switch (environment) {
     break;
 }
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log('Express server listening on PORT ' + PORT);
   console.log('env = ' + app.get('env') +
     '\n__dirname = ' + __dirname +

@@ -6,6 +6,7 @@ import Vuex from 'vuex';
 import App from './app';
 import RouteConf from './router/router';
 import HttpConf from './http/http';
+import VueCookie from 'vue-cookie';
 import * as filters from './filter/filters';
 import * as directives from './directive/directives';
 
@@ -14,7 +15,8 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(HttpConf);
 Vue.use(Vuex);
-
+Vue.use(VueCookie);
+Vue.http.options.xhr = { withCredentials: true };
 // 使用自定义过滤器
 for (let p in filters) {
   Vue.filter(p, filters[p]);
@@ -29,6 +31,22 @@ const routes = [...RouteConf.route];
 const router = new VueRouter({
   //mode: 'history', //history模式
   routes
+});
+
+router.beforeEach((to, from, next) => {
+
+  // 检测目标页面是否需要登陆
+  var whitelist = ['home', 'newsDetail'];
+  if (!whitelist.includes(to.name)) {
+    let expires = bus.$cookie.get('activeTime');
+    if (!expires || new Date().getTime() > new Date(expires).getTime()) {
+      next(false);
+      bus.$cookie.set('returnUrl', to.path);
+      bus.$emit('forbidden');
+      return;
+    }
+  }
+  next();
 });
 
 new Vue({

@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       content: '',
-      commentList: []
+      commentList: [],
+      show: this.isShow
     };
   },
   components: {
@@ -38,7 +39,6 @@ export default {
       this.isShow = false;
     },
     publish() {
-      debugger;
       var newsId = this.$route.params.id;
       var content = this.content;
       var level = 0;

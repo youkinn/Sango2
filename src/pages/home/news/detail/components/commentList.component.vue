@@ -30,7 +30,6 @@ export default {
   },
   mounted() {
     bus.$on('comment-change', (list) => {
-      debugger;
       this.commentList = list;
     });
   }
