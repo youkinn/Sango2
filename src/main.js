@@ -43,7 +43,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 
   // 检测目标页面是否需要登陆
-  var whitelist = ['home', 'newsDetail'];
+  var whitelist = ['home', 'newsDetail', 'gameCenter'];
   if (!whitelist.includes(to.name)) {
     let expires = bus.$cookie.get('activeTime');
     if (!expires || new Date().getTime() > new Date(expires).getTime()) {

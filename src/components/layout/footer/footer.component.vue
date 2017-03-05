@@ -9,10 +9,10 @@
       <i class="icon icon-game"></i>
       <div>游戏</div>
     </router-link>
-    <router-link tag="div" class="menu-item" :class="{'selected': index==2}" :to="{name: 'home'}">
+    <!--<router-link tag="div" class="menu-item" :class="{'selected': index==2}" :to="{name: 'home'}">
       <i class="icon icon-one"></i>
       <div>夺宝</div>
-    </router-link>
+    </router-link>-->
     <router-link tag="div" class="menu-item" :class="{'selected': index==3}" :to="{name: 'personal'}">
       <i class="icon icon-mine"></i>
       <div>我的</div>
