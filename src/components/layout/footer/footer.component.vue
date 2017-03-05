@@ -1,29 +1,21 @@
 <!--app底部-->
 <template>
   <div class="container">
-    <router-link :to="{name: 'home'}">
-      <div class="menu-item" :class="{'selected': index==0}">
-        <i class="icon icon-home"></i>
-        <div>首页</div>
-      </div>
+    <router-link tag="div" class="menu-item" :class="{'selected': index==0}" :to="{name: 'home'}">
+      <i class="icon icon-home"></i>
+      <div>首页</div>
     </router-link>
-    <router-link :to="{name: 'gameCenter'}">
-      <div class="menu-item" :class="{'selected': index==1}">
-        <i class="icon icon-game"></i>
-        <div>游戏</div>
-      </div>
+    <router-link tag="div" class="menu-item" :class="{'selected': index==1}" :to="{name: 'gameCenter'}">
+      <i class="icon icon-game"></i>
+      <div>游戏</div>
     </router-link>
-    <router-link :to="{name: 'newsDetail'}">
-      <div class="menu-item" :class="{'selected': index==2}">
-        <i class="icon icon-one"></i>
-        <div>夺宝</div>
-      </div>
+    <router-link tag="div" class="menu-item" :class="{'selected': index==2}" :to="{name: 'home'}">
+      <i class="icon icon-one"></i>
+      <div>夺宝</div>
     </router-link>
-    <router-link :to="{name: 'personal'}">
-      <div class="menu-item" :class="{'selected': index==3}">
-        <i class="icon icon-mine"></i>
-        <div>我的</div>
-      </div>
+    <router-link tag="div" class="menu-item" :class="{'selected': index==3}" :to="{name: 'personal'}">
+      <i class="icon icon-mine"></i>
+      <div>我的</div>
     </router-link>
   </div>
 </template>
@@ -74,10 +66,11 @@ export default {
     height: 98px;
     padding-top: 17px;
     padding-bottom: 12px;
+    // box-sizing: border-box;
     i {
       font-size: 40px;
       /*px*/
-      margin-bottom: 6px;
+      // margin-bottom: 6px;
     }
     div {
       font-size: 20px;
