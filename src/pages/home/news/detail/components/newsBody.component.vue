@@ -33,7 +33,7 @@ export default {
         });
     }
   },
-  mounted() {
+  activated() {
     this.getDetail();
   }
 };

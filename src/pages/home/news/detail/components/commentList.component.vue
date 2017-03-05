@@ -28,7 +28,7 @@ export default {
       commentList: []
     };
   },
-  mounted() {
+  activated() {
     bus.$on('comment-change', (list) => {
       this.commentList = list;
     });

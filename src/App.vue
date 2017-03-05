@@ -2,7 +2,9 @@
 </style>
 <template>
   <section>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <login></login>
     <register></register>
     <set-pwd></set-pwd>

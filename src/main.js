@@ -29,8 +29,15 @@ for (let p in directives) {
 
 const routes = [...RouteConf.route];
 const router = new VueRouter({
-  //mode: 'history', //history模式
-  routes
+  mode: 'history', //history模式
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };
+    }
+  }
 });
 
 router.beforeEach((to, from, next) => {
