@@ -11,7 +11,7 @@ const state = {
 };
 
 const mutations = {
-  [types.UPDATE_USERINFO] (state, oUser) {
+  [types.UPDATE_USERINFO](state, oUser) {
     Object.assign(state, oUser);
   }
 };

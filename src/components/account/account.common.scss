@@ -1,138 +1,142 @@
 .mark {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .container {
-    width: 447px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 19px 27px;
-    margin-left: 71px;
-    margin-right: 71px;
-    text-align: left;
-    .title-bar {
-        position: relative;
-        font-size: 32.01px; /*px*/
-        color: #000;
-        text-align: center;
-        margin-bottom: 26px;
-        .allow-left {
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
+  width: 447px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 19px 27px;
+  margin-left: 71px;
+  margin-right: 71px;
+  text-align: left;
+  .title-bar {
+    position: relative;
+    font-size: 32.01px;
+    /*px*/
+    color: #000;
+    text-align: center;
+    margin-bottom: 26px;
+    .allow-left {
+      position: absolute;
+      left: 0;
+      top: 0;
     }
-    .username {
-        margin-bottom: 15px;
-        border-bottom: solid 2px #e4e4e4;
+  }
+  .username {
+    margin-bottom: 15px;
+    border-bottom: solid 2px #e4e4e4;
+  }
+  .password {
+    margin-bottom: 35px;
+    border-bottom: solid 2px #e4e4e4;
+  }
+  .username,
+  .password,
+  .smsCode {
+    input {
+      width: 100%;
+      border: none;
+      font-size: 28.45px;
+      /*px*/
+      color: #000;
+      padding-top: 21px;
+      padding-bottom: 21px;
     }
-    .password {
-        margin-bottom: 35px;
-        border-bottom: solid 2px #e4e4e4;
-    }
-    .username,
-    .password,
+  }
+  .last {
+    margin-bottom: 35px;
+    border-bottom: solid 2px #e4e4e4;
+  }
+  .smsCode {
+    position: relative;
+    margin-bottom: 35px;
+    border-bottom: solid 2px #e4e4e4;
+    .btnSend,
     .smsCode {
-        input {
-            width: 100%;
-            border: none;
-            font-size: 28.45px; /*px*/
-            color: #000;
-            padding-top: 21px;
-            padding-bottom: 21px;
-        }
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin-top: auto;
+      margin-bottom: auto;
     }
-    .last {
-        margin-bottom: 35px;
-        border-bottom: solid 2px #e4e4e4;
+    .btnSend {
+      width: 171px;
+      height: 46px;
+      line-height: 46px;
+      border: solid #bbb 1px;
+      border-radius: 5px;
+      font-size: 24px;
+      /*px*/
+      color: #bbb;
+      text-align: center;
     }
-    .smsCode {
-        position: relative;
-        margin-bottom: 35px;
-        border-bottom: solid 2px #e4e4e4;
-
-        .btnSend,
-        .smsCode{
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            margin-top: auto;
-            margin-bottom: auto;
-        }
-        .btnSend{
-            width: 171px;
-            height: 46px;
-            line-height: 46px;
-            border: solid #bbb 1px;
-            border-radius: 5px;
-
-            font-size: 24px;    /*px*/
-            color: #bbb;
-            text-align: center;
-        }
+  }
+  .btnLogin {
+    margin-bottom: 24px;
+  }
+  .btnRegister,
+  .btnSubmit {
+    margin-bottom: 16px;
+  }
+  .btnLogin,
+  .btnSubmit,
+  .btnRegister {
+    input {
+      width: 100%;
+      border: solid #bbb 1px;
+      height: 80px;
+      line-height: 80px;
+      color: #fff;
+      font-size: 24.89px;
+      /*px*/
+      background-color: #00c1b3;
+      border-radius: 10px;
+      &.disabled {
+        background-color: #bbb;
+      }
     }
-    .btnLogin{
-        margin-bottom: 24px;
-    }
-    .btnRegister,
-    .btnSubmit{
-        margin-bottom: 16px;
-    }
-    .btnLogin,
-    .btnSubmit,
-    .btnRegister {
-        input {
-            width: 100%;
-            border: solid #bbb 1px;
-            height: 80px;
-            line-height: 80px;
-            color: #fff;
-            font-size: 24.89px; /*px*/
-            background-color: #00c1b3;
-            border-radius: 10px;
-            &.disabled {
-                background-color: #bbb;
-            }
-        }
-    }
-    .forgetPwd,
-    .register {
-        font-size: 24.89px; /*px*/
-        color: #bbb;
-    }
-    .register a {
-        color: #00c1b3;
-    }
-    ::-webkit-input-placeholder {
-        font-size: 28.45px; /*px*/
-        color: #bbb;
-    }
+  }
+  .forgetPwd,
+  .register {
+    font-size: 24.89px;
+    /*px*/
+    color: #bbb;
+  }
+  .register a {
+    color: #00c1b3;
+  }
+   ::-webkit-input-placeholder {
+    font-size: 28.45px;
+    /*px*/
+    color: #bbb;
+  }
 }
 
 .container {
-    animation: animations .5s linear forwards;
+  animation: animations .5s linear forwards;
 }
 
 @keyframes animations {
-    0% {
-        transform: translate(720px);
-        opacity: 0;
-    }
-    50% {
-        transform: translate(360px);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translate(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translate(720px);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(360px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
 }

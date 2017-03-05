@@ -5,10 +5,10 @@ import Timeago from 'timeago.js';
 
 // 字符串的截取
 export const substr = function(value, length, modifier) {
-  var output,innerModifier;
+  var output, innerModifier;
   innerModifier = modifier || '';
   output = value + '';
-  if(output.length > length) {
+  if (output.length > length) {
     output = output.substring(0, length);
     output += innerModifier;
   }
@@ -24,11 +24,11 @@ export const formatDate = function(value, style) {
 
 // 字符串的截取,向前截取
 export const foreSubstr = function(value, length, modifier) {
-  var output,innerModifier,len;
+  var output, innerModifier, len;
   innerModifier = modifier || '';
   output = value + '';
   len = output.length;
-  if(len > length) {
+  if (len > length) {
     output = output.substring(len - length, len);
     output = innerModifier + output;
   }
@@ -45,11 +45,11 @@ export const substrByChar = function(value, limit, modifier, dir = 1) {
     } else {
       len += 2;
     }
-    if(len > limit){
+    if (len > limit) {
       break;
     }
   }
-  if(dir == 1){
+  if (dir == 1) {
     return value.substring(0, i) + modifier;
   }
   return modifier + value.substring(0, i);
@@ -61,6 +61,6 @@ export const substrByChar = function(value, limit, modifier, dir = 1) {
  * @return {string} 刚刚/12秒前/3分钟前/2小时前/4天前/3周前/6月前/3年前 or 12秒后/3分钟后/2小时后/24天后/6月后/3年后
  */
 export const formatDateToTimeago = function(value) {
-  if(value == '') return '';
+  if (value == '') return '';
   return new Timeago().format(value, 'zh_CN');
 };

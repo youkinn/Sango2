@@ -8,7 +8,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 // add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+Object.keys(baseWebpackConfig.entry).forEach(function(name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
@@ -31,20 +31,18 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     // UPGRADE:
     // 此处是BrowserSync的配置部分
-    new BrowserSyncPlugin(
-      {
-        host: 'localhost',
-        port: 3030,
-        // Proxy the default webpack dev-server port
-        proxy: 'http://localhost:8090/',
-        notify: false,
-        // 如果不想默认打开外部的链接的话,使用local选项
-        open: 'external',
-        // Let webpack handle the reload
-        // codeSync: false
-        codeSync: true
-      }
-    ),
+    new BrowserSyncPlugin({
+      host: 'localhost',
+      port: 3030,
+      // Proxy the default webpack dev-server port
+      proxy: 'http://localhost:8090/',
+      notify: false,
+      // 如果不想默认打开外部的链接的话,使用local选项
+      open: 'external',
+      // Let webpack handle the reload
+      // codeSync: false
+      codeSync: true
+    }),
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),

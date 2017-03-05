@@ -6,14 +6,14 @@
  * 参数说明：
  *
  * result: 用户信息
- *
+ *  
  * userId: 用户ID
  * username: 用户名称
  * avatar: 头像
  * bindphone: 绑定手机
  */
 {
-  "code|1": [10000] ,
+  "code|1": [10000],
   "result": {
     "username": "哼哩个哩哩",
     "avatar": "http://dummyimage.com/120x120",

@@ -5,6 +5,6 @@ export default {
     getGameList: '/api/getGameList',
   },
   production: {
-    
+
   }
 };

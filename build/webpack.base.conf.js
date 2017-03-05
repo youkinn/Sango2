@@ -28,8 +28,7 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
-    preLoaders: [
-      {
+    preLoaders: [{
         test: /\.vue$/,
         loader: 'eslint',
         include: [
@@ -43,8 +42,7 @@ module.exports = {
         exclude: /node_modules/
       }
     ],
-    loaders: [
-      {
+    loaders: [{
         test: /\.vue$/,
         loader: 'vue'
       },
@@ -86,10 +84,10 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders(),
-    postcss: [require('postcss-px2rem')({remUnit: 64})],
+    postcss: [require('postcss-px2rem')({ remUnit: 64 })],
     autoprefixer: {
       browsers: ['Android >= 2.3', 'iOS >= 7'],
-      cascade: false  // 不美化输出 css
+      cascade: false // 不美化输出 css
     }
   }
 };
