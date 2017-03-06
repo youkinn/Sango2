@@ -1,7 +1,7 @@
 <!--app底部-->
 <template>
   <div class="container">
-    <router-link tag="div" class="menu-item" :class="{'selected': index==0}" :to="{name: 'home'}">
+    <router-link tag="div" class="menu-item" :class="{'selected': index==0}" :to="{name: 'home'}" exact>
       <i class="icon icon-home"></i>
       <div>首页</div>
     </router-link>
@@ -9,10 +9,6 @@
       <i class="icon icon-game"></i>
       <div>游戏</div>
     </router-link>
-    <!--<router-link tag="div" class="menu-item" :class="{'selected': index==2}" :to="{name: 'home'}">
-      <i class="icon icon-one"></i>
-      <div>夺宝</div>
-    </router-link>-->
     <router-link tag="div" class="menu-item" :class="{'selected': index==3}" :to="{name: 'personal'}">
       <i class="icon icon-mine"></i>
       <div>我的</div>
@@ -53,7 +49,7 @@ export default {
   /*no*/
   background-color: #fff;
   .menu-item {
-    &.selected {
+    &.router-link-active {
       color: #00c1b3;
     }
     flex: 1;
