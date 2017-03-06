@@ -52,6 +52,17 @@ export default {
     // OneComponent,
     HotNewsComponent
   },
+  // beforeRouteEnter(to, from, next) {
+  //   next(vm => {
+  //     window.scrollTop(0, window.xx);
+  //     console.log(vm);
+  //   });
+  // },
+  // beforeRouteLeave(to, from, next) {
+  //   window.xx = document.body.scrollTop;
+  //   console.log(document.body.scrollTop);
+  //   next();
+  // },
   data() {
     return {
       title: '首页'

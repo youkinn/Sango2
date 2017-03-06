@@ -4,6 +4,10 @@ let router = [{ // 首页
     path: '/',
     component: function(resolve) {
       require(['../../pages/home/home/index.page'], resolve);
+    },
+    beforeEnter(to, from, next) {
+      console.log('beforeEnter home');
+      next();
     }
   },
   { // 首页
