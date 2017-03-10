@@ -66,12 +66,11 @@ export default {
   },
   activated() {
     if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
-      window.scrollTo(0, scroll.y);
+      window.scrollTo(0, this.scroll.y);
     }
   },
   beforeRouteLeave(to, from, next) {
-    console.log('beforeRouteLeave home' + document.body.scrollTop);
-    this.updateScrollPos({ page: 'home', scrollY: document.body.scrollTop });
+    this.updateScrollPos({ page: 'home', y: document.body.scrollTop });
     next();
   },
   data() {
