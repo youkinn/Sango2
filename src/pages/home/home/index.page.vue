@@ -66,7 +66,9 @@ export default {
   },
   activated() {
     if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
-      window.scrollTo(0, this.scroll.y);
+      setTimeout(() => {
+        window.scrollTo(0, this.scroll.y);
+      }, 200);
     }
   },
   beforeRouteLeave(to, from, next) {
