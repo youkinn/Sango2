@@ -30,23 +30,14 @@ for (let p in directives) {
 const routes = [...RouteConf.route];
 const router = new VueRouter({
   mode: 'history', //history模式
-  routes
-  // ,
-  // scrollBehavior(to, from, savedPosition) {
-  //   if (savedPosition) {
-  //     return savedPosition;
-  //   } else {
-  //     const position = {};
-  //     if (to.hash) {
-  //       position.selector = to.hash;
-  //     }
-  //     if (to.matched.some(m => m.meta.scrollToTop)) {
-  //       position.x = 0;
-  //       position.y = 0;
-  //     }
-  //     return position;
-  //   }
-  // }
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };
+    }
+  }
 });
 
 router.beforeEach((to, from, next) => {

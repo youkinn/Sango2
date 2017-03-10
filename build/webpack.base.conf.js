@@ -84,10 +84,12 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders(),
-    postcss: [require('postcss-px2rem')({ remUnit: 64 })],
-    autoprefixer: {
-      browsers: ['Android >= 2.3', 'iOS >= 7'],
-      cascade: false // 不美化输出 css
-    }
+    postcss: [
+      require('postcss-px2rem')({ remUnit: 64 }),
+      require('autoprefixer')({
+        browsers: ['Android >= 2.3', 'iOS >= 7'],
+        cascade: false // 不美化输出 css
+      })
+    ]
   }
 };
