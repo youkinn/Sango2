@@ -40,7 +40,19 @@ import HotGamesComponent from './components/hotGames.component';
 // import SportsGamesComponent from './components/sportsGames.component';
 // import OneComponent from './components/one.component';
 import HotNewsComponent from './components/hotNews.component';
+
+import { scroll } from '../../../vuex/getters';
+import { updateScrollPos } from '../../../vuex/actions';
+
 export default {
+  vuex: {
+    getters: {
+      scroll: scroll
+    },
+    actions: {
+      updateScrollPos
+    }
+  },
   components: {
     AppHeaderComponent,
     AppFooterComponent,
@@ -52,17 +64,16 @@ export default {
     // OneComponent,
     HotNewsComponent
   },
-  // beforeRouteEnter(to, from, next) {
-  //   next(vm => {
-  //     window.scrollTop(0, window.xx);
-  //     console.log(vm);
-  //   });
-  // },
-  // beforeRouteLeave(to, from, next) {
-  //   window.xx = document.body.scrollTop;
-  //   console.log(document.body.scrollTop);
-  //   next();
-  // },
+  activated() {
+    if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
+      window.scrollTo(0, scroll.y);
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('beforeRouteLeave home' + document.body.scrollTop);
+    this.updateScrollPos({ page: 'home', scrollY: document.body.scrollTop });
+    next();
+  },
   data() {
     return {
       title: '首页'

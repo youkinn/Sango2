@@ -8,7 +8,7 @@ class LoadData {
     this.init = false;
     this.list = [];
     this.url = url;
-    this.pageIndex = 1;
+    this.pageIndex = 0;
     this.pageSize = options.pageSize || 10;
     this.parmas = options;
   }

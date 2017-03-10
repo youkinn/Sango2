@@ -22,3 +22,8 @@ export const updateUserInfo = function({ dispatch, state }, oUser) {
 export const updateDialogState = function({ dispatch, state }, oState) {
   dispatch(types.UPDATE_DIALOG_SHOW, oState);
 };
+
+// 更新页面滚动条位置
+export const updateScrollPos = function({ dispatch, state }, oState) {
+  dispatch(types.UPDATE_SCROLL_POS, oState);
+};
