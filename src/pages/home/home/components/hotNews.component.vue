@@ -1,14 +1,14 @@
 <!--首页：玩游戏赢淘豆-->
 <template>
   <div class="container">
-    <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
+    <ul class="list" v-infinite-scroll="getNewsList()" infinite-scroll-disabled="news.loading" infinite-scroll-distance="10" infinite-scroll-immediate-check="false">
       <router-link :to="{name: 'newsDetail', params: {id: item._id}}" v-for="item in news.list">
         <li class="item content">
           <template v-if="item.type == 1">
             <div class="content type1">
               <div class="title overflow-ellipsis">{{ item.title }}</div>
               <div class="contentPicture">
-                <img :src="item.imgUrl" alt="">
+                <img v-lazy="item.imgUrl[0]" alt="">
               </div>
               <div class="info">
                 <span class="source">{{ item.source }}</span>
@@ -19,7 +19,7 @@
           <template v-if="item.type == 2">
             <div class="content type2">
               <div class="leftArea contentPicture">
-                <img :src="item.imgUrl" alt="">
+                <img v-lazy="item.imgUrl[0]" alt="">
               </div>
               <div class="rightArea">
                 <div class="title overflow-ellipsis-multiline">{{ item.title }}</div>
@@ -47,7 +47,7 @@
               <div class="title overflow-ellipsis">{{ item.title }}</div>
               <div class="contentPicture">
                 <div v-for="(subItem, index) in item.imgUrl" :key="index" class="imgWrapper">
-                  <img :src="subItem" alt="">
+                  <img v-lazy="subItem" alt="">
                 </div>
               </div>
               <div class="info">
@@ -66,17 +66,14 @@
 </template>
 <script>
 'use strict';
-import { InfiniteScroll, Spinner } from 'mint-ui';
+import { InfiniteScroll, Spinner, Lazyload } from 'mint-ui';
 import LoadData from '../../../../components/loaddata/LoadData';
 
 Vue.use(InfiniteScroll);
+Vue.use(Lazyload);
 Vue.component('spinner', Spinner);
 
 export default {
-  components: {
-    InfiniteScroll,
-    Spinner
-  },
   data() {
     return {
       news: {}
@@ -84,7 +81,7 @@ export default {
   },
   mounted() {
     this.news = new LoadData(Vue.ClientUrl.getNewsList, {
-      pageSize: 300
+      pageSize: 10
     });
     this.getNewsList();
   },
