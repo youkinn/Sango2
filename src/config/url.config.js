@@ -1,10 +1,11 @@
 export default {
   test: {
     getUserInfo: '/mock/getDemoData',
-    getNewsList: '/api/getNewsList',
-    getGameList: '/api/getGameList',
+    getNewsList: '/mock/getNewsList',
+    getGameList: '/mock/getGameList',
   },
   production: {
-
+    getNewsList: '/api/getNewsList',
+    getGameList: '/api/getGameList',
   }
 };

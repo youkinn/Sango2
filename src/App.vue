@@ -12,6 +12,7 @@
   </section>
 </template>
 <script>
+import '../static/css/common.css';
 import store from './vuex/store';
 import ToastComponent from './components/toast/toast.component';
 import Login from './components/account/login.commponent';

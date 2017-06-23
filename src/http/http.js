@@ -22,7 +22,7 @@ import httpUrlConfig from '../config/url.config';
       let handle;
       // 测试环境的url  手机上访问不到loclhost路径 模拟数据 可能要实时更改
       let testIP = location.hostname;
-      let TEST_URL = 'http://' + testIP + ':8002';
+      let TEST_URL = 'http://' + testIP + ':8003';
       // 生产环境的url
       let PRODUCTION_URL = 'http://interface.baidu.com'; // 根据实际设定
       // 当前请求的url

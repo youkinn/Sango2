@@ -1,72 +1,224 @@
+
 /* css reset */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td,form,legend{margin:0; padding:0; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-html{font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,'Hiragino Sans GB',sans-serif; -ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
-a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
-a{text-decoration: none; background:transparent}
-a:active,a:hover{outline:0}
-table{border-collapse:collapse;border-spacing:0}
-li{list-style:none;}
-b,strong{font-weight:700}
-address,cite,dfn,em,var{font-style:normal;}
-dfn{font-style:italic}
-h1{margin:.67em 0;font-size:2em}
-sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
-sup{top:-.5em}
-sub{bottom:-.25em}
-img{border:0;width: 100%;}
-button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0; outline: 0;}
-button,select{text-transform:none}
-select{-webkit-appearance: none; border:none;}
-input{line-height:normal; }
-input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
-input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
-input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
-input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
-label,input{vertical-align: middle;}
-i{font-style: normal;}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td,
+form,
+legend {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+html {
+  font-family: 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, 'Hiragino Sans GB', sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+a,
+button,
+input {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+
+a {
+  text-decoration: none;
+  background: transparent
+}
+
+a:active,
+a:hover {
+  outline: 0
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+li {
+  list-style: none;
+}
+
+b,
+strong {
+  font-weight: 700
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+
+dfn {
+  font-style: italic
+}
+
+h1 {
+  margin: .67em 0;
+  font-size: 2em
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline
+}
+
+sup {
+  top: -.5em
+}
+
+sub {
+  bottom: -.25em
+}
+
+img {
+  border: 0;
+  width: 100%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+}
+
+button,
+select {
+  text-transform: none
+}
+
+select {
+  -webkit-appearance: none;
+  border: none;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  box-sizing: border-box;
+  padding: 0
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  height: auto
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none
+}
+
+label,
+input {
+  vertical-align: middle;
+}
+
+i {
+  font-style: normal;
+}
+
 
 /**
  * common style
 */
+
 html,
-body{
+body {
   /*font-family: 'simsun'!important;*/
   background-color: #f5f5f9;
   overflow-x: hidden;
 }
+
 a,
 a:visited,
 a:active,
-a:hover{
+a:hover {
   text-decoration: none;
 }
-img{
+
+img {
   display: block;
-  width: 100%;
   height: auto;
 }
-input[type="button"], input[type="submit"], input[type="reset"] {
 
--webkit-appearance: none;
-
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  -webkit-appearance: none;
 }
 
-textarea {  -webkit-appearance: none;}
-.button{ border-radius: 0; } 
+textarea {
+  -webkit-appearance: none;
+}
+
+.button {
+  border-radius: 0;
+}
+
 
 /*****************工具类****************/
+
+
 /* 浮动 */
-.fl{
+
+.fl {
   float: left;
 }
-.fr{
+
+.fr {
   float: right;
 }
 
+
 /* 清除浮动 */
+
 .clearfix {
   zoom: 1;
 }
+
 .clearfix:after {
   content: " ";
   display: block;
@@ -74,17 +226,23 @@ textarea {  -webkit-appearance: none;}
   height: 0;
 }
 
+
 /* 超出显示省略号 */
+
+
 /* 单行 */
-.overflow-ellipsis { 
+
+.overflow-ellipsis {
   display: block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
+
 /* 多行 */
-.overflow-ellipsis-multiline{ 
+
+.overflow-ellipsis-multiline {
   display: -webkit-box;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -100,16 +258,21 @@ textarea {  -webkit-appearance: none;}
   white-space: normal;
 }
 
-v-cloak{
+v-cloak {
   display: none;
 }
 
+
 /*****************Mint ui样式修正****************/
+
+
 /* 加载中 */
+
 .page-infinite-loading {
   padding: .24rem 0;
   text-align: center;
 }
+
 .mint-spinner-fading-circle {
   position: relative;
   display: inline-block;
@@ -119,17 +282,39 @@ v-cloak{
   height: 0.875rem!important;
 }
 
+
 /* 轮播小点 */
-.swipe-indicators .swipe-indicator
-{
+
+.swipe-indicators .swipe-indicator {
   background-color: #ffffff;
   width: .25rem;
   height: .25rem;
   margin: 0 .09rem;
   opacity: .5;
 }
-.swipe-indicators .swipe-indicator.active
-{
+
+.swipe-indicators .swipe-indicator.active {
   opacity: 1;
 }
 
+.flex {
+  display: flex;
+}
+
+/* 懒加载图片loading */
+.page-lazyload-list {
+    text-align: center
+}
+.page-lazyload-listitem {
+    background-color: #ddd;
+}
+.page-lazyload-image[lazy=loading] {
+    width: 40px;
+    height: 300px;
+    margin: auto;
+}
+image[lazy=loading] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
+}

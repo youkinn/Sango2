@@ -61,6 +61,7 @@ export default {
       console.log('clicked');
     },
     getUserList() {
+      
       var that = this;
       this.infoMsg = '';
       Vue.ClientHttp(this).GET({}, '/api/getUserList')

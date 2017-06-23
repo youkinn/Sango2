@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <app-header-component title="首页"></app-header-component>
-    <div class="hotGame section">
+    <!--<div class="hotGame section">
       <header-component title="热门游戏" link-text="进入游戏中心" :link-url="{name: 'personal'}"></header-component>
       <slider-component></slider-component>
-      <!--<notice-component></notice-component>-->
+      
       <div class="hr"></div>
       <hot-games-component></hot-games-component>
-    </div>
+    </div>-->
     <!--<div class="sportsGames section">
       <header-component title="玩游戏赢淘豆" link-text="更多" link-url="/personal"></header-component>
       <div class="sportsGamesContainer">
@@ -21,7 +21,7 @@
       </div>
     </div>-->
     <div class="hotNews section">
-      <header-component title="热门资讯"></header-component>
+      <!--<header-component title="热门资讯"></header-component>-->
       <div class="hotNewsContainer">
         <hot-news-component></hot-news-component>
       </div>
@@ -40,6 +40,8 @@ import HotGamesComponent from './components/hotGames.component';
 // import SportsGamesComponent from './components/sportsGames.component';
 // import OneComponent from './components/one.component';
 import HotNewsComponent from './components/hotNews.component';
+
+// import LoadData from '../../../components/loaddata/LoadData';
 
 import { scroll } from '../../../vuex/getters';
 import { updateScrollPos } from '../../../vuex/actions';
@@ -75,9 +77,22 @@ export default {
     this.updateScrollPos({ page: 'home', y: document.body.scrollTop });
     next();
   },
+  mounted() {
+    // this.swiper = new LoadData(Vue.ClientUrl.game_center_banner, {
+    //   type: 4,
+    //   limit: 8,
+    //   nologin: 1
+    // });
+    // this.swiper.getList(this);
+  },
   data() {
     return {
-      title: '首页'
+      title: '首页',
+      swiper: {
+        list: [{
+          imgUrl: '/static/images/home/swipe/1487318324925764.jpg'
+        }]
+      }
     };
   }
 };
@@ -95,9 +110,6 @@ export default {
       border-bottom: solid #e5e5e5 1px;
       /*no*/
     }
-    &:last-child {
-      margin-bottom: 99px;
-    }
   }
   .hotGame.section {
     overflow: hidden;
@@ -113,6 +125,10 @@ export default {
       margin-left: 30px;
       color: #e5e5e5;
     }
+  }
+  .section.hotNews {
+    margin-bottom: 99px;
+    border-bottom: none;
   }
 }
 </style>

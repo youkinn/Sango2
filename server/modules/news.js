@@ -16,7 +16,7 @@ module.exports = function(router) {
       var uppers = doc.map(function(item) {
         item._doc.publishTime = item._doc.publishTime.getTime();
       });
-      res.json({ code: 10000, result: { data: doc } });
+      res.json({ code: 10000, result: doc });
     });
   });
 

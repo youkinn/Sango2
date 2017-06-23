@@ -3,7 +3,7 @@ let router = [{ // 游戏中心首页
   name: 'gameCenter',
   path: '/gameCenter',
   component: function(resolve) {
-    require(['../../pages/gameCenter/index.page'], resolve);
+    require(['../../pages/game-center/game-center.page'], resolve);
   }
 }];
 

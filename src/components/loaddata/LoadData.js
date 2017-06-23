@@ -2,7 +2,7 @@
 import Vue from 'vue';
 
 class LoadData {
-  constructor(url, options = {}) {
+  constructor(url, options = {}, method = 'GET') {
     this.loading = false;
     this.allLoaded = false;
     this.init = false;
@@ -11,6 +11,7 @@ class LoadData {
     this.pageIndex = 0;
     this.pageSize = options.pageSize || 10;
     this.parmas = options;
+    this.method = method;
   }
 
   getList(that, cb) {
@@ -19,12 +20,13 @@ class LoadData {
     }
     var parmas = Object.assign({}, { pageIndex: this.pageIndex, pageSize: this.pageSize }, this.parmas);
     this.loading = true;
-    Vue.ClientHttp(that).POST(parmas, this.url)
+    Vue.ClientHttp(that)[this.method](parmas, this.url)
       .then((res) => {
+        debugger;
         this.init = true;
         if (res.code === 10000) {
-          this.list = this.list.concat(res.result.data);
-          var length = res.result.data.length;
+          this.list = this.list.concat(res.result);
+          var length = res.result.length;
           if (length > 0) {
             this.pageIndex++;
           }
@@ -35,7 +37,7 @@ class LoadData {
 
           setTimeout(() => {
             this.loading = false;
-          }, 1000);
+          }, 1500);
         }
       });
   }

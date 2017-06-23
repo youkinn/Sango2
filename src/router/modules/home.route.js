@@ -3,7 +3,7 @@ let router = [{ // 首页
     name: 'home',
     path: '/',
     component: function(resolve) {
-      require(['../../pages/home/home/index.page'], resolve);
+      require(['../../pages/home/home/home.page'], resolve);
     },
     beforeEnter(to, from, next) {
       console.log('beforeEnter home');
@@ -14,7 +14,7 @@ let router = [{ // 首页
     name: 'newsDetail',
     path: '/news/:id',
     component: function(resolve) {
-      require(['../../pages/home/news/detail/index.page'], resolve);
+      require(['../../pages/home/news/detail/news-detail.page'], resolve);
     }
   }
 ];
