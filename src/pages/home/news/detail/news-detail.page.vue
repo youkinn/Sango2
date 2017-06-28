@@ -20,18 +20,18 @@
 'use strict';
 import AppHeaderComponent from '../../../../components/layout/header/header.component';
 import HeaderComponent from '../../../common/header.component';
-import NewsBodyComponent from './components/newsBody.component';
-import CommentListComponent from './components/commentList.component';
-import RelatedNewsComponent from './components/relatedNews.component';
-import commentInputComponent from '../common/commentInput.component';
-import commentDialogComponent from '../common/commentDialog.component';
+import NewsBodyComponent from './components/news-body.component';
+import NewsCommentListComponent from './components/news-comment-list.component';
+import RelatedNewsComponent from './components/related-news.component';
+import commentInputComponent from '../common/comment-input.component';
+import commentDialogComponent from '../common/comment-dialog.component';
 
 export default {
   components: {
     AppHeaderComponent,
     HeaderComponent,
     NewsBodyComponent,
-    CommentListComponent,
+    NewsCommentListComponent,
     RelatedNewsComponent,
     commentInputComponent,
     commentDialogComponent

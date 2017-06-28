@@ -97,7 +97,6 @@ export default {
       font-size: 24px;
       /*px*/
       color: #a5a5a5;
-      font-weight: 500;
     }
     .source {
       margin-right: 15px;

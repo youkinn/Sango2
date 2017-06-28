@@ -84,7 +84,7 @@
     "mocha": "^3.2.0",
     "morgan": "^1.7.0",
     "nightwatch": "^0.9.8",
-    "node-sass": "^3.10.1",
+    "node-sass": "^4.5.3",
     "ora": "^0.2.0",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-modules-values": "^1.2.0",

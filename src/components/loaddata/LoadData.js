@@ -22,7 +22,6 @@ class LoadData {
     this.loading = true;
     Vue.ClientHttp(that)[this.method](parmas, this.url)
       .then((res) => {
-        debugger;
         this.init = true;
         if (res.code === 10000) {
           this.list = this.list.concat(res.result);
@@ -34,7 +33,6 @@ class LoadData {
             this.allLoaded = true;
           }
           if (typeof cb == 'function') cb();
-
           setTimeout(() => {
             this.loading = false;
           }, 1500);

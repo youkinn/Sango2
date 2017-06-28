@@ -14,7 +14,7 @@
  */
 {
   "code": 10000,
-  "result|10": [{
+  "result|4": [{
     "_id|20": "@character(lower)",
     "type": 1,
     "title|2-6": "@ctitle",
@@ -31,7 +31,7 @@
     "source|2-6": "@cword",
     "publishTime": 1485691889000,
     "commentList": [],
-    "imgUrl": ["@image(260x140)"]
+    "imgUrl": ["@image(216x140)"]
   },
   {
     "_id|20": "@character(lower)",

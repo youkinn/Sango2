@@ -16,13 +16,11 @@
   "code": 10000,
   "result|8": [{
     "_id": "58a6c9d5a9f17c3848e57b3d",
-    "imgUrl": "http://image.lly800.com/goods/20170215/1487138254264528.jpg",
-    "name": "摩多游戏",
-    "type": "MOBA",
-    "intro": "摩多游戏",
-    "gameID": 1211,
-    "category": "1",
-    "downloadUrl": "http://interface.lly800.com/Game/Index/to_game?gid=1211",
-    "__v": 0
+    "imgUrl": "@image(108x108)",
+    "name|4": "@cword",
+    "type|2-4": "@cword",
+    "intro|20": "@cword",
+    "gameID|20": "@character(lower)",
+    "category": "1"
   }]
 }

@@ -1,27 +1,15 @@
 <template>
   <div class="container">
     <app-header-component title="首页"></app-header-component>
-    <!--<div class="hotGame section">
+    <div class="hotGame section">
       <header-component title="热门游戏" link-text="进入游戏中心" :link-url="{name: 'personal'}"></header-component>
-      <slider-component></slider-component>
-      
+      <div class="swiper-contanier">
+        <slider-component :swiper-list="this.swiper.list"></slider-component>
+      </div>
       <div class="hr"></div>
-      <hot-games-component></hot-games-component>
-    </div>-->
-    <!--<div class="sportsGames section">
-      <header-component title="玩游戏赢淘豆" link-text="更多" link-url="/personal"></header-component>
-      <div class="sportsGamesContainer">
-        <sports-games-component :games="playGames"></sports-games-component>
-      </div>
+      <hot-game-component></hot-game-component>
     </div>
-    <div class="one section">
-      <header-component title="1元夺宝"></header-component>
-      <div class="oneContainer">
-        <one-component></one-component>
-      </div>
-    </div>-->
     <div class="hotNews section">
-      <!--<header-component title="热门资讯"></header-component>-->
       <div class="hotNewsContainer">
         <hot-news-component></hot-news-component>
       </div>
@@ -35,13 +23,11 @@ import AppHeaderComponent from '../../../components/layout/header/header.compone
 import AppFooterComponent from '../../../components/layout/footer/footer.component';
 import HeaderComponent from '../../common/header.component';
 import SliderComponent from './components/slider.component';
-import NoticeComponent from './components/notice.component';
-import HotGamesComponent from './components/hotGames.component';
-// import SportsGamesComponent from './components/sportsGames.component';
-// import OneComponent from './components/one.component';
-import HotNewsComponent from './components/hotNews.component';
+import HotGameComponent from './components/hot-game.component';
+import HotNewsComponent from './components/hot-news.component';
 
-// import LoadData from '../../../components/loaddata/LoadData';
+import Swiper from 'swiper';
+import LoadData from '../../../components/loaddata/LoadData';
 
 import { scroll } from '../../../vuex/getters';
 import { updateScrollPos } from '../../../vuex/actions';
@@ -60,10 +46,7 @@ export default {
     AppFooterComponent,
     HeaderComponent,
     SliderComponent,
-    NoticeComponent,
-    HotGamesComponent,
-    // SportsGamesComponent,
-    // OneComponent,
+    HotGameComponent,
     HotNewsComponent
   },
   activated() {
@@ -77,22 +60,27 @@ export default {
     this.updateScrollPos({ page: 'home', y: document.body.scrollTop });
     next();
   },
-  mounted() {
-    // this.swiper = new LoadData(Vue.ClientUrl.game_center_banner, {
-    //   type: 4,
-    //   limit: 8,
-    //   nologin: 1
-    // });
-    // this.swiper.getList(this);
+  created() {
+    this.swiper = new LoadData(Vue.ClientUrl.getSwiperList, {
+      type: 4,
+      limit: 8,
+      nologin: 1
+    });
+    this.swiper.getList(this, ()=>{
+      setTimeout(() => {
+        new Swiper('.swiper-container', {
+          direction: 'horizontal',
+          loop: true,
+          pagination: '.swiper-pagination',
+          autoplay: 3500
+        });
+      }, 100);
+    });
   },
   data() {
     return {
       title: '首页',
-      swiper: {
-        list: [{
-          imgUrl: '/static/images/home/swipe/1487318324925764.jpg'
-        }]
-      }
+      swiper: {}
     };
   }
 };
@@ -102,26 +90,27 @@ export default {
   .section {
     background-color: #fff;
     &:not(:first-child) {
-      border-top: solid #e5e5e5 1px;
-      /*no*/
+      border-top: solid #e5e5e5 1px; /*no*/
     }
     &:not(:last-child) {
       margin-bottom: 30px;
-      border-bottom: solid #e5e5e5 1px;
-      /*no*/
+      border-bottom: solid #e5e5e5 1px; /*no*/
     }
+  }
+  .swiper-contanier{
+    overflow: hidden;
+    // height: 280px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
   .hotGame.section {
     overflow: hidden;
     border-top: none;
     .hr {
       width: 610px;
-      height: 1px;
-      /*px*/
-      line-height: 1px;
-      /*px*/
-      border-top: solid #e5e5e5 1px;
-      /*no*/
+      height: 1px;/*px*/
+      line-height: 1px;/*px*/
+      border-top: solid #e5e5e5 1px;/*no*/
       margin-left: 30px;
       color: #e5e5e5;
     }

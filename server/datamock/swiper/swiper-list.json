@@ -1,0 +1,19 @@
+/**
+ * 轮播列表
+ *
+ * @url /getSwiperList
+ *
+ * 参数说明：
+ *
+ * result: 列表
+ *  
+ * _id: 主键
+ * imgUrl: 轮播图片
+ */
+{
+  "code": 10000,
+  "result|8": [{
+    "_id|20": "@character(lower)",
+    "imgUrl": "@image(580x280)"
+  }]
+}
