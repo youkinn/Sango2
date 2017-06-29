@@ -44,19 +44,21 @@ export default {
         body: {},
         related: {},
         comment: {}
-      }
+      },
+      unwatch: ()=>{}
     };
   },
   mounted() {
     bus.$on('click-action', () => {
       bus.$emit('showCommentDialog');
     });
+    this.unwatch = this.$watch('$route', this.fetchData);
   },
   activated() {
     this.fetchData();
   },
-  watch: {
-    '$route': 'fetchData'
+  deactivated(){
+    this.unwatch && this.unwatch();
   },
   methods: {
     fetchData(){

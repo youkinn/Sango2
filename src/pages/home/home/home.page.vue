@@ -49,6 +49,12 @@ export default {
     HotGameComponent,
     HotNewsComponent
   },
+  data() {
+    return {
+      title: '首页',
+      swiper: {}
+    };
+  },
   activated() {
     if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
       setTimeout(() => {
@@ -77,11 +83,11 @@ export default {
       }, 100);
     });
   },
-  data() {
-    return {
-      title: '首页',
-      swiper: {}
-    };
+  activated(){
+    
+  },
+  deactivated(){
+
   }
 };
 </script>
