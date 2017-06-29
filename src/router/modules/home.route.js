@@ -10,8 +10,8 @@ let router = [{ // 首页
       next();
     }
   },
-  { // 首页
-    name: 'newsDetail',
+  { // 资讯详情
+    name: 'NewsDetail',
     path: '/news/:id',
     component: function(resolve) {
       require(['../../pages/home/news/detail/news-detail.page'], resolve);

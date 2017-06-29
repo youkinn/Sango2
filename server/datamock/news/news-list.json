@@ -16,41 +16,45 @@
   "code": 10000,
   "result|4": [{
     "_id|20": "@character(lower)",
-    "type": 1,
     "title|2-6": "@ctitle",
-    "intro": "@cparagraph",
+    "content": "@cparagraph",
+    "imgUrl": ["@image(580x188)"],
+    "category": 1,
+    "type": 1,
     "source|2-6": "@cword",
     "publishTime": 1485691889000,
-    "commentList": [],
-    "imgUrl": ["@image(580x188)"]
+    "commentList": []
   }, {
     "_id|20": "@character(lower)",
+    "title|2-6": "@ctitle",
+    "content": "@cparagraph",
+    "imgUrl": ["@image(216x140)"],
+    "category": 1,
     "type": 2,
-    "title|2-6": "@ctitle",
-    "intro": "@cparagraph",
     "source|2-6": "@cword",
     "publishTime": 1485691889000,
-    "commentList": [],
-    "imgUrl": ["@image(216x140)"]
+    "commentList": []
   },
   {
     "_id|20": "@character(lower)",
+    "title|2-6": "@ctitle",
+    "content": "@cparagraph",
+    "imgUrl": [],
+    "category": 1,
     "type": 3,
-    "title|2-6": "@ctitle",
-    "intro": "@cparagraph",
     "source|2-6": "@cword",
     "publishTime": 1485691889000,
-    "commentList": [],
-    "imgUrl": []
+    "commentList": []
   },
   {
     "_id|20": "@character(lower)",
-    "type": 4,
     "title|2-6": "@ctitle",
-    "intro": "@cparagraph",
+    "content": "@cparagraph",
+    "imgUrl": ["@image(180x150)", "@image(180x150)", "@image(180x150)"],
+    "category": 1,
+    "type": 4,
     "source|2-6": "@cword",
     "publishTime": 1485691889000,
-    "commentList": [],
-    "imgUrl": ["@image(180x150)", "@image(180x150)", "@image(180x150)"]
+    "commentList": []
   }]
 }

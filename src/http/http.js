@@ -3,7 +3,7 @@
 import httpUrlConfig from '../config/url.config';
 (function() {
   // 可以在这里配置是否使用本地的测试环境
-  let apiType = 0;
+  let apiType = 1;
 
   // 我们封装的组件
   function install(Vue) {
@@ -12,26 +12,38 @@ import httpUrlConfig from '../config/url.config';
 
     // 配置整个应用的URL
     let URL = {};
-    if (0 === apiType) {
-      URL = httpUrlConfig.test;
-    } else if (1 === apiType) {
-      URL = httpUrlConfig.production;
+    switch(apiType){
+      case 0:
+        URL = httpUrlConfig.test;
+        break;
+      case 1:
+        URL = httpUrlConfig.production;
+        break;
+      case 4:
+        URL = httpUrlConfig.temp;
+        break;
     }
 
     Vue.ClientHttp = function(vm) {
       let handle;
       // 测试环境的url  手机上访问不到loclhost路径 模拟数据 可能要实时更改
       let testIP = location.hostname;
-      let TEST_URL = 'http://' + testIP + ':8003';
+      let TEST_URL = 'http://' + testIP + ':8002';
       // 生产环境的url
-      let PRODUCTION_URL = 'http://interface.baidu.com'; // 根据实际设定
+      let PRODUCTION_URL = 'http://interface.lly800.com'; // 根据实际设定
       // 当前请求的url
       let RUNNING_URL = '';
 
-      if (0 === apiType) {
-        RUNNING_URL = TEST_URL;
-      } else {
-        RUNNING_URL = PRODUCTION_URL;
+      switch(apiType){
+        case 0:
+          RUNNING_URL = TEST_URL;
+          break;
+        case 1:
+          RUNNING_URL = PRODUCTION_URL;
+          break;
+        case 4:
+          RUNNING_URL = TEST_URL;
+          break;
       }
 
       /*
@@ -56,7 +68,7 @@ import httpUrlConfig from '../config/url.config';
         let option = {
           method: 'GET',
           url: url,
-          params: query
+          params: Object.assign({mID: localStorage.getItem('login') || 8}, query)
         };
         if (0 === apiType) {
           // TODO

@@ -1,6 +1,6 @@
 <!--登录弹框 dialog.nType：0-->
 <template>
-  <div class="mark" v-if="isShow">
+  <div class="mark" v-show="isShow">
     <div class="container login">
       <div class="title-bar">登录</div>
       <p class="username">
@@ -54,9 +54,8 @@ export default {
       if (this.disabled || !this.validate(1)) {
         return;
       }
-      Vue.ClientHttp(this).POST({ username, password }, '/api/login')
+      Vue.ClientHttp(this).GET({ username, password }, Vue.ClientUrl.doLogin)
         .then((res) => {
-          alert(res.msg);
           if (res.code == 10000) {
             this.username = '';
             this.password = '';

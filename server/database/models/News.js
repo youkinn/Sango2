@@ -4,7 +4,6 @@
 var mongoose = require('../db.js');
 var Schema = mongoose.Schema;
 
-
 var NewsCommentSchema = new Schema({
   content: { type: String },
   username: { type: String },
@@ -16,11 +15,14 @@ var NewsCommentSchema = new Schema({
 
 var NewsSchema = new Schema({
   title: { type: String },
-  intro: { type: String },
+  content: { type: String },
   imgUrl: { type: Array },
-  publishTime: { type: Date },
-  source: { type: String },
+  category: { type: Number },
+  categoryDesc: { type: String },
   type: { type: Number },
+  typeDesc: { type: String},
+  source: { type: String },
+  publishTime: { type: Date },
   commentList: [NewsCommentSchema]
 });
 

@@ -1,19 +1,19 @@
 var NewsModel = require('../database/models/News.js');
 
-module.exports = function(router) {
+module.exports = function (router) {
   /**
    * 获取新闻列表
    * 
    */
-  router.post('/getNewsList', function(req, res) {
-    var pageIndex = req.body.pageIndex || 0;
-    var pageSize = req.body.pageSize || 10;
-    NewsModel.findListByPage(parseInt(pageIndex), parseInt(pageSize), function(err, doc) {
+  router.get('/getNewsList', function (req, res) {
+    var pageIndex = req.query.pageIndex || 0;
+    var pageSize = req.query.pageSize || 10;
+    NewsModel.findListByPage(parseInt(pageIndex), parseInt(pageSize), function (err, doc) {
       if (err) {
         res.json({ 'code': 90001, 'msg': err });
         return;
       }
-      var uppers = doc.map(function(item) {
+      doc.map(function (item) {
         item._doc.publishTime = item._doc.publishTime.getTime();
       });
       res.json({ code: 10000, result: doc });
@@ -24,9 +24,9 @@ module.exports = function(router) {
    * 获取新闻详情
    * 
    */
-  router.post('/getNewsDetail', function(req, res) {
-    var newsId = req.body.newsId;
-    NewsModel.findById(newsId, function(err, doc) {
+  router.get('/getNewsDetail', function (req, res) {
+    var newsId = req.query.newsId;
+    NewsModel.findById(newsId, function (err, doc) {
       if (err) {
         res.json({ 'code': 90001, 'msg': err });
         return;
@@ -40,12 +40,12 @@ module.exports = function(router) {
    * 新闻评论
    * 
    */
-  router.post('/auth/doComment', function(req, res) {
+  router.post('/auth/doComment', function (req, res) {
     var newsId = req.body.newsId;
     var content = req.body.content;
     var level = req.body.level;
     var parentId = req.body.parentId;
-    NewsModel.findById(newsId, function(err, doc) {
+    NewsModel.findById(newsId, function (err, doc) {
       if (err) {
         res.json({ 'code': 90001, 'msg': err });
         return;
@@ -58,7 +58,7 @@ module.exports = function(router) {
         level: level,
         parentId: parentId
       });
-      doc.save(function(err) {
+      doc.save(function (err) {
         if (err) {
           res.json({ 'code': 10001, 'msg': err });
           return;
@@ -67,4 +67,4 @@ module.exports = function(router) {
       });
     });
   });
-};
+}

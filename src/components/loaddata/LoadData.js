@@ -8,8 +8,8 @@ class LoadData {
     this.init = false;
     this.list = [];
     this.url = url;
-    this.pageIndex = 0;
-    this.pageSize = options.pageSize || 10;
+    this.page = 1;
+    this.limit = options.limit || 10;
     this.parmas = options;
     this.method = method;
   }
@@ -18,7 +18,7 @@ class LoadData {
     if (this.loading || this.allLoaded) {
       return;
     }
-    var parmas = Object.assign({}, { pageIndex: this.pageIndex, pageSize: this.pageSize }, this.parmas);
+    var parmas = Object.assign({}, { page: this.page, limit: this.limit }, this.parmas);
     this.loading = true;
     Vue.ClientHttp(that)[this.method](parmas, this.url)
       .then((res) => {
@@ -27,12 +27,12 @@ class LoadData {
           this.list = this.list.concat(res.result);
           var length = res.result.length;
           if (length > 0) {
-            this.pageIndex++;
+            this.page++;
           }
-          if (length < this.pageSize) {
+          if (length < this.limit) {
             this.allLoaded = true;
           }
-          if (typeof cb == 'function') cb();
+          if (typeof cb == 'function') cb.apply(that, [res]);
           setTimeout(() => {
             this.loading = false;
           }, 1500);

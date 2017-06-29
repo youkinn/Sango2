@@ -4,7 +4,7 @@
     <header-component title="热门资讯"></header-component>
     <div class="new-list">
       <ul class="list" v-infinite-scroll="getNewsList" infinite-scroll-disabled="loading" infinite-scroll-distance="0" infinite-scroll-immediate-check="false">
-        <router-link tag="li" :to="{name: 'newsDetail', params: {id: item._id}}" v-for="(item, index) in news.list" :key="index">
+        <router-link tag="li" :to="{name: 'NewsDetail', params: {id: item.id}}" v-for="(item, index) in news.list" :key="index">
           <news-item-component :item="item" :is-last="index==news.list.length-1"></news-item-component>
         </router-link>
       </ul>
@@ -38,12 +38,12 @@ export default {
   computed: {
     loading() {
       console.log(this.news.loading || this.news.allLoaded);
-      return this.news.loading;
+      return this.news.loading && !this.news.allLoaded;
     }
   },
   created() {
     this.news = new LoadData(Vue.ClientUrl.getNewsList, {
-      pageSize: 4
+      limit: 4
     });
     this.getNewsList();
   },

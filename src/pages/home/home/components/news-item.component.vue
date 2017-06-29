@@ -5,7 +5,7 @@
       <div class="content type1">
         <div class="title overflow-ellipsis">{{ item.title }}</div>
         <div class="contentPicture page-lazyload-listitem">
-          <img class="page-lazyload-image" v-lazy="item.imgUrl[0]" width="580" height="188" alt="">
+          <img class="page-lazyload-image" v-lazy="item.picPath[0]" width="580" height="188" alt="">
         </div>
         <div class="info">
           <span class="source">{{ item.source }}</span>
@@ -16,7 +16,7 @@
     <template v-if="item.type == 2">
       <div class="content type2">
         <div class="leftArea contentPicture page-lazyload-listitem">
-          <img class="page-lazyload-image" v-lazy="item.imgUrl[0]" width="260" height="114" alt="">
+          <img class="page-lazyload-image" v-lazy="item.picPath[0]" width="260" height="114" alt="">
         </div>
         <div class="rightArea">
           <div class="title overflow-ellipsis-multiline">{{ item.title }}</div>
@@ -43,7 +43,7 @@
       <div class="content type4">
         <div class="title overflow-ellipsis">{{ item.title }}</div>
         <div class="contentPicture">
-          <div v-for="(subItem, index) in item.imgUrl" :key="index" class="imgWrapper page-lazyload-listitem">
+          <div v-for="(subItem, index) in item.picPath" :key="index" class="imgWrapper page-lazyload-listitem">
             <img class="page-lazyload-image" v-lazy="subItem" width="180" height="150" alt="">
           </div>
         </div>

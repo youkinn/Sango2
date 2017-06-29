@@ -7,7 +7,7 @@
           <img :src="item.imgUrl" alt="">
           <!--<img v-if="item.type == 1" class="h5Mark" src="/static/images/tao-you/home/h5.png" alt="">-->
         </div>
-        <div class="name overflow-ellipsis">{{ item.name }}</div>
+        <div class="name overflow-ellipsis">{{ item.gameName }}</div>
       </li>
     </ul>
     <ul v-if="games.list && games.list.length > 4" class="list" v-cloak>
@@ -16,7 +16,7 @@
           <img :src="item.imgUrl" alt="">
           <!--<img v-if="item.type == 1" class="h5Mark" src="/static/images/tao-you/home/h5.png" alt="">-->
         </div>
-        <div class="name overflow-ellipsis">{{ item.name }}</div>
+        <div class="name overflow-ellipsis">{{ item.gameName }}</div>
       </li>
     </ul>
   </div>
@@ -32,7 +32,10 @@ export default {
   },
   created() {
     this.games = new LoadData(Vue.ClientUrl.getGameList, {
-      pageSize: 8
+      type: 4,
+      page:1,
+      nologin: 1,
+      limit: 8
     });
     this.getGameList();
   },
@@ -45,7 +48,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  height: 393px;
+  // height: 393px;
   padding-left: 30px;
   padding-right: 30px;
   .list {
@@ -63,7 +66,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       .name {
-        width: 108px;
+        width: 128px;
         font-size: 24px;
         /*px*/
         text-align: center;
@@ -71,11 +74,11 @@ export default {
     }
     .listImg {
       position: relative;
-      width: 108px;
-      height: 108px;
+      width: 128px;
+      height: 128px;
       overflow: hidden;
       border-radius: 10px;
-      margin-bottom: 20px;
+      // margin-bottom: 20px;
       .h5Mark {
         position: absolute;
         top: 0;

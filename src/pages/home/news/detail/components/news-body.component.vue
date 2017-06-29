@@ -3,7 +3,7 @@
     <div class="header">
       <div class="title">{{ news.title }}</div>
       <div class="info">
-        <div class="publish-time">{{ news.publishTime | formatDate('YYYY-MM-DD hh:mm:ss')}}</div>
+        <div class="publish-time">{{ news.publishTime }}</div>
         <div class="source">{{ news.source }}</div>
       </div>
     </div>
@@ -13,27 +13,16 @@
 <script>
 'use strict';
 export default {
-  data() {
-    return {
-      news: {}
-    };
-  },
-  methods: {
-    getDetail() {
-      var that = this;
-      var newsId = this.$route.params.id;
-      Vue.ClientHttp(this).POST({ newsId }, Vue.ClientUrl.getNewsDetail)
-        .then((res) => {
-          debugger;
-          if (res.code === 10000) {
-            that.news = res.result;
-            // bus.$emit('comment-change', res.result.data.commentList);
-          }
-        });
+  props: {
+    news: {
+      type: Object,
+      default: () => {
+        return {};
+      }
     }
   },
-  activated() {
-    this.getDetail();
+  deactivated(){
+    this.news = {};
   }
 };
 </script>
@@ -59,7 +48,6 @@ export default {
     font-size: 40px;
     /*px*/
     color: #000;
-    font-weight: 600;
   }
   .info {
     display: flex;

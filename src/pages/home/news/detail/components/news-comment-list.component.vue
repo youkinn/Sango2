@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <ul class="list" v-if="commentList && commentList.length > 0">
-      <li class="item" v-for="item in commentList.slice(0, 3)">
+    <ul class="list">
+      <li class="item" v-for="(item, index) in commentList" :key="index">
         <div class="userinfo">
           <div class="left">
             <img :src="item.avatarPath" alt="">
           </div>
           <div class="right">
-            <div class="name">{{ item.username }}</div>
-            <div class="publish-time">{{ item.publishTime | formatDate('YYYY.MM.DD HH:mm') }}</div>
+            <div class="name">{{ item.name }}</div>
+            <div class="publish-time">{{ item.publishTime }}</div>
           </div>
         </div>
         <div class="content">
@@ -17,21 +17,24 @@
         <div class="hr"></div>
       </li>
     </ul>
-    <div class="more">查看更多评论({{ commentList.length }})</div>
+    <div class="more" v-if="total == 0">还未有评论，快来评论抢占主楼吧</div>
+    <div class="more" v-if="total > 3">查看更多评论({{ total }})</div>
   </div>
 </template>
 <script>
 'use strict';
 export default {
-  data() {
-    return {
-      commentList: []
-    };
-  },
-  activated() {
-    bus.$on('comment-change', (list) => {
-      this.commentList = list;
-    });
+  props: {
+    total: {
+      type: Number,
+      default: 0
+    },
+    commentList: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
   }
 };
 </script>
