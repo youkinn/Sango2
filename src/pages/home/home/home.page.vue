@@ -11,7 +11,7 @@
     </div>
     <div class="hotNews section">
       <div class="hotNewsContainer">
-        <hot-news-component></hot-news-component>
+        <hot-news-component :activated="activated"></hot-news-component>
       </div>
     </div>
     <app-footer-component :index="0"></app-footer-component>
@@ -22,7 +22,7 @@
 import AppHeaderComponent from '../../../components/layout/header/header.component';
 import AppFooterComponent from '../../../components/layout/footer/footer.component';
 import HeaderComponent from '../../common/header.component';
-import SliderComponent from './components/slider.component';
+import SliderComponent from '../../common/slider.component';
 import HotGameComponent from './components/hot-game.component';
 import HotNewsComponent from './components/hot-news.component';
 
@@ -52,8 +52,16 @@ export default {
   data() {
     return {
       title: '首页',
-      swiper: {}
+      swiper: {},
+      activated: false
     };
+  },
+  beforeRouteLeave(to, from, next) {
+    this.updateScrollPos({ page: 'home', y: document.body.scrollTop });
+    next();
+  },
+  created() {
+    this.getSwiperList();
   },
   activated() {
     if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
@@ -62,32 +70,24 @@ export default {
       }, 200);
     }
   },
-  beforeRouteLeave(to, from, next) {
-    this.updateScrollPos({ page: 'home', y: document.body.scrollTop });
-    next();
-  },
-  created() {
-    this.swiper = new LoadData(Vue.ClientUrl.getSwiperList, {
-      type: 4,
-      limit: 8,
-      nologin: 1
-    });
-    this.swiper.getList(this, ()=>{
-      setTimeout(() => {
-        new Swiper('.swiper-container', {
-          direction: 'horizontal',
-          loop: true,
-          pagination: '.swiper-pagination',
-          autoplay: 3500
-        });
-      }, 100);
-    });
-  },
-  activated(){
-    
-  },
-  deactivated(){
-
+  methods: {
+    getSwiperList() {
+      this.swiper = new LoadData(Vue.ClientUrl.getSwiperList, {
+        type: 4,
+        limit: 8,
+        nologin: 1
+      });
+      this.swiper.getList(this, () => {
+        setTimeout(() => {
+          new Swiper('.swiper-container', {
+            direction: 'horizontal',
+            loop: true,
+            pagination: '.swiper-pagination',
+            autoplay: 3500
+          });
+        }, 100);
+      });
+    }
   }
 };
 </script>
@@ -96,16 +96,17 @@ export default {
   .section {
     background-color: #fff;
     &:not(:first-child) {
-      border-top: solid #e5e5e5 1px; /*no*/
+      border-top: solid #e5e5e5 1px;
+      /*no*/
     }
     &:not(:last-child) {
       margin-bottom: 30px;
-      border-bottom: solid #e5e5e5 1px; /*no*/
+      border-bottom: solid #e5e5e5 1px;
+      /*no*/
     }
   }
-  .swiper-contanier{
-    overflow: hidden;
-    // height: 280px;
+  .swiper-contanier {
+    overflow: hidden; // height: 280px;
     padding-left: 30px;
     padding-right: 30px;
   }
@@ -114,9 +115,12 @@ export default {
     border-top: none;
     .hr {
       width: 610px;
-      height: 1px;/*px*/
-      line-height: 1px;/*px*/
-      border-top: solid #e5e5e5 1px;/*no*/
+      height: 1px;
+      /*px*/
+      line-height: 1px;
+      /*px*/
+      border-top: solid #e5e5e5 1px;
+      /*no*/
       margin-left: 30px;
       color: #e5e5e5;
     }

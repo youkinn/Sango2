@@ -103,6 +103,8 @@ export default {
     }
     &.type1 {
       .contentPicture {
+        display: flex;
+        height: 188px;
         margin-top: 22.5px;
         margin-bottom: 22.5px;
       }
@@ -155,5 +157,16 @@ export default {
       }
     }
   }
+}
+
+.page-lazyload-image[lazy=loading] {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+image[lazy=loading] {
+  width: 40px;
+  height: 40px;
+  margin: auto;
 }
 </style>

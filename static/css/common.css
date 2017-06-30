@@ -308,13 +308,3 @@ v-cloak {
 .page-lazyload-listitem {
     background-color: #ddd;
 }
-.page-lazyload-image[lazy=loading] {
-    width: 40px;
-    height: 300px;
-    margin: auto;
-}
-image[lazy=loading] {
-  width: 40px;
-  height: 300px;
-  margin: auto;
-}

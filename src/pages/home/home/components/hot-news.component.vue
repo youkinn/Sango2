@@ -20,9 +20,13 @@ import HeaderComponent from '../../../common/header.component';
 import NewsItemComponent from './news-item.component';
 import { InfiniteScroll, Spinner, Lazyload } from 'mint-ui';
 import LoadData from '../../../../components/loaddata/LoadData';
+import LoadingImg from '../../../../assets/loading-spin.svg';
 
 Vue.use(InfiniteScroll);
-Vue.use(Lazyload);
+Vue.use(Lazyload, {
+  loading: LoadingImg,
+  try: 3
+});
 Vue.component('spinner', Spinner);
 
 export default {
@@ -32,20 +36,32 @@ export default {
   },
   data() {
     return {
-      news: {}
+      news: {},
+
+      /**
+       * 由首页进入到详情页后，滚动详情页面仍然会加载资讯列表
+       * 这里主要用来修复这个问题
+       * */
+      activated: false
     };
   },
   computed: {
     loading() {
-      console.log(this.news.loading || this.news.allLoaded);
-      return this.news.loading && !this.news.allLoaded;
+      return !this.activated || this.news.loading && !this.news.allLoaded;
     }
   },
   created() {
     this.news = new LoadData(Vue.ClientUrl.getNewsList, {
-      limit: 4
+      limit: 20,
+      nologin: 1
     });
     this.getNewsList();
+  },
+  activated() {
+    this.activated = true;
+  },
+  deactivated() {
+    this.activated = false;
   },
   methods: {
     getNewsList() {
@@ -58,6 +74,7 @@ export default {
 .list {
   background-color: #fff;
   padding-left: 30px;
-  border-top: solid #e5e5e5 1px;/*no*/
+  border-top: solid #e5e5e5 1px;
+  /*no*/
 }
 </style>
