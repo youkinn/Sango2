@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="container">
     <app-header-component title="资讯"></app-header-component>
     <div class="news-body section">
@@ -15,6 +16,10 @@
     <comment-input-component></comment-input-component>
     <comment-dialog-component></comment-dialog-component>
   </div>
+  <div class="plain-text" v-show="!post">
+    <fading-circle-compontent></fading-circle-compontent>
+  </div>
+  </div>
 </template>
 <script>
 'use strict';
@@ -26,6 +31,7 @@ import RelatedNewsComponent from './components/related-news.component';
 import commentInputComponent from '../common/comment-input.component';
 import commentDialogComponent from '../common/comment-dialog.component';
 import LoadData from '../../../../components/loaddata/LoadData';
+import FadingCircleCompontent from '../../../../components/loading/fading-circle.component';
 
 export default {
   components: {
@@ -35,7 +41,8 @@ export default {
     NewsCommentListComponent,
     RelatedNewsComponent,
     commentInputComponent,
-    commentDialogComponent
+    commentDialogComponent,
+    FadingCircleCompontent
   },
   data() {
     return {
@@ -45,7 +52,8 @@ export default {
         related: {},
         comment: {}
       },
-      unwatch: ()=>{}
+      unwatch: () => {},
+      post: false
     };
   },
   mounted() {
@@ -57,20 +65,24 @@ export default {
   activated() {
     this.fetchData();
   },
-  deactivated(){
+  deactivated() {
+    this.post = false;
     this.unwatch && this.unwatch();
   },
   methods: {
-    fetchData(){
-      this.getDetail();
-      this.getRelateNews();
-      this.getNewsCommentList();
+    fetchData() {
+      var promises = [this.getDetail, this.getRelateNews, this.getNewsCommentList].map((fn)=>{
+        return fn();
+      });
+      Promise.all(promises).then(()=> {
+        this.post = true;
+      });
     },
     getDetail() {
-      Vue.ClientHttp(this).GET({ newsID: this.$route.params.id, nologin: 1 }, Vue.ClientUrl.getNewsDetail)
+      return Vue.ClientHttp(this).GET({ newsID: this.$route.params.id, nologin: 1 }, Vue.ClientUrl.getNewsDetail)
         .then((res) => {
           if (res.code === 10000) {
-            this.news.body = res.result;
+            return this.news.body = res.result;
           }
         });
     },
@@ -80,7 +92,7 @@ export default {
         limit: 2,
         nologin: 1
       });
-      this.news.related.getList();
+      return this.news.related.getList();
     },
     getNewsCommentList() {
       this.news.comment = new LoadData(Vue.ClientUrl.getNewsCommentList, {
@@ -90,7 +102,7 @@ export default {
         limit: 3,
         nologin: 1
       });
-      this.news.comment.getList(this, result => {
+      return this.news.comment.getList(this, result => {
         this.news.comment.total = parseInt(result.count);
       });
     }
@@ -111,5 +123,25 @@ export default {
       /*no*/
     }
   }
+}
+
+.plain-text {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 80px;
+  width: 100%;
+  padding: 10px 20px;
+  // background-color: #000;
+  // opacity: 0.3;
+  // border-radius: 7px;
+  // color: #fff;
+  text-align: center;
 }
 </style>

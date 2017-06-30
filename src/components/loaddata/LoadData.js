@@ -20,7 +20,7 @@ class LoadData {
     }
     var parmas = Object.assign({}, { page: this.page, limit: this.limit }, this.parmas);
     this.loading = true;
-    Vue.ClientHttp(that)[this.method](parmas, this.url)
+    return Vue.ClientHttp(that)[this.method](parmas, this.url)
       .then((res) => {
         this.init = true;
         if (res.code === 10000) {
@@ -36,6 +36,7 @@ class LoadData {
           setTimeout(() => {
             this.loading = false;
           }, 1500);
+          return res.result;
         }
       });
   }

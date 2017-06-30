@@ -1,0 +1,75 @@
+<template>
+  <div class="sk-three-bounce" :style="{width: size*4 + 'px'}">
+    <div class="sk-child sk-bounce1" :style="{width: size + 'px', height: size + 'px', backgroundColor: backgroundColor}"></div>
+    <div class="sk-child sk-bounce2" :style="{width: size + 'px', height: size + 'px', backgroundColor: backgroundColor}"></div>
+    <div class="sk-child sk-bounce3" :style="{width: size + 'px', height: size + 'px', backgroundColor: backgroundColor}"></div>
+  </div>
+</template>
+<script>
+'use strict';
+export default {
+  props: {
+    size: {
+      type: Number,
+      default: 20
+    },
+    backgroundColor: {
+      type: String
+    }
+  }
+};
+</script>
+<style lang="scss" scoped>
+.sk-three-bounce {
+  margin: 40px auto;
+  width: 80px;
+  text-align: center;
+}
+
+.sk-three-bounce .sk-child {
+  width: 20px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  opacity: 0.5;
+}
+
+.sk-three-bounce .sk-bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.sk-three-bounce .sk-bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+</style>

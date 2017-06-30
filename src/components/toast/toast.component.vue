@@ -1,6 +1,6 @@
 <!-- Toast 轻提示组件 -->
 <template>
-  <div class="toast-container" v-if="isShow">
+  <div class="toast-container" v-show="isShow">
     <span v-if="!type" class="plain-text">
             {{ message }}
         </span>

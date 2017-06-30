@@ -21,8 +21,13 @@ export default {
       }
     }
   },
+  data(){
+    return {
+      newsTemp: Object.assign({}, this.news)
+    };
+  },
   deactivated(){
-    this.news = {};
+    this.newsTemp = {};
   }
 };
 </script>
