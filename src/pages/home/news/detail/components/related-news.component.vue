@@ -15,23 +15,20 @@ export default {
         return [];
       }
     }
-  },
-  deactivated() {
-    this.newsList = [];
   }
 };
 </script>
 <style lang="scss" scoped>
 .list {
   padding-left: 30px;
-  border-top: solid #e5e5e5 1px;
+  border-top: solid #e5e5e5 1px;/*no*/
   margin-bottom: 91px;
 }
 
 .item {
   padding-right: 30px;
   &.last {
-    border-bottom: solid #e5e5e5 1px;
+    border-bottom: solid #e5e5e5 1px;/*no*/
   }
   .title {
     height: 83px;

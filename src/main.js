@@ -9,6 +9,7 @@ import HttpConf from './http/http';
 import VueCookie from 'vue-cookie';
 import * as filters from './filter/filters';
 import * as directives from './directive/directives';
+import loadingComponents from './components/loading/fading-circle.component';
 
 // 使用相应的插件
 Vue.use(VueResource);
@@ -17,6 +18,7 @@ Vue.use(HttpConf);
 Vue.use(Vuex);
 Vue.use(VueCookie);
 Vue.http.options.xhr = { withCredentials: true };
+
 // 使用自定义过滤器
 for (let p in filters) {
   Vue.filter(p, filters[p]);
@@ -27,6 +29,10 @@ for (let p in directives) {
   Vue.directive(p, directives[p]);
 }
 
+// 全局组件
+Vue.component('FadingCircleCompontent', loadingComponents);
+
+// 路由
 const routes = [...RouteConf.route];
 const router = new VueRouter({
   mode: 'history', //history模式

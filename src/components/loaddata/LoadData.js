@@ -23,6 +23,7 @@ class LoadData {
     return Vue.ClientHttp(that)[this.method](parmas, this.url)
       .then((res) => {
         this.init = true;
+        this.loading = false;
         if (res.code === 10000) {
           this.list = this.list.concat(res.result);
           var length = res.result.length;
@@ -33,10 +34,7 @@ class LoadData {
             this.allLoaded = true;
           }
           if (typeof cb == 'function') cb.apply(that, [res]);
-          setTimeout(() => {
-            this.loading = false;
-          }, 1500);
-          return res.result;
+          return res;
         }
       });
   }

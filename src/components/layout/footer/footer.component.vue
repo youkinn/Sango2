@@ -39,12 +39,13 @@ export default {
 <style lang="scss" scoped>
 .container {
   position: fixed;
-  left: 0;
+  margin: 0 auto;
   bottom: 0;
   display: flex;
   justify-content: space-between;
   box-shadow: border-box;
   width: 100%;
+  max-width: 640px;/*no*/
   border-top: solid #e5e5e5 1px;
   /*no*/
   background-color: #fff;

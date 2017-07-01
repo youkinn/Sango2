@@ -48,7 +48,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  // height: 393px;
+  height: 393px;
   padding-left: 30px;
   padding-right: 30px;
   .list {

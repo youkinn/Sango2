@@ -170,6 +170,8 @@ body {
   /*font-family: 'simsun'!important;*/
   background-color: #f5f5f9;
   overflow-x: hidden;
+  max-width: 640px;/*px*/
+  margin: 0 auto;
 }
 
 a,

@@ -1,17 +1,19 @@
 <template>
-  <div class="sk-fading-circle" :style="{width: size + 'px', height: size + 'px'}">
-    <div class="sk-circle1 sk-circle"></div>
-    <div class="sk-circle2 sk-circle"></div>
-    <div class="sk-circle3 sk-circle"></div>
-    <div class="sk-circle4 sk-circle"></div>
-    <div class="sk-circle5 sk-circle"></div>
-    <div class="sk-circle6 sk-circle"></div>
-    <div class="sk-circle7 sk-circle"></div>
-    <div class="sk-circle8 sk-circle"></div>
-    <div class="sk-circle9 sk-circle"></div>
-    <div class="sk-circle10 sk-circle"></div>
-    <div class="sk-circle11 sk-circle"></div>
-    <div class="sk-circle12 sk-circle"></div>
+  <div class="sk-circle-container">
+    <div class="sk-fading-circle" :style="{width: size + 'px', height: size + 'px'}">
+      <div class="sk-circle1 sk-circle"></div>
+      <div class="sk-circle2 sk-circle"></div>
+      <div class="sk-circle3 sk-circle"></div>
+      <div class="sk-circle4 sk-circle"></div>
+      <div class="sk-circle5 sk-circle"></div>
+      <div class="sk-circle6 sk-circle"></div>
+      <div class="sk-circle7 sk-circle"></div>
+      <div class="sk-circle8 sk-circle"></div>
+      <div class="sk-circle9 sk-circle"></div>
+      <div class="sk-circle10 sk-circle"></div>
+      <div class="sk-circle11 sk-circle"></div>
+      <div class="sk-circle12 sk-circle"></div>
+    </div>
   </div>
 </template>
 <script>
@@ -19,13 +21,28 @@
 export default {
   props: {
     size: {
-      type: Number,
-      default: 40
+      type: Number
     }
   }
 };
 </script>
 <style lang="scss" scoped>
+.sk-circle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 80px;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+}
+
 .sk-fading-circle {
   margin: 40px auto;
   width: 40px;

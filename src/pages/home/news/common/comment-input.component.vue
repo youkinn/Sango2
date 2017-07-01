@@ -22,9 +22,9 @@ export default {
 <style lang="scss" scoped>
 .container {
   position: fixed;
-  left: 0;
   bottom: 0;
   width: 100%;
+  max-width: 640px;/*no*/
   border-top: solid #e5e5e5 1px;
   /*no*/
   background-color: #fff;

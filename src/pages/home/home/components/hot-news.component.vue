@@ -19,7 +19,6 @@
 import HeaderComponent from '../../../common/header.component';
 import NewsItemComponent from './news-item.component';
 import { InfiniteScroll, Spinner, Lazyload } from 'mint-ui';
-import LoadData from '../../../../components/loaddata/LoadData';
 import LoadingImg from '../../../../assets/loading-spin.svg';
 
 Vue.use(InfiniteScroll);
@@ -30,14 +29,20 @@ Vue.use(Lazyload, {
 Vue.component('spinner', Spinner);
 
 export default {
+  props: {
+    news: {
+      type:Object,
+      default: () => {
+        return {};
+      }
+    }
+  },
   components: {
     HeaderComponent,
     NewsItemComponent
   },
   data() {
     return {
-      news: {},
-
       /**
        * 由首页进入到详情页后，滚动详情页面仍然会加载资讯列表
        * 这里主要用来修复这个问题
@@ -47,15 +52,11 @@ export default {
   },
   computed: {
     loading() {
-      return !this.activated || this.news.loading && !this.news.allLoaded;
+      return !this.activated || this.news.loading;
     }
   },
   created() {
-    this.news = new LoadData(Vue.ClientUrl.getNewsList, {
-      limit: 20,
-      nologin: 1
-    });
-    this.getNewsList();
+    this.activated = true;
   },
   activated() {
     this.activated = true;

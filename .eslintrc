@@ -1,7 +1,7 @@
 {
   "root": true,
-  "plugins": ['html'],
-  "extends": "eslint:recommended",
+  "plugins": ["html"],
+  "extends": ["eslint:recommended"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -19,7 +19,8 @@
   "globals": {
     "Vue": false,
     "jiathis_mh5": false,
-    "bus": false
+    "bus": false,
+    "mallUtils": false
   },
   "rules": {
     "quotes": [2, "single"],

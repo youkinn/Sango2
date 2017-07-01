@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="inited">
     <app-header-component title="首页"></app-header-component>
     <div class="hotGame section">
       <header-component title="热门游戏" link-text="进入游戏中心" :link-url="{name: 'personal'}"></header-component>
@@ -11,11 +11,13 @@
     </div>
     <div class="hotNews section">
       <div class="hotNewsContainer">
-        <hot-news-component :activated="activated"></hot-news-component>
+        <hot-news-component :news="news"></hot-news-component>
       </div>
     </div>
+    <back-to-top-component></back-to-top-component>
     <app-footer-component :index="0"></app-footer-component>
   </div>
+  <fading-circle-compontent v-else></fading-circle-compontent>
 </template>
 <script>
 'use strict';
@@ -25,6 +27,7 @@ import HeaderComponent from '../../common/header.component';
 import SliderComponent from '../../common/slider.component';
 import HotGameComponent from './components/hot-game.component';
 import HotNewsComponent from './components/hot-news.component';
+import BackToTopComponent from '../../../components/button/back-to-top-button.compontent';
 
 import Swiper from 'swiper';
 import LoadData from '../../../components/loaddata/LoadData';
@@ -47,13 +50,16 @@ export default {
     HeaderComponent,
     SliderComponent,
     HotGameComponent,
-    HotNewsComponent
+    HotNewsComponent,
+    BackToTopComponent
   },
   data() {
     return {
       title: '首页',
       swiper: {},
-      activated: false
+      news: {},
+      activated: false,
+      inited: false
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -61,7 +67,7 @@ export default {
     next();
   },
   created() {
-    this.getSwiperList();
+    this.fetchData();
   },
   activated() {
     if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
@@ -71,13 +77,21 @@ export default {
     }
   },
   methods: {
+    fetchData() {
+      var promises = [this.getSwiperList, this.getNewsList].map((fn) => {
+        return fn();
+      });
+      Promise.all(promises).then(() => {
+        this.inited = true;
+      });
+    },
     getSwiperList() {
       this.swiper = new LoadData(Vue.ClientUrl.getSwiperList, {
         type: 4,
         limit: 8,
         nologin: 1
       });
-      this.swiper.getList(this, () => {
+      return this.swiper.getList(this, () => {
         setTimeout(() => {
           new Swiper('.swiper-container', {
             direction: 'horizontal',
@@ -87,6 +101,13 @@ export default {
           });
         }, 100);
       });
+    },
+    getNewsList() {
+      this.news = new LoadData(Vue.ClientUrl.getNewsList, {
+        limit: 200,
+        nologin: 1
+      });
+      return this.news.getList();
     }
   }
 };
@@ -106,7 +127,8 @@ export default {
     }
   }
   .swiper-contanier {
-    overflow: hidden; // height: 280px;
+    height: 280px;
+    overflow: hidden;
     padding-left: 30px;
     padding-right: 30px;
   }
