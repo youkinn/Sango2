@@ -2,40 +2,56 @@
 <template>
   <div class="toast-container" v-show="isShow">
     <span v-if="!type" class="plain-text">
-            {{ message }}
-        </span>
-    <div v-if="type==1 || type==2 || type==3 || type==4" class="with-icon">
+      {{ message }}
+    </span>
+    <div v-else class="with-icon">
       <i v-if="type==1" class="icon icon-success"></i>
       <i v-if="type==2" class="icon icon-failed"></i>
       <i v-if="type==3" class="icon icon-offline"></i>
       <i v-if="type==4" class="icon icon-loadding"></i>
       <span class="toast-text">
-                {{ message }}
-            </span>
+        {{ message }}
+      </span>
     </div>
   </div>
 </template>
 <script>
 'use strict';
 export default {
-  data() {
+  props: {
+    bShow: {
+      type: Boolean,
+      default: false
+    },
+    nType: {
+      type: Number,
+      defauly: 0
+    },
+    sMessage: {
+      type: String,
+      default: undefined
+    },
+    nTime: {
+      type: Number,
+      default: 1500
+    }
+  },
+  data(){
     return {
-      isShow: false,
-      type: 0,
-      message: ''
+      isShow: this.bShow,
+      type: this.nType,
+      message: this.sMessage,
+      time: this.nTime
     };
   },
-  mounted() {
-    this.$on('toast', (message, type = 0, time = 2000) => {
-      this.message = message;
-      this.isShow = true;
-      this.type = type;
+  activated() {
+    if (this.isShow) {
       setTimeout(() => {
         this.isShow = false;
         this.message = '';
-        this.type = 0;
-      }, time);
-    });
+        this.type = undefined;
+      }, this.time);
+    }
   }
 };
 </script>

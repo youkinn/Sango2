@@ -1,15 +1,15 @@
 <!--app底部-->
 <template>
   <div class="container">
-    <router-link tag="div" class="menu-item" :class="{'selected': index==0}" :to="{name: 'home'}" exact>
+    <router-link tag="div" class="menu-item" :to="{name: 'home'}" exact>
       <i class="icon icon-home"></i>
       <div>首页</div>
     </router-link>
-    <router-link tag="div" class="menu-item" :class="{'selected': index==1}" :to="{name: 'gameCenter'}">
+    <router-link tag="div" class="menu-item" :to="{name: 'gameCenter'}">
       <i class="icon icon-game"></i>
       <div>游戏</div>
     </router-link>
-    <router-link tag="div" class="menu-item" :class="{'selected': index==3}" :to="{name: 'personal'}">
+    <router-link tag="div" class="menu-item" :to="{name: 'personal'}">
       <i class="icon icon-mine"></i>
       <div>我的</div>
     </router-link>
@@ -27,12 +27,6 @@ export default {
     actions: {
       updateDialogState
     }
-  },
-  props: {
-    index: {
-      type: Number,
-      default: undefined
-    }
   }
 };
 </script>
@@ -45,7 +39,7 @@ export default {
   justify-content: space-between;
   box-shadow: border-box;
   width: 100%;
-  max-width: 640px;/*no*/
+  max-width: 640px;
   border-top: solid #e5e5e5 1px;
   /*no*/
   background-color: #fff;

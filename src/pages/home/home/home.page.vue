@@ -1,28 +1,26 @@
 <template>
   <div class="container" v-if="inited">
-    <app-header-component title="首页"></app-header-component>
+    <app-header-component s-title="首页"></app-header-component>
     <div class="hotGame section">
-      <header-component title="热门游戏" link-text="进入游戏中心" :link-url="{name: 'personal'}"></header-component>
+      <header-component s-title="热门游戏" s-link-text="进入游戏中心" :o-router="{name: 'personal'}"></header-component>
       <div class="swiper-contanier">
-        <slider-component :swiper-list="this.swiper.list"></slider-component>
+        <slider-component :arr-swiper-list="this.swiper.list"></slider-component>
       </div>
       <div class="hr"></div>
       <hot-game-component></hot-game-component>
     </div>
     <div class="hotNews section">
       <div class="hotNewsContainer">
-        <hot-news-component :news="news"></hot-news-component>
+        <hot-news-component :o-news="news"></hot-news-component>
       </div>
     </div>
     <back-to-top-component></back-to-top-component>
-    <app-footer-component :index="0"></app-footer-component>
+    <app-footer-component></app-footer-component>
   </div>
   <fading-circle-compontent v-else></fading-circle-compontent>
 </template>
 <script>
 'use strict';
-import AppHeaderComponent from '../../../components/layout/header/header.component';
-import AppFooterComponent from '../../../components/layout/footer/footer.component';
 import HeaderComponent from '../../common/header.component';
 import SliderComponent from '../../common/slider.component';
 import HotGameComponent from './components/hot-game.component';
@@ -45,8 +43,6 @@ export default {
     }
   },
   components: {
-    AppHeaderComponent,
-    AppFooterComponent,
     HeaderComponent,
     SliderComponent,
     HotGameComponent,

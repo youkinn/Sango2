@@ -1,5 +1,5 @@
 <template>
-    <div class="action-button" v-show="isShow" @click.stop="goToTop">
+    <div class="action-button" v-show="show" @click.stop="goToTop">
         <i class="icon icon-top"></i>
     </div>
 </template>
@@ -8,10 +8,10 @@
 export default {
     data() {
         return {
-            isShow: false
+            show: false
         };
     },
-    activated() {
+    mounted() {
         window.addEventListener('scroll', this.controlDisplay);
     },
     deactivated() {
@@ -19,7 +19,8 @@ export default {
     },
     methods: {
         controlDisplay() {
-            this.isShow = (!mallUtils.device.isWindows && document.body.scrollTop > 200) ? true : false;
+            debugger;
+            this.show = (!mallUtils.device.isWindows && document.body.scrollTop > 200) ? true : false;
         },
         goToTop() {
             window.scrollTo(0, 0);

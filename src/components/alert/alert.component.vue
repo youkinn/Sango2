@@ -1,6 +1,6 @@
 <!-- Alert 弹框组件 -->
 <template>
-  <div class="mark" v-if="isShow">
+  <div class="mark" v-show="show">
     <div class="alert-container">
       <div v-if="title" class="alert-header">
         <h3>{{ title }}</h3>
@@ -9,8 +9,8 @@
         <p class="alert-brief">{{ content }}</p>
       </div>
       <div class="alert-footer">
-        <a class="alert-botton" @touchstart.stop.prevent="touchL" v-if="!single">{{ leftBottonText }}</a>
-        <a class="alert-botton" @touchstart.stop.prevent="touchR">{{ rightBottonText }}</a>
+        <a class="alert-botton" @click.stop.prevent="touchL" v-if="!single">{{ leftBottonText }}</a>
+        <a class="alert-botton" @click.stop.prevent="touchR">{{ rightBottonText }}</a>
       </div>
     </div>
   </div>
@@ -19,38 +19,47 @@
 'use strict';
 export default {
   props: {
-    isShow: {
+    bShow: {
       type: Boolean,
       default: false
     },
-    title: {
+    sTitle: {
       type: String,
       default: ''
     },
-    content: {
+    sContent: {
       type: String,
       default: ''
     },
-    single: {
+    bSingleBtn: {
       type: Boolean,
       default: false
     },
-    leftBottonText: {
+    sLeftBottonText: {
       type: String,
       default: '取消'
     },
-    rightBottonText: {
+    sRightBottonText: {
       type: String,
       default: '确定'
     }
   },
+  data(){
+    return {
+      show: this.bShow,
+      title: this.sTitle,
+      content: this.sContent,
+      leftBottonText: this.sLeftBottonText,
+      rightBottonText: this.sRightBottonText
+    };
+  },
   methods: {
     touchL() {
-      setTimeout(() => this.isShow = false, 100);
+      setTimeout(() => this.show = false, 100);
       bus.$emit('alert-left-btn-touched');
     },
     touchR() {
-      setTimeout(() => this.isShow = false, 100);
+      setTimeout(() => this.show = false, 100);
       bus.$emit('alert-right-btn-touched');
     }
   }
@@ -61,6 +70,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
+  max-width: 640px;
   height: 100%;
   z-index: 100;
   display: flex;

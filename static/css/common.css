@@ -167,11 +167,20 @@ i {
 
 html,
 body {
-  /*font-family: 'simsun'!important;*/
   background-color: #f5f5f9;
   overflow-x: hidden;
-  max-width: 640px;/*px*/
-  margin: 0 auto;
+}
+
+body{
+    width: 100%;
+    max-width:10rem;
+    margin: 0 auto;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 a,
@@ -310,3 +319,12 @@ v-cloak {
 .page-lazyload-listitem {
     background-color: #ddd;
 }
+
+
+
+
+/*@media only screen and (min-width: 600px){
+  body {
+      max-width: 600px;
+  }
+}*/

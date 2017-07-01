@@ -1,11 +1,11 @@
 <!--首页：热门资讯-->
 <template>
   <div class="container">
-    <header-component title="热门资讯"></header-component>
+    <header-component s-title="热门资讯"></header-component>
     <div class="new-list">
       <ul class="list" v-infinite-scroll="getNewsList" infinite-scroll-disabled="loading" infinite-scroll-distance="0" infinite-scroll-immediate-check="false">
-        <router-link tag="li" :to="{name: 'NewsDetail', params: {id: item.id}}" v-for="(item, index) in news.list" :key="index">
-          <news-item-component :item="item" :is-last="index==news.list.length-1"></news-item-component>
+        <router-link tag="li" :to="{name: 'NewsDetail', params: {id: item.id}}" v-for="(item, index) in oNews.list" :key="index">
+          <news-item-component :o-item="item" :b-last="index==oNews.list.length-1"></news-item-component>
         </router-link>
       </ul>
       <p v-show="loading" class="page-infinite-loading">
@@ -30,7 +30,7 @@ Vue.component('spinner', Spinner);
 
 export default {
   props: {
-    news: {
+    oNews: {
       type:Object,
       default: () => {
         return {};
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     loading() {
-      return !this.activated || this.news.loading;
+      return !this.activated || this.oNews.loading;
     }
   },
   created() {
@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     getNewsList() {
-      this.news.getList(this);
+      this.oNews.getList(this);
     }
   }
 };

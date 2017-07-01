@@ -19,6 +19,13 @@ let router = [{
     component: function(resolve) {
       require(['../../pages/demo/share.page'], resolve);
     }
+  },
+  {
+    name: 'components',
+    path: '/demo/components',
+    component: function(resolve) {
+      require(['../../pages/demo/global-components.page'], resolve);
+    }
   }
 ];
 

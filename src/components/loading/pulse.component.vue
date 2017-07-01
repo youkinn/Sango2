@@ -1,11 +1,11 @@
 <template>
-  <div class="sk-spinner sk-spinner-pulse" :style="{width: size+'px', height: size + 'px'}"></div>
+  <div class="sk-spinner sk-spinner-pulse" :style="{width: nSize+'px', height: nSize + 'px'}"></div>
 </template>
 <script>
 'use strict';
 export default {
   props: {
-    size: {
+    nSize: {
       type: Number,
       default: 40
     }

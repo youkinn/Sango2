@@ -1,6 +1,6 @@
 <template>
   <div class="sk-circle-container">
-    <div class="sk-fading-circle" :style="{width: size + 'px', height: size + 'px'}">
+    <div class="sk-fading-circle" :style="{width: nSize + 'px', height: nSize + 'px'}">
       <div class="sk-circle1 sk-circle"></div>
       <div class="sk-circle2 sk-circle"></div>
       <div class="sk-circle3 sk-circle"></div>
@@ -20,7 +20,7 @@
 'use strict';
 export default {
   props: {
-    size: {
+    nSize: {
       type: Number
     }
   }

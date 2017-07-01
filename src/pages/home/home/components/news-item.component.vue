@@ -1,6 +1,6 @@
 <!--首页：热门资讯-->
 <template>
-  <div class="item content" :class="{'item--last': isLast}">
+  <div class="item content" :class="{'item--last': bLast}">
     <template v-if="item.type == 1">
       <div class="content type1">
         <div class="title overflow-ellipsis">{{ item.title }}</div>
@@ -60,16 +60,21 @@
 
 export default {
   props: {
-    item: {
+    oItem: {
       type: Object,
       default: () => {
         return {};
       }
     },
-    isLast: {
+    bLast: {
       type: Boolean,
       default: false
     }
+  },
+  data(){
+    return {
+      item: Object.assign({}, this.oItem)
+    };
   }
 };
 </script>

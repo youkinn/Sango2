@@ -1,10 +1,10 @@
-<!--首页：区域头部-->
+<!--区域头部-->
 <template>
   <div class="header">
-    <div class="title">{{ title }}</div>
-    <router-link :to="linkUrl" v-if="linkText">
+    <div class="title">{{ sTitle }}</div>
+    <router-link :to="oRouter" v-if="oRouter">
       <div class="linkText" @click="clickHandle">
-        {{ linkText }} <i class="icon icon-arrow-right"></i>
+        {{ sLinkText }} <i class="icon icon-arrow-right"></i>
       </div>
     </router-link>
   </div>
@@ -13,17 +13,17 @@
 'use strict';
 export default {
   props: {
-    title: {
+    sTitle: {
       type: String,
       default: ''
     },
-    linkText: {
+    sLinkText: {
       type: String,
       default: ''
     },
-    linkUrl: {
+    oRouter: {
       type: Object,
-      default: function() {
+      default: ()=> {
         return {};
       }
     }

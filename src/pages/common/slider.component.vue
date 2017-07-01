@@ -2,7 +2,7 @@
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="(item, index) in swiperList" :key="index">
+      <div class="swiper-slide" v-for="(item, index) in arrSwiperList" :key="index">
         <img :src="item.imgUrl" alt="">
       </div>
     </div>
@@ -14,7 +14,7 @@
 
 export default {
   props: {
-    swiperList: {
+    arrSwiperList: {
       type: Array,
       default: () => {
         return [];

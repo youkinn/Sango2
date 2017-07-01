@@ -1,19 +1,19 @@
 <template>
-  <div class="sk-three-bounce" :style="{width: size*4 + 'px'}">
-    <div class="sk-child sk-bounce1" :style="{width: size + 'px', height: size + 'px', backgroundColor: backgroundColor}"></div>
-    <div class="sk-child sk-bounce2" :style="{width: size + 'px', height: size + 'px', backgroundColor: backgroundColor}"></div>
-    <div class="sk-child sk-bounce3" :style="{width: size + 'px', height: size + 'px', backgroundColor: backgroundColor}"></div>
+  <div class="sk-three-bounce" :style="{width: nSize*4 + 'px'}">
+    <div class="sk-child sk-bounce1" :style="{width: nSize + 'px', height: nSize + 'px', backgroundColor: sBackgroundColor}"></div>
+    <div class="sk-child sk-bounce2" :style="{width: nSize + 'px', height: nSize + 'px', backgroundColor: sBackgroundColor}"></div>
+    <div class="sk-child sk-bounce3" :style="{width: nSize + 'px', height: nSize + 'px', backgroundColor: sBackgroundColor}"></div>
   </div>
 </template>
 <script>
 'use strict';
 export default {
   props: {
-    size: {
+    nSize: {
       type: Number,
       default: 20
     },
-    backgroundColor: {
+    sBackgroundColor: {
       type: String
     }
   }

@@ -24,7 +24,7 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: 640px;/*no*/
+  max-width: 640px;
   border-top: solid #e5e5e5 1px;
   /*no*/
   background-color: #fff;

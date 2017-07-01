@@ -1,12 +1,12 @@
 <template>
-  <div class="mark" v-if="isShow" @click.stop.prevent.self="close">
+  <div class="mark" v-show="show" @click.stop.prevent.self="close">
     <div class="container">
       <div class="header">
         <div class="left">
           <div class="let">我也来说几句</div>
           <div class="info">5/20</div>
         </div>
-        <button-component :type="1" text="发表" @touch="publish"></button-component>
+        <inline-button-compontent :type="1" text="发表" @touch="publish"></inline-button-compontent>
       </div>
       <div class="content">
         <textarea v-focus v-model="content" placeholder="发表自己的见解" autofocus></textarea>
@@ -16,27 +16,16 @@
 </template>
 <script>
 'use strict';
-import ButtonComponent from '../../../../components/button/button.component';
 export default {
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false
-    }
-  },
   data() {
     return {
       content: '',
-      commentList: [],
-      show: this.isShow
+      show: false
     };
-  },
-  components: {
-    ButtonComponent
   },
   methods: {
     close() {
-      this.isShow = false;
+      this.show = false;
     },
     publish() {
       var newsId = this.$route.params.id;
@@ -48,14 +37,14 @@ export default {
           if (res.code === 10000) {
             bus.$emit('comment-change', res.result.data);
             this.content = '';
-            this.isShow = false;
+            this.show = false;
           }
         });
     }
   },
   mounted() {
     bus.$on('showCommentDialog', () => {
-      this.isShow = true;
+      this.show = true;
     });
   }
 };
@@ -65,6 +54,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
+  max-width: 640px;
   height: 100%;
   z-index: 100;
   display: flex;

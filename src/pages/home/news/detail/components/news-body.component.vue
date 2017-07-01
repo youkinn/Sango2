@@ -14,7 +14,7 @@
 'use strict';
 export default {
   props: {
-    news: {
+    oNews: {
       type: Object,
       default: () => {
         return {};
@@ -23,11 +23,11 @@ export default {
   },
   data(){
     return {
-      newsTemp: Object.assign({}, this.news)
+      news: Object.assign({}, this.oNews)
     };
   },
   deactivated(){
-    this.newsTemp = {};
+    this.news = {};
   }
 };
 </script>

@@ -1,16 +1,16 @@
 <template>
   <div class="container" v-if="inited">
-    <app-header-component title="资讯"></app-header-component>
+    <app-header-component s-title="资讯"></app-header-component>
     <div class="news-body section">
-      <news-body-component :news="news.body"></news-body-component>
+      <news-body-component :o-news="news.body"></news-body-component>
     </div>
     <div class="comment-list section">
-      <header-component title="用户评论" link-text="评论"></header-component>
+      <header-component s-title="用户评论" link-text="评论"></header-component>
       <news-comment-list-component :comment-list="news.comment.list" :total="news.comment.total"></news-comment-list-component>
     </div>
     <div class="related-news section">
-      <header-component title="相关资讯"></header-component>
-      <related-news-component :news-list="news.related.list"></related-news-component>
+      <header-component s-title="相关资讯"></header-component>
+      <related-news-component :arr-news-list="news.related.list"></related-news-component>
     </div>
     <comment-input-component></comment-input-component>
     <comment-dialog-component></comment-dialog-component>
@@ -20,7 +20,6 @@
 </template>
 <script>
 'use strict';
-import AppHeaderComponent from '../../../../components/layout/header/header.component';
 import HeaderComponent from '../../../common/header.component';
 import NewsBodyComponent from './components/news-body.component';
 import NewsCommentListComponent from './components/news-comment-list.component';
@@ -31,7 +30,6 @@ import LoadData from '../../../../components/loaddata/LoadData';
 
 export default {
   components: {
-    AppHeaderComponent,
     HeaderComponent,
     NewsBodyComponent,
     NewsCommentListComponent,

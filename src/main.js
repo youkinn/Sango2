@@ -9,7 +9,7 @@ import HttpConf from './http/http';
 import VueCookie from 'vue-cookie';
 import * as filters from './filter/filters';
 import * as directives from './directive/directives';
-import loadingComponents from './components/loading/fading-circle.component';
+import * as compontents from './components/global.component';
 
 // 使用相应的插件
 Vue.use(VueResource);
@@ -30,7 +30,9 @@ for (let p in directives) {
 }
 
 // 全局组件
-Vue.component('FadingCircleCompontent', loadingComponents);
+for(let p in compontents){
+  Vue.component(p, compontents[p]);
+}
 
 // 路由
 const routes = [...RouteConf.route];

@@ -3,10 +3,10 @@
   <div class="container">
     <div class="left" @click.stop="goback">
       <i class="icon icon-arrow-left"></i>
-      <span class="action-text">{{ actiontext }}</span>
+      <span class="action-text">{{ sActiontext }}</span>
     </div>
     <div class="center">
-      {{ title }}
+      {{ sTitle }}
     </div>
     <div class="right">
       <slot name="one"></slot>
@@ -17,18 +17,19 @@
 'use strict';
 export default {
   props: {
-    actiontext: {
+    sActiontext: {
       type: String,
       default: '返回'
     },
-    title: {
+    sTitle: {
       type: String,
       default: ''
     },
-    path: {
-      default: null
+    oRouter: {
+      type: Object,
+      default: null,
     },
-    hasAction: {
+    bHasAction: {
       type: Boolean,
       default: false
     }
@@ -39,8 +40,8 @@ export default {
         bus.$emit('goback');
         return;
       }
-      if (this.path) {
-        this.$router.go(this.path);
+      if (this.oRouter) {
+        this.$router.go(this.oRouter);
         return;
       }
       history.go(-1);

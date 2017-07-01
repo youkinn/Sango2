@@ -1,8 +1,8 @@
 <template>
   <div>
-    <app-header-component title="游戏中心"></app-header-component>
+    <app-header-component s-title="游戏中心"></app-header-component>
     <h3>gameCenter index</h3>
-    <app-footer-component :index="1"></app-footer-component>
+    <app-footer-component></app-footer-component>
   </div>
 </template>
 <script>
