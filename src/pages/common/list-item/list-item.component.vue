@@ -5,7 +5,9 @@
         <span>{{index}}</span>
       </div>
       <div class="item__content" v-link="link">
-        <img class="item__img" :src="image" alt="" v-if="image">
+        <div class="item__img">
+          <img :src="image" alt="" v-if="image">
+        </div>
         <div class="item__intro" :class="{'item__intro--index': index}">
           <div class="item__title overflow-ellipsis">{{title}} <span class="item__subtitle" v-if="subTitle">{{subTitle}}</span></div>
           <slot name="four">
@@ -167,13 +169,13 @@ export default {
     min-width: 90px;
     height: 90px;
     margin-top: 22px;
-    border-radius: 10px;
     margin-right: 20px;
+    border-radius: 10px;
   }
   &__intro {
     flex: 1;
     width: 270px;
-    padding: 32px 0;
+    padding: 32px 0 24px 0;
     &--index {
       width: 226px;
     }
@@ -194,7 +196,6 @@ export default {
   &__type-desc,
   &__detail {
     white-space: nowrap;
-    margin-top: 14px;
     height: 28px;
     line-height: 28px;
     font-size: 28px;/*px*/
@@ -205,6 +206,12 @@ export default {
       max-height: 56px;
       margin-bottom: 20px;
     }
+  }
+  &__type-desc{
+    margin-top: 14px;
+  }
+  &__detail{
+    margin-top: 10px;
   }
 }
 
