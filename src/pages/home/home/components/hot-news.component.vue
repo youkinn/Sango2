@@ -4,7 +4,7 @@
     <header-component s-title="热门资讯"></header-component>
     <div class="new-list">
       <ul class="list" v-infinite-scroll="getNewsList" infinite-scroll-disabled="loading" infinite-scroll-distance="0" infinite-scroll-immediate-check="false">
-        <router-link tag="li" :to="{name: 'NewsDetail', params: {id: item.id}}" v-for="(item, index) in oNews.list" :key="index">
+        <router-link tag="li" class="list-item" :to="{name: 'NewsDetail', params: {id: item.id}}" v-for="(item, index) in oNews.list" :key="index">
           <news-item-component :o-item="item" :b-last="index==oNews.list.length-1"></news-item-component>
         </router-link>
       </ul>

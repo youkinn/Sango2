@@ -12,9 +12,9 @@
       <header-component s-title="相关资讯"></header-component>
       <related-news-component :arr-news-list="news.related.list"></related-news-component>
     </div>
+    <back-to-top-component></back-to-top-component>
     <comment-input-component></comment-input-component>
     <comment-dialog-component></comment-dialog-component>
-  
   </div>
   <fading-circle-compontent v-else></fading-circle-compontent>
 </template>

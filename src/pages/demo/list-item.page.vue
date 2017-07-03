@@ -1,20 +1,20 @@
 <template>
   <div>
     <h3>游戏中心、游戏详情页-相关游戏</h3>
-    <ul class="list game">
-      <li class="list-item" v-for="(item, index) in list" :key="index">
-        <list-item :image="item.gameIcon" :title="item.name" :type-desc="item.category" :detail="item.abstract" :link="{name:'TaoYouGameCenterGameDetails',params:{id:item.id}}" :is-last="$index == list.length-1" :border-type="1">
+    <ul class="list">
+      <router-link tag="li" :to="{name: 'NewsDetail', params: {id: item.id}}" class="list-item" v-for="(item, index) in list" :key="index">
+        <list-item :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category" :s-extra="item.abstract" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.id}}" :b-last="index == list.length-1" :n-border-type="1">
           <inline-button-compontent slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
-          <span slot="two" class="item__desc"><em>{{item.viewNumber}}</em>人在玩</span>
+          <span slot="one" class="item__desc"><em>{{item.viewNumber}}</em>人在玩</span>
         </list-item>
-      </li>
+      </router-link>
     </ul>
     <br>
     <br>
     <h3>我的游戏</h3>
-    <ul class="list task">
+    <ul class="list">
       <li class="list-item" v-for="(item, index) in myGameList" :key="index">
-        <list-item :image="item.imgUrl" :title="item.gameName" :type-desc="item.cDate * 1000 | formatDateToTimeago" :link="{name:'TaoYouGameCenterGameDetails', params:{id:item.gameID}}" :is-last="$index == myGameList.length-1">
+        <list-item :s-image="item.imgUrl" :s-title="item.gameName" :s-content="item.cDate * 1000 | formatDateToTimeago" :o-router="{name:'TaoYouGameCenterGameDetails', params:{id:item.gameID}}" :b-last="index == myGameList.length-1">
           <inline-button-compontent slot="one" s-text="打开" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
         </list-item>
       </li>
@@ -22,32 +22,32 @@
     <br>
     <br>
     <h3>排行榜</h3>
-    <ul class="list rank">
+    <ul class="list">
       <li class="list-item" v-for="(item, index) in rankList" :key="index">
-        <list-item :index="$index+1" :image="item.gameIcon" :title="item.name" :type-desc="item.category" :link="{name:'TaoYouGameCenterGameDetails',params:{id:item.id}}" :detail="item.abstract" :is-last="$index == rankList.length-1">
+        <list-item :n-index="index+1" :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.id}}" :s-extra="item.abstract" :b-last="index == rankList.length-1">
           <inline-button-compontent slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
-          <span slot="two" class="item__desc"><em>{{item.viewNumber}}</em>人在玩</span>
+          <span slot="one" class="item__desc"><em>{{item.viewNumber}}</em>人在玩</span>
         </list-item>
       </li>
     </ul>
     <br>
     <br>
     <h3>淘豆比赛 任务得淘豆&新手任务、每日任务</h3>
-    <list-item :image="hotTask.picPath" :title="hotTask.title" :task-detail="hotTask.content" :is-last="true">
+    <list-item :s-image="hotTask.picPath" :s-title="hotTask.title" :s-content="hotTask.content" :b-last="true">
       <inline-button-compontent slot="one" s-text="去完成" :has-action="true" @inline-btn-clicked="tt" v-if="hotTask.isComplete==1"></inline-button-compontent>
       <inline-button-compontent slot="one" s-text="领取" :has-action="true" @inline-btn-clicked="tt" v-if="hotTask.isComplete==2"></inline-button-compontent>
-      <inline-button-compontent slot="one" s-text="已领取" :has-action="true" :disabled="true" v-if="hotTask.isComplete==3"></inline-button-compontent>
-      <span slot="two" class="item__desc">{{hotTask.reward}}</span>
+      <inline-button-compontent slot="one" s-text="已领取" :has-action="true" :b-disabled="true" v-if="hotTask.isComplete==3"></inline-button-compontent>
+      <span slot="one" class="item__desc">{{hotTask.reward}}</span>
     </list-item>
     <br>
     <br>
     <h3>淘豆比赛 急速场</h3>
-    <ul class="list quick">
+    <ul class="list">
       <li class="list-item" v-for="(item, index) in quickGameList" :key="index">
-        <list-item :image="item.gameIcon" :title="item.gameName" :sub-title="item.gameTermId+'期'" :type-desc="'类型:'+item.gameType" :detail="'简介:'+item.gameInfo" :link="{name:'TaoYouOurGameIntro',params:{id:item.gid},query:{type:item.type}}" :is-last="$index == rankList.length-1" :border-type="1" :more="true">
+        <list-item :s-image="item.gameIcon" :s-title="item.gameName" :sub-title="item.gameTermId+'期'" :s-extra="'简介:'+item.gameInfo" :o-router="{name:'TaoYouOurGameIntro',params:{id:item.gid},query:{type:item.type}}" :b-last="index == rankList.length-1" :n-border-type="1" :more="true">
           <inline-button-compontent slot="one" s-text="参赛" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
-          <div slot="three">
-            <div v-show="item.currentRank !== null" class="bulid-center" v-link="{name: 'TaoYouPersonalCenterGameRanking', params: {id: item.pid}}">
+          <div slot="more">
+            <div v-show="item.currentRank !== null" class="bulid-center">
               <span v-show="+item.currentRank !== 0" class="rank">当前排名 <i class="am-ft-red">{{item.currentRank}}</i>名</span>
               <span v-show="+item.currentRank === 0" class="rank">当前排名 未上榜</span>
               <span>预计奖励:{{item.userGet}}淘豆</span>
@@ -63,8 +63,8 @@
     <h3>即将开服</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in unOpenList" :key="index">
-        <list-item :image="item.gameIcon" :title="item.name" :type-desc="item.category  + ' | ' + item.serviceName" :detail="item.mDate | formatDate('YYYY-MM-DD HH:mm:ss')" :link="{name:'TaoYouGameCenterGameDetails',params:{id:item.gameID}}" :is-last="$index == unOpenList.length-1" :border-type="1">
-          <inline-button-compontent slot="one" s-text="进入" :disabled="true" @inline-btn-clicked="tt"></inline-button-compontent>
+        <list-item :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category  + ' | ' + item.serviceName" :s-extra="item.mDate*1000 | formatDate('YYYY-MM-DD HH:mm:ss')" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.gameID}}" :b-last="index == unOpenList.length-1" :n-border-type="1">
+          <inline-button-compontent slot="one" s-text="进入" :b-disabled="true" @inline-btn-clicked="tt"></inline-button-compontent>
         </list-item>
       </li>
     </ul>
@@ -73,7 +73,7 @@
     <h3>已经开服</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in hadData" :key="index">
-        <list-item :image="item.gameIcon" :title="item.name" :type-desc="item.category  + ' | ' + item.serviceName" :detail="item.mDate | formatDate('YYYY-MM-DD HH:mm:ss')" :link="{name:'TaoYouGameCenterGameDetails',params:{id:item.gameID}}" :is-last="$index == hadData.length-1" :border-type="1">
+        <list-item :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category  + ' | ' + item.serviceName" :s-extra="item.mDate*1000 | formatDate('YYYY-MM-DD HH:mm:ss')" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.gameID}}" :b-last="index == hadData.length-1" :n-border-type="1">
           <inline-button-compontent slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
         </list-item>
       </li>
@@ -83,8 +83,8 @@
     <h3>礼包页、游戏详情页-礼包标签页</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in packs" :key="index">
-        <list-item :image="item.image" :title="item.gameName" :type-desc="item.name" :detail="item.typeName" :link="{name:'TaoYouPacksDetails',params:{id:item.id}}" :is-last="$index == packs.length-1" :border-type="1">
-          <circle-progress-component slot="one" :progress="(item.totalNumber-item.usedNumber==0)?0:item.usedNumber/item.totalNumber" :disabled="(item.uID||item.totalNumber-item.usedNumber==0)?true:false" :s-text="item.uID == 0&&item.taoDou !=0 ? '兑' :item.uID == 0?'领':'已领'"></circle-progress-component>
+        <list-item :s-image="item.image" :s-title="item.gameName" :s-content="item.name" :s-extra="item.typeName" :o-router="{name:'TaoYouPacksDetails',params:{id:item.id}}" :b-last="index == packs.length-1" :n-border-type="1">
+          <circle-progress-component slot="one" :n-progress="(item.totalNumber-item.usedNumber==0)?0:item.usedNumber/item.totalNumber" :b-disabled="(item.uID||item.totalNumber-item.usedNumber==0)?true:false" :s-text="item.uID == 0&&item.taoDou !=0 ? '兑' :item.uID == 0?'领':'已领'"></circle-progress-component>
         </list-item>
       </li>
     </ul>
@@ -93,8 +93,8 @@
     <h3>商城-热门礼包</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in hotGifts" :key="index">
-        <list-item :image="item.image" :title="item.gameName" :type-desc="item.name" :detail="item.content | removeHtmlTag" :link="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :is-last="$index == hotGifts.length-1" :border-type="1">
-          <circle-progress-component slot="one" :progress="(item.totalNumber-item.usedNumber==0)?0:item.usedNumber/item.totalNumber" :disabled="(item.uID||item.totalNumber-item.usedNumber==0)?true:false" :s-text="item.uID == 0&&item.taoDou !=0 ? '兑' :item.uID == 0?'领':'已领'"></circle-progress-component>
+        <list-item :s-image="item.image" :s-title="item.gameName" :s-content="item.name" :s-extra="item.content | removeHtmlTag" :o-router="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :b-last="index == hotGifts.length-1" :n-border-type="1">
+          <circle-progress-component slot="one" :n-progress="(item.totalNumber-item.usedNumber==0)?0:item.usedNumber/item.totalNumber" :b-disabled="(item.uID||item.totalNumber-item.usedNumber==0)?true:false" :s-text="item.uID == 0&&item.taoDou !=0 ? '兑' :item.uID == 0?'领':'已领'"></circle-progress-component>
         </list-item>
       </li>
     </ul>
@@ -103,8 +103,8 @@
     <h3>首页-热门礼包</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in hot" :key="index">
-        <list-item :image="item.image" :title="item.gameName" :type-desc="item.name" :detail="'使用平台：'+item.typeName" :link="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :is-last="$index == hot.length-1" :border-type="1">
-          <circle-progress-component slot="one" :progress="(item.totalNumber-item.usedNumber==0)?0:item.usedNumber/item.totalNumber" :disabled="(item.uID||item.totalNumber-item.usedNumber==0)?true:false" :s-text="item.uID == 0&&item.taoDou !=0 ? '兑' :item.uID == 0?'领':'已领'"></circle-progress-component>
+        <list-item :s-image="item.image" :s-title="item.gameName" :s-content="item.name" :s-extra="'使用平台：'+item.typeName" :o-router="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :b-last="index == hot.length-1" :n-border-type="1">
+          <circle-progress-component slot="one" :n-progress="(item.totalNumber-item.usedNumber==0)?0:item.usedNumber/item.totalNumber" :b-disabled="(item.uID||item.totalNumber-item.usedNumber==0)?true:false" :s-text="item.uID == 0&&item.taoDou !=0 ? '兑' :item.uID == 0?'领':'已领'"></circle-progress-component>
         </list-item>
       </li>
     </ul>
@@ -113,7 +113,7 @@
     <h3>我的礼包</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in myGiftList" :key="index">
-        <list-item :image="item.image" :title="item.name" :type-desc="item.name" :detail="'兑换码:'+item.no" :link="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :is-last="$index == myGiftList.length-1" :border-type="1">
+        <list-item :s-image="item.image" :s-title="item.name" :s-content="item.name" :s-extra="'兑换码:'+item.no" :o-router="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :b-last="index == myGiftList.length-1" :n-border-type="1">
           <inline-button-compontent slot="one" s-text="查看" @inline-btn-clicked="tt"></inline-button-compontent>
         </list-item>
       </li>
@@ -123,8 +123,8 @@
     <h3>平台礼包码</h3>
     <ul class="list">
       <li class="list-item" v-for="(item, index) in platformGift" :key="index">
-        <list-item :image="item.image" :title="item.title" :type-desc="'兑换码:'+item.code" :detail="item.desc" :is-last="$index == platformGift.length-1">
-          <inline-button-compontent slot="one" s-text="已使用" :disabled="true" v-if="item.status==3"></inline-button-compontent>
+        <list-item :s-image="item.image" :s-title="item.title" :s-content="'兑换码:'+item.code" :s-extra="item.desc" :b-last="index == platformGift.length-1">
+          <inline-button-compontent slot="one" s-text="已使用" :b-disabled="true" v-if="item.status==3"></inline-button-compontent>
           <inline-button-compontent slot="one" s-text="使用" :has-action="true" @inline-btn-clicked="tt" v-else></inline-button-compontent>
         </list-item>
       </li>
@@ -153,6 +153,11 @@ export default {
       myGiftList: [{ "id": "14076", "name": "三生三世加群礼包", "isgame": "1", "gameID": "27669", "gameName": "三生三世十里桃花", "typeID": "9", "taoDou": "0", "content": "<p>强化石*100，玉笛碎片*5，铜镜碎片*5，经脉丹*10，神兽丹*10</p>", "remark": "<p>&nbsp; 加入玩家交流群： 362152141 即可领取</p><p>兑换规则：主界面点击福利大厅——点击激活码——输入激活码——点击兑换</p><p><br/></p><p><br/></p><p><br/></p>", "weburl": "", "totalNumber": "999", "lastNumber": "976", "usedNumber": "23", "startTime": "1493966262", "endTime": "1525502265", "isPublish": "1", "resourceID": "1", "type": "0", "hot": "0", "rankHot": null, "new": "0", "rankNew": null, "sort": "0", "cDate": "1493966276", "mDate": "1495869677", "sourceName": "拓美", "image": "http://image.lly800.com/goods/20170527/1495869672652806.jpg", "typeName": "H5", "no": "00a08ab59c998a50", "uID": 0 }, { "id": "14049", "name": "淘游BOSS礼包", "isgame": "1", "gameID": "1211", "gameName": "超神之刃", "typeID": "9", "taoDou": "0", "content": "<p>钻石*88</p><p>金币*18W</p><p>攻击卷*3</p>", "remark": "<p>使用方法：进入游戏主城-点击右上角箭头-兑换礼包-输入兑换码即可</p>", "weburl": "", "totalNumber": "400", "lastNumber": "340", "usedNumber": "60", "startTime": "1493878333", "endTime": "1546063947", "isPublish": "1", "resourceID": "1", "type": "3", "hot": "0", "rankHot": "0", "new": "0", "rankNew": null, "sort": "0", "cDate": "1493878548", "mDate": "1494240873", "sourceName": "拓美", "image": "http://image.lly800.com/goods/20170508/1494240870635900.jpg", "typeName": "H5", "no": "0uae3vgn", "uID": 0 }, { "id": "14079", "name": "口袋怪新手礼包", "isgame": "1", "gameID": "1118", "gameName": "口袋妖怪联盟", "typeID": "9", "taoDou": "0", "content": "<p>金币*100000，高阶水晶*20，进化徽章*20，一转精华*6，二转精华*6</p>", "remark": "<p>使用方法：点击右上角“活动”，进入兑换码界面把礼包码复制到输入框中，点击确认即可。</p>", "weburl": "", "totalNumber": "497", "lastNumber": "472", "usedNumber": "25", "startTime": "1493967352", "endTime": "1525503354", "isPublish": "1", "resourceID": "1", "type": "2", "hot": "1", "rankHot": null, "new": "0", "rankNew": null, "sort": "0", "cDate": "1493967465", "mDate": "1494241679", "sourceName": "拓美", "image": "http://image.lly800.com/goods/20170508/1494241677283099.jpg", "typeName": "H5", "no": "08200a2m6qj", "uID": 0 }],
       platformGift: [{ "id": "141", "title": "氧气活动测试", "code": "955ba27de8", "desc": "氧气支持", "end": "1497701427", "codeID": "6", "status": "3" }, { "id": "143", "title": "氧气活动测试2", "code": "955ba27de2", "desc": "氧气支持2", "end": "1497701427", "codeID": "6", "status": "2" }]
     };
+  },
+  methods: {
+    tt(){
+      console.log('tt');
+    }
   }
 };
 </script>

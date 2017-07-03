@@ -1,10 +1,10 @@
 
 <template>
-  <div class="progress" :class="{'progress--disabled': disabled}" slot="one">
+  <div class="progress" :class="{'progress--disabled': bDisabled}" slot="one">
     <svg width="100%" height="100%" class="progress__circle" viewBox="0 0 44 44">
       <circle class="progress__bg" fill="none" r="18" cx="22" cy="22" stroke-width="4"></circle>
-      <circle :fill="(!disabled) ? '#f2fcfb': '#fafafa'" r="18" cx="22" cy="22"></circle>
-      <circle class="progress__bar" fill="none" r="18" cx="22" cy="22" transform="rotate(-90, 22, 22)" stroke-width="4" stroke-dasharray="113.097334" stroke-dashoffset="{{113.097334 * progress}}">
+      <circle :fill="(!bDisabled) ? '#f2fcfb': '#fafafa'" r="18" cx="22" cy="22"></circle>
+      <circle class="progress__bar" fill="none" r="18" cx="22" cy="22" transform="rotate(-90, 22, 22)" stroke-width="4" stroke-dasharray="113.097334" :stroke-dashoffset="113.097334 * nProgress">
       </circle>
     </svg>
     <span class="progress__text">{{text}}</span>
@@ -13,36 +13,38 @@
 <script>
 export default {
   props: {
-    disabled: {
+    bDisabled: {
       type: Boolean,
       default: true
     },
-    text: {
+    sText: {
       type: String,
       default: ''
     },
-    progress: {
+    nProgress: {
+      type:Number,
+      default: '',
       require: true
     }
   },
   data() {
     return {
-      ctx: {}
+      ctx: {},
+      text: this.sText
     };
   },
   methods: {
     setProgress(percent) {
       this.progress = percent;
     }
-  },
-  ready() {}
+  }
 };
 </script>
 <style lang="scss" scoped>
 .progress {
   position: relative;
-  width: .39rem;
-  height: .39rem;
+  width: 78px;
+  height: 78px;
 
   .progress__bar {
     stroke: #00c1b3;
@@ -52,8 +54,8 @@ export default {
   .progress__text {
     fill: #00c1b3;
     position: absolute;
-    width: .24rem;
-    height: .11rem;
+    width: 48px;
+    height: 22px;
     top: 0;
     right: 0;
     left: 0;
@@ -61,7 +63,7 @@ export default {
     margin: auto;
     text-align: center;
     line-height: 1em;
-    font-size: .11rem;
+    font-size: 22px;/*px*/
     color: #00c1b3;
   }
   .progress__bg {

@@ -1,5 +1,5 @@
 <template>
-  <a class="btn" :class="btnStyle" :disabled="disabled" @touchstart="touchHandle">
+  <a class="btn" :class="btnStyle" :disabled="disabled" @click.stop.prevent="handle">
     {{ sText }}</a>
 </template>
 <script>
@@ -35,8 +35,11 @@ export default {
     }
   },
   methods: {
-    touchHandle() {
-      this.$emit('touch');
+    handle() {
+      if(this.disabled){
+        return;
+      }
+      this.$emit('inline-btn-clicked');
     }
   }
 };
@@ -64,7 +67,7 @@ export default {
     /*no*/
 
     &:active {
-      background-color: #f0f0f0;
+      background-color: #f5f5f5;
     }
   }
   &--green {
@@ -73,7 +76,7 @@ export default {
     /*no*/
 
     &:active {
-      background-color: #f0f0f0;
+      background-color: #d9f6f4;
     }
   }
 }

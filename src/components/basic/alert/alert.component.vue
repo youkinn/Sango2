@@ -83,18 +83,19 @@ export default {
   width: 540px;
   background-color: #fff;
   border-radius: 14px;
-  padding-top: 43px;
+  padding-top: 50px;
   margin-left: 43px;
   margin-right: 43px;
   .alert-header {
     h3 {
-      font-size: 36px;
+      height: 32px;
+      line-height: 1em;
+      padding: 0 54px 30px;
+      font-size: 32px;
       /*px*/
-      line-height: 43px;
       text-align: center;
       color: #000;
-      font-weight: 400;
-      padding: 0 82px 18px;
+      font-weight: 500;
     }
   }
   .alert-body {
@@ -102,8 +103,11 @@ export default {
     line-height: 40px;
     .alert-brief {
       color: #888;
-      padding: 0 24px;
+      padding: 0 76px;
       display: block;
+      height: 30px;
+      line-height: 1em;
+      margin-bottom: 30px;
       font-size: 30px;
       /*px*/
       text-align: center;
@@ -111,7 +115,7 @@ export default {
   }
   .alert-footer {
     display: flex;
-    margin-top: 30px;
+    
     border-top: 2px solid rgba(0, 0, 0, .05);
     /*no*/
   }
@@ -119,9 +123,9 @@ export default {
     flex: 1;
     display: block;
     width: 100%;
-    height: 102px;
-    line-height: 102px;
-    font-size: 36px;
+    height: 88px;
+    line-height: 88px;
+    font-size: 28px;
     /*px*/
     background: 0 0;
     border: 0;

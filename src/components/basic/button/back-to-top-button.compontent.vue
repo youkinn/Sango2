@@ -1,11 +1,17 @@
 <template>
-    <div class="action-button" v-show="show" @click.stop="goToTop">
+    <div class="action-button" v-show="show" @click.stop.prevent="goToTop" :style="{'bottom': nDistance + 'px'}">
         <i class="icon icon-top"></i>
     </div>
 </template>
 <script>
 'use strict';
 export default {
+    props: {
+        nDistance: {
+            type:Number,
+            default: 200
+        }
+    },
     data() {
         return {
             show: false

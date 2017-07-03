@@ -5,6 +5,7 @@ import AlertCompontent from './alert/alert.component';
 import ToastCompontent from './toast/toast.component';
 import InlineButtonCompontent from './button/inline-button.component';
 import BackToTopComponent from './button/back-to-top-button.compontent';
+import CircleProgressComponent from './progress/circle-progress.component';
 
 export {
     AppHeaderComponent,
@@ -13,5 +14,6 @@ export {
     AlertCompontent,
     ToastCompontent,
     InlineButtonCompontent,
-    BackToTopComponent
+    BackToTopComponent,
+    CircleProgressComponent
 };

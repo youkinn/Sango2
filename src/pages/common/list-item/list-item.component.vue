@@ -1,28 +1,27 @@
 <template>
-  <div class="item" :class="{'item--last': isLast, 'item--alone': borderType==1}" v-link="link">
-    <div class="item__o" :class="{'item__o--alone': borderType==1}">
-      <div class="item__index" v-if="index">
-        <span>{{index}}</span>
-      </div>
-      <div class="item__content" v-link="link">
-        <div class="item__img">
-          <img :src="image" alt="" v-if="image">
+  <div class="item-contaner">
+    <div class="item" :class="{'item--last': isLast, 'item--alone': borderType==1}">
+      <div class="item__o" :class="{'item__o--alone': borderType==1}">
+        <div class="item__left" v-if="nIndex">
+          <span>{{nIndex}}</span>
         </div>
-        <div class="item__intro" :class="{'item__intro--index': index}">
-          <div class="item__title overflow-ellipsis">{{title}} <span class="item__subtitle" v-if="subTitle">{{subTitle}}</span></div>
-          <slot name="four">
-            <div class="item__type-desc overflow-ellipsis" v-if="typeDesc">{{typeDesc}}</div>
-            <div class="item__detail overflow-ellipsis" v-if="detail" v-html="detail"></div>
-          </slot>
+        <div class="item__main">
+          <div class="item__img">
+            <img :src="sImage" alt="" v-if="sImage">
+          </div>
+          <div class="item__intro" :class="{'item__intro--index': nIndex}">
+            <div class="item__title overflow-ellipsis">{{sTitle}} <span class="item__subtitle" v-if="sSubTitle">{{sSubTitle}}</span></div>
+            <div class="item__content overflow-ellipsis" v-if="sContent">{{sContent}}</div>
+            <div class="item__extra overflow-ellipsis" v-if="sExtra" v-html="sExtra"></div>
+          </div>
+        </div>
+        <div class="item__right">
+          <slot name="one"></slot>
         </div>
       </div>
-      <div class="item__extra">
-        <slot name="one"></slot>
-        <slot name="two"></slot>
+      <div class="more" v-if="more">
+        <slot name="more"></slot>
       </div>
-    </div>
-    <div class="more" v-if="more">
-      <slot name="three"></slot>
     </div>
   </div>
 </template>
@@ -30,43 +29,43 @@
 'use strict';
 export default {
   props: {
-    index: {
+    nIndex: {
       type: Number,
       default: 0
     },
 
     // 图片地址
-    image: {
+    sImage: {
       type: String,
       default: ''
     },
 
     // 标题
-    title: {
+    sTitle: {
       type: String,
       default: ''
     },
 
     // 二级标题
-    subTitle: {
+    sSubTitle: {
       type: String,
       default: ''
     },
 
     // 类型
-    typeDesc: {
+    sContent: {
       type: String,
       default: ''
     },
 
     // 详细介绍
-    detail: {
+    sExtra: {
       type: String,
       default: ''
     },
 
     // 链接地址: 点击列表跳转
-    link: {
+    oRouter: {
       type: Object,
       default: () => {
         return {};
@@ -80,41 +79,31 @@ export default {
     },
 
     // 是否是最后一条
-    isLast: {
+    bLast: {
       type: Boolean,
       default: false
     },
 
     // 边框类型
     // 0：两边顶住、1：左边空白右边顶住
-    borderType: {
+    nBorderType: {
       type: Number,
       default: 0
-    }
-  },
-  methods: {
-    handle() {
-      if (this.hasAction) {
-        this.$emit('inline-btn-clicked');
-        return;
-      }
-      if (/^http(s*)/.test(this.link)) {
-        location.href = this.link;
-        return;
-      }
-      if (this.link) {
-        this.$router.go(this.link, !!this.replace);
-        return;
-      }
     }
   }
 };
 </script>
 <style lang="scss" scoped>
+.item-contaner {
+  background-color: #fff;
+    &:active{
+      background-color: #f2f2f2;
+    }
+  }
 .item {
   border-bottom: solid #eee 1px;
+  
   &__o {
-    background-color: #fff;
     display: flex;
     padding-left: 30px;
     padding-right: 30px;
@@ -122,12 +111,12 @@ export default {
       padding-left: 0;
     }
   }
-  &:active {
-    background-color: #f2f2f2;
-    .btn {
-      background-color: #f2f2f2;
-    }
-  }
+  // &:active {
+  //   background-color: #f2f2f2;
+  //   .btn {
+  //     background-color: #f2f2f2;
+  //   }
+  // }
   &--alone {
     margin-left: 30px;
     padding-left: 0;
@@ -135,8 +124,8 @@ export default {
   &--last {
     border-bottom: none;
   }
-  &__index {
-    padding-right: .1rem;
+  &__left {
+    padding-right: 20px;
     span {
       display: inline-block;
       width: 44px;
@@ -150,12 +139,12 @@ export default {
       margin-top: 36px;
     }
   }
-  &__content {
+  &__main {
     display: flex;
     flex: 1;
     width: 38px;
   }
-  &__extra {
+  &__right {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -193,8 +182,8 @@ export default {
     margin-left: 20px;
     color: #333;
   }
-  &__type-desc,
-  &__detail {
+  &__content,
+  &__extra {
     white-space: nowrap;
     height: 28px;
     line-height: 28px;
@@ -207,10 +196,10 @@ export default {
       margin-bottom: 20px;
     }
   }
-  &__type-desc{
+  &__content{
     margin-top: 14px;
   }
-  &__detail{
+  &__extra{
     margin-top: 10px;
   }
 }
