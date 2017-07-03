@@ -23,7 +23,7 @@
 </template>
 <script>
 'use strict';
-import LoadData from '../../../../components/loaddata/LoadData';
+import LoadData from '../../../common/loaddata/LoadData';
 export default {
   data() {
     return {

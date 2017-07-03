@@ -17,8 +17,8 @@
 </template>
 <script>
 'use strict';
-import { dialog } from '../../../vuex/getters';
-import { updateDialogState } from '../../../vuex/actions';
+import { dialog } from '../../../../vuex/getters';
+import { updateDialogState } from '../../../../vuex/actions';
 export default {
   vuex: {
     getters: {

@@ -25,10 +25,9 @@ import HeaderComponent from '../../common/header.component';
 import SliderComponent from '../../common/slider.component';
 import HotGameComponent from './components/hot-game.component';
 import HotNewsComponent from './components/hot-news.component';
-import BackToTopComponent from '../../../components/button/back-to-top-button.compontent';
 
 import Swiper from 'swiper';
-import LoadData from '../../../components/loaddata/LoadData';
+import LoadData from '../../common/loaddata/LoadData';
 
 import { scroll } from '../../../vuex/getters';
 import { updateScrollPos } from '../../../vuex/actions';
@@ -46,8 +45,7 @@ export default {
     HeaderComponent,
     SliderComponent,
     HotGameComponent,
-    HotNewsComponent,
-    BackToTopComponent
+    HotNewsComponent
   },
   data() {
     return {

@@ -7,13 +7,7 @@
 </template>
 <script>
 'use strict';
-import AppHeaderComponent from '../../components/layout/header/header.component';
-import AppFooterComponent from '../../components/layout/footer/footer.component';
 export default {
-  components: {
-    AppHeaderComponent,
-    AppFooterComponent
-  }
 };
 </script>
 <style lang="scss" scoped>

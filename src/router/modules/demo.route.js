@@ -26,6 +26,13 @@ let router = [{
     component: function(resolve) {
       require(['../../pages/demo/global-components.page'], resolve);
     }
+  },
+  {
+    name: 'listitem',
+    path: '/demo/list',
+    component: function(resolve) {
+      require(['../../pages/demo/list-item.page'], resolve);
+    }
   }
 ];
 

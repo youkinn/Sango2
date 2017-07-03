@@ -4,6 +4,7 @@ import FadingCircleCompontent from './loading/fading-circle.component';
 import AlertCompontent from './alert/alert.component';
 import ToastCompontent from './toast/toast.component';
 import InlineButtonCompontent from './button/inline-button.component';
+import BackToTopComponent from './button/back-to-top-button.compontent';
 
 export {
     AppHeaderComponent,
@@ -11,5 +12,6 @@ export {
     FadingCircleCompontent,
     AlertCompontent,
     ToastCompontent,
-    InlineButtonCompontent
+    InlineButtonCompontent,
+    BackToTopComponent
 };

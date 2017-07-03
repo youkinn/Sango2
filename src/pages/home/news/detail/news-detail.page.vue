@@ -5,7 +5,7 @@
       <news-body-component :o-news="news.body"></news-body-component>
     </div>
     <div class="comment-list section">
-      <header-component s-title="用户评论" link-text="评论"></header-component>
+      <header-component s-title="用户评论" s-link-text="评论"></header-component>
       <news-comment-list-component :comment-list="news.comment.list" :total="news.comment.total"></news-comment-list-component>
     </div>
     <div class="related-news section">
@@ -26,7 +26,7 @@ import NewsCommentListComponent from './components/news-comment-list.component';
 import RelatedNewsComponent from './components/related-news.component';
 import commentInputComponent from '../common/comment-input.component';
 import commentDialogComponent from '../common/comment-dialog.component';
-import LoadData from '../../../../components/loaddata/LoadData';
+import LoadData from '../../../common/loaddata/LoadData';
 
 export default {
   components: {

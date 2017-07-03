@@ -9,7 +9,7 @@ import HttpConf from './http/http';
 import VueCookie from 'vue-cookie';
 import * as filters from './filter/filters';
 import * as directives from './directive/directives';
-import * as compontents from './components/global.component';
+import * as compontents from './components/basic/global.component';
 
 // 使用相应的插件
 Vue.use(VueResource);

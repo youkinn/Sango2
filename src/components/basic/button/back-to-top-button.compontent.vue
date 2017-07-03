@@ -19,7 +19,6 @@ export default {
     },
     methods: {
         controlDisplay() {
-            debugger;
             this.show = (!mallUtils.device.isWindows && document.body.scrollTop > 200) ? true : false;
         },
         goToTop() {
