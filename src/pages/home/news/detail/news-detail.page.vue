@@ -106,6 +106,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.action-button{
+  background-color: red;
+}
 .container {
   .section {
     background-color: #fff;
