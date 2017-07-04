@@ -18,7 +18,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js')
+    chunkFilename: utils.assetsPath('js/[name].js')
   },
   externals: {
     // UPGRADE:

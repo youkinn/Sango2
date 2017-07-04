@@ -3,35 +3,60 @@ let router = [{
     name: 'crud',
     path: '/demo/crud',
     component: function(resolve) {
-      require(['../../pages/demo/crud.page'], resolve);
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/crud.page'));
+        },
+        'crud'
+      );
     }
   },
   {
     name: 'vuex',
     path: '/demo/vuex',
     component: function(resolve) {
-      require(['../../pages/demo/vuex.page'], resolve);
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/vuex.page'));
+        },
+        'vuex'
+      );
     }
   },
   {
     name: 'share',
     path: '/demo/share',
     component: function(resolve) {
-      require(['../../pages/demo/share.page'], resolve);
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/share.page'));
+        },
+        'share'
+      );
     }
   },
   {
     name: 'components',
     path: '/demo/components',
     component: function(resolve) {
-      require(['../../pages/demo/global-components.page'], resolve);
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/global-components.page'));
+        },
+        'components'
+      );
     }
   },
   {
     name: 'listitem',
     path: '/demo/list',
     component: function(resolve) {
-      require(['../../pages/demo/list-item.page'], resolve);
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/list-item.page'));
+        },
+        'listitem'
+      );
     }
   }
 ];
