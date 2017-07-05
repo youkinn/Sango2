@@ -27,7 +27,8 @@ module.exports = merge(baseWebpackConfig, {
     "vue-router": "VueRouter",
     "vue-resource": "VueResource",
     "vue": "Vue",
-    "vue-touch": "VueTouch"
+    "vue-touch": "VueTouch",
+    "vuex": "Vuex",
   },
   vue: {
     loaders: utils.cssLoaders({

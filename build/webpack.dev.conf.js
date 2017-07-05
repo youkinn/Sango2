@@ -23,7 +23,8 @@ module.exports = merge(baseWebpackConfig, {
     "vue-router": "VueRouter",
     "vue-resource": "VueResource",
     "vue": "Vue",
-    "vue-touch": "VueTouch"
+    "vue-touch": "VueTouch",
+    "vuex": "Vuex",
   },
   // eval-source-map is faster for development
   // devtool: '#eval-source-map',

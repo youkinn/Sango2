@@ -22,6 +22,11 @@ export default {
     Register,
     SetPwd
   },
-  store
+  store,
+  getters: {
+    user: state => {
+      return state.User;
+    }
+  }
 };
 </script>

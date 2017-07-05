@@ -58,6 +58,18 @@ let router = [{
         'listitem'
       );
     }
+  },
+  {
+    name: 'iframe',
+    path: '/demo/iframe',
+    component: function(resolve) {
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/iframe.page'));
+        },
+        'iframe'
+      );
+    }
   }
 ];
 

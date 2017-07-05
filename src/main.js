@@ -2,7 +2,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import Vuex from 'vuex';
 import App from './app';
 import RouteConf from './router/router';
 import HttpConf from './http/http';
@@ -10,12 +9,12 @@ import VueCookie from 'vue-cookie';
 import * as filters from './filter/filters';
 import * as directives from './directive/directives';
 import * as compontents from './components/basic/global.component';
+// import store from './vuex/store';
 
 // 使用相应的插件
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(HttpConf);
-Vue.use(Vuex);
 Vue.use(VueCookie);
 Vue.http.options.xhr = { withCredentials: true };
 
@@ -68,5 +67,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+  // store,
   render: h => h(App)
 });

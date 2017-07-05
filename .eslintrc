@@ -18,6 +18,7 @@
   },
   "globals": {
     "Vue": false,
+    "Vuex": false,
     "jiathis_mh5": false,
     "bus": false,
     "mallUtils": false
