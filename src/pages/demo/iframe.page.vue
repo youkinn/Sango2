@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <iframe :style="payIframeStyle" v-if="false" :src="iframeUrl" class="PAY_IFRAME" frameborder="0"></iframe>
+    <iframe :style="payIframeStyle" :src="iframeUrl" class="PAY_IFRAME" frameborder="0"></iframe>
   </div>
 </template>
 
@@ -19,25 +19,15 @@ export default {
     }
   },
   created() {
-    // debugger;
-    console.log(this.$store.user);
-    
-    console.log(this.viewport);
-    console.log(this.dpr);
-     // 修正dpr;
+    // 需要封装下，页面不活动或者卸载情况下还原原先的设置
+
+    // 修正dpr;
     let meta = $('meta[name=viewport]')[0];
     let html = $('html')[0];
     meta.setAttribute('content', 'initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
     html.setAttribute('data-dpr', 1);
     /* eslint no-undef: 0*/
     lib.flexible.refreshRem();
-  },
-  mounted(){
-    debugger;
-    console.log(this.$store.user);
-  },
-  deactivated(){
-
   }
 };
 </script>

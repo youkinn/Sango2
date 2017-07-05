@@ -25,6 +25,10 @@ export default {
   methods: {},
   mounted() {
     this.getUserInfo();
+
+    /**
+     * 还是1版本的写法，要改
+    */
   }
 };
 </script>
