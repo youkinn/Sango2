@@ -13,9 +13,9 @@
 <script>
 import '../static/css/common.css';
 import store from './vuex/store';
-import Login from './components/account/login.commponent';
-import Register from './components/account/register.commponent';
-import SetPwd from './components/account/setPwd.commponent';
+import Login from './pages/account/login.commponent';
+import Register from './pages/account/register.commponent';
+import SetPwd from './pages/account/setPwd.commponent';
 export default {
   components: {
     Login,
