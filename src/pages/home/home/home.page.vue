@@ -29,18 +29,7 @@ import HotNewsComponent from './components/hot-news.component';
 import Swiper from 'swiper';
 import LoadData from '../../common/loaddata/LoadData';
 
-import { scroll } from '../../../vuex/getters';
-import { updateScrollPos } from '../../../vuex/actions';
-
 export default {
-  vuex: {
-    getters: {
-      scroll: scroll
-    },
-    actions: {
-      updateScrollPos
-    }
-  },
   components: {
     HeaderComponent,
     SliderComponent,
@@ -56,19 +45,8 @@ export default {
       inited: false
     };
   },
-  beforeRouteLeave(to, from, next) {
-    this.updateScrollPos({ page: 'home', y: document.body.scrollTop });
-    next();
-  },
   created() {
     this.fetchData();
-  },
-  activated() {
-    if (this.scroll && this.scroll.page == 'home' && this.scroll.y) {
-      setTimeout(() => {
-        window.scrollTo(0, this.scroll.y);
-      }, 200);
-    }
   },
   methods: {
     fetchData() {

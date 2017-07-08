@@ -36,18 +36,14 @@ for(let p in compontents){
 // 路由
 const routes = [...RouteConf.route];
 const router = new VueRouter({
-  mode: 'history', //history模式
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { x: 0, y: 0 };
-    }
-  }
+  routes
 });
 
+let indexScrollTop = 0;
 router.beforeEach((to, from, next) => {
+  if (to.path !== '/') {
+    indexScrollTop = document.body.scrollTop;
+  }
 
   // 检测目标页面是否需要登陆
   if (to.matched.some(record => record.meta.requiresAuth)) {
@@ -61,6 +57,16 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     next();
+  }
+});
+
+router.afterEach(route => {
+  if (route.path !== '/') {
+    document.body.scrollTop = 0;
+  } else {
+    Vue.nextTick(() => {
+      document.body.scrollTop = indexScrollTop;
+    });
   }
 });
 
