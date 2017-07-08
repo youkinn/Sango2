@@ -36,14 +36,14 @@ let router = [{
     }
   },
   {
-    name: 'components',
-    path: '/demo/components',
+    name: 'button',
+    path: '/demo/button',
     component: function(resolve) {
       require.ensure([],
         () => {
-          resolve(require('../../pages/demo/global-components.page'));
+          resolve(require('../../pages/demo/button.page'));
         },
-        'components'
+        'button'
       );
     }
   },

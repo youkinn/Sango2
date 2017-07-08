@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1 class="page__title">Toast</h1>
+    <app-header-component s-title="Toast"></app-header-component>
     <div class="page__toast-wrapper">
       <div @click="openToast">点击弹出 Toast</div>
       <div @click="openToastWithIcon('操作成功', 'success')">点击弹出带有 icon 的 Toast--success</div>
@@ -15,7 +15,7 @@
 .page {
   &__toast-wrapper {
     width: 100%;
-    padding: 0 20px;
+    padding: 30px;
     div {
       margin-bottom: 20px;
     }
