@@ -1,108 +1,70 @@
-<!-- Toast 轻提示组件 -->
+
 <template>
-  <div class="toast-container" v-show="isShow">
-    <span v-if="!type" class="plain-text">
-      {{ message }}
-    </span>
-    <div v-else class="with-icon">
-      <i v-if="type==1" class="icon icon-success"></i>
-      <i v-if="type==2" class="icon icon-failed"></i>
-      <i v-if="type==3" class="icon icon-offline"></i>
-      <i v-if="type==4" class="icon icon-loadding"></i>
-      <span class="toast-text">
-        {{ message }}
-      </span>
+  <transition name="tm-toast-pop">
+    <div class="tm-toast" v-show="visible" :class="customClass">
+      <i class="tm-toast__icon icon" :class="iconClass" v-if="iconType !== ''"></i>
+      <span class="tm-toast__text">{{ message }}</span>
     </div>
-  </div>
+  </transition>
 </template>
-<script>
-'use strict';
-export default {
-  props: {
-    bShow: {
-      type: Boolean,
-      default: false
-    },
-    nType: {
-      type: Number,
-      defauly: 0
-    },
-    sMessage: {
-      type: String,
-      default: undefined
-    },
-    nTime: {
-      type: Number,
-      default: 1500
-    }
-  },
-  data(){
-    return {
-      isShow: this.bShow,
-      type: this.nType,
-      message: this.sMessage,
-      time: this.nTime
-    };
-  },
-  activated() {
-    if (this.isShow) {
-      setTimeout(() => {
-        this.isShow = false;
-        this.message = '';
-        this.type = undefined;
-      }, this.time);
-    }
-  }
-};
-</script>
+
 <style lang="scss" scoped>
-.toast-container {
-  display: flex;
-  align-items: center;
-  font-size: 26px;
-  /*px*/
+.tm-toast {
+  position: fixed;
+  max-width: 80%;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.9);
   color: #fff;
-}
-
-.plain-text {
-  position: fixed;
-  display: block;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  height: 40px;
-  line-height: 40px;
-  width: 350px;
-  padding: 10px 20px;
-  background-color: #000;
-  opacity: 0.7;
-  border-radius: 7px;
+  box-sizing: border-box;
   text-align: center;
-}
+  z-index: 1000;
+  transition: opacity .3s linear;
 
-.with-icon {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  height: 180px;
-  width: 180px;
-  background-color: #1f2337;
-  opacity: 0.9;
-  border-radius: 20px;
-  text-align: center;
-  i {
+  &--with-icon {
+    border-radius: 20px;
+  }
+
+  &__icon {
     display: block;
+    margin: 30px 55px 0 55px;
+    text-align: center;
     font-size: 70px;
-    margin: 30px 55px 20px 55px;
+    /*px*/
+  }
+
+  &__text {
+    display: block;
+    padding: 20px;
+    font-size: 26px;
+    /*px*/
+    text-align: center;
+  }
+
+  &--placetop {
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &--placemiddle {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--placebottom {
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &-pop-enter,
+  &-pop-leave-active {
+    opacity: 0;
   }
 }
 
-.icon-loadding:before {
+.icon-loading:before {
   display: inline-block;
   animation: loadingCircle 1s infinite linear;
 }
@@ -116,3 +78,50 @@ export default {
   }
 }
 </style>
+
+<script>
+
+export default {
+  props: {
+    message: String,
+    className: {
+      type: String,
+      default: ''
+    },
+    position: {
+      type: String,
+      default: 'middle',
+      validator(value) {
+        return ['top', 'middle', 'bottom'].indexOf(value) > -1;
+      }
+    },
+    iconType: {
+      type: String,
+      default: '',
+      validator(value) {
+        return ['success', 'failed', 'offline', 'loading'].indexOf(value) > -1;
+      }
+    }
+  },
+
+  data() {
+    return {
+      visible: false
+    };
+  },
+
+  computed: {
+    customClass() {
+      let classes = {};
+      classes[`tm-toast--place${this.position}`] = true;
+      classes['tm-toast--with-icon'] = this.iconType != '';
+      return classes;
+    },
+    iconClass() {
+      let classes = {};
+      classes[`icon-${this.iconType}`] = true;
+      return classes;
+    }
+  }
+};
+</script>

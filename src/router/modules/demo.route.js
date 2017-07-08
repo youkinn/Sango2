@@ -70,6 +70,18 @@ let router = [{
         'iframe'
       );
     }
+  },
+  {
+    name: 'toast',
+    path: '/demo/toast',
+    component: function(resolve) {
+      require.ensure([],
+        () => {
+          resolve(require('../../pages/demo/toast.page'));
+        },
+        'toast'
+      );
+    }
   }
 ];
 
