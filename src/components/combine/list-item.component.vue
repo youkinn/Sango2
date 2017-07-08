@@ -111,12 +111,6 @@ export default {
       padding-left: 0;
     }
   }
-  // &:active {
-  //   background-color: #f2f2f2;
-  //   .btn {
-  //     background-color: #f2f2f2;
-  //   }
-  // }
   &--alone {
     margin-left: 30px;
     padding-left: 0;

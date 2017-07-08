@@ -26,7 +26,11 @@
 </template>
 <script>
 'use strict';
+import TmButton from '../../components/basic/button/button.component';
 export default {
+    components:{
+        TmButton
+    },
     methods: {
         tt() {
             console.log('click');

@@ -53,7 +53,7 @@ let router = [{
     component: function(resolve) {
       require.ensure([],
         () => {
-          resolve(require('../../pages/demo/list-item.page'));
+          resolve(require('../../pages/demo/list.page'));
         },
         'listitem'
       );

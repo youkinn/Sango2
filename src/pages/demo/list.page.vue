@@ -4,7 +4,7 @@
     <ul class="list">
       <router-link tag="li" :to="{name: 'NewsDetail', params: {id: item.id}}" class="list-item" v-for="(item, index) in list" :key="index">
         <list-item :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category" :s-extra="item.abstract" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.id}}" :b-last="index == list.length-1" :n-border-type="1">
-          <inline-button-compontent slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></tm-button>
           <span slot="one" class="item__desc"><em>{{item.viewNumber}}</em>人在玩</span>
         </list-item>
       </router-link>
@@ -15,7 +15,7 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in myGameList" :key="index">
         <list-item :s-image="item.imgUrl" :s-title="item.gameName" :s-content="item.cDate * 1000 | formatDateToTimeago" :o-router="{name:'TaoYouGameCenterGameDetails', params:{id:item.gameID}}" :b-last="index == myGameList.length-1">
-          <inline-button-compontent slot="one" s-text="打开" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="打开" :has-action="true" @inline-btn-clicked="tt"></tm-button>
         </list-item>
       </li>
     </ul>
@@ -25,7 +25,7 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in rankList" :key="index">
         <list-item :n-index="index+1" :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.id}}" :s-extra="item.abstract" :b-last="index == rankList.length-1">
-          <inline-button-compontent slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></tm-button>
           <span slot="one" class="item__desc"><em>{{item.viewNumber}}</em>人在玩</span>
         </list-item>
       </li>
@@ -34,9 +34,9 @@
     <br>
     <h3>淘豆比赛 任务得淘豆&新手任务、每日任务</h3>
     <list-item :s-image="hotTask.picPath" :s-title="hotTask.title" :s-content="hotTask.content" :b-last="true">
-      <inline-button-compontent slot="one" s-text="去完成" :has-action="true" @inline-btn-clicked="tt" v-if="hotTask.isComplete==1"></inline-button-compontent>
-      <inline-button-compontent slot="one" s-text="领取" :has-action="true" @inline-btn-clicked="tt" v-if="hotTask.isComplete==2"></inline-button-compontent>
-      <inline-button-compontent slot="one" s-text="已领取" :has-action="true" :b-disabled="true" v-if="hotTask.isComplete==3"></inline-button-compontent>
+      <tm-button slot="one" s-text="去完成" :has-action="true" @inline-btn-clicked="tt" v-if="hotTask.isComplete==1"></tm-button>
+      <tm-button slot="one" s-text="领取" :has-action="true" @inline-btn-clicked="tt" v-if="hotTask.isComplete==2"></tm-button>
+      <tm-button slot="one" s-text="已领取" :has-action="true" :b-disabled="true" v-if="hotTask.isComplete==3"></tm-button>
       <span slot="one" class="item__desc">{{hotTask.reward}}</span>
     </list-item>
     <br>
@@ -45,7 +45,7 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in quickGameList" :key="index">
         <list-item :s-image="item.gameIcon" :s-title="item.gameName" :sub-title="item.gameTermId+'期'" :s-extra="'简介:'+item.gameInfo" :o-router="{name:'TaoYouOurGameIntro',params:{id:item.gid},query:{type:item.type}}" :b-last="index == rankList.length-1" :n-border-type="1" :more="true">
-          <inline-button-compontent slot="one" s-text="参赛" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="参赛" :has-action="true" @inline-btn-clicked="tt"></tm-button>
           <div slot="more">
             <div v-show="item.currentRank !== null" class="bulid-center">
               <span v-show="+item.currentRank !== 0" class="rank">当前排名 <i class="am-ft-red">{{item.currentRank}}</i>名</span>
@@ -64,7 +64,7 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in unOpenList" :key="index">
         <list-item :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category  + ' | ' + item.serviceName" :s-extra="item.mDate*1000 | formatDate('YYYY-MM-DD HH:mm:ss')" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.gameID}}" :b-last="index == unOpenList.length-1" :n-border-type="1">
-          <inline-button-compontent slot="one" s-text="进入" :b-disabled="true" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="进入" :b-disabled="true" @inline-btn-clicked="tt"></tm-button>
         </list-item>
       </li>
     </ul>
@@ -74,7 +74,7 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in hadData" :key="index">
         <list-item :s-image="item.gameIcon" :s-title="item.name" :s-content="item.category  + ' | ' + item.serviceName" :s-extra="item.mDate*1000 | formatDate('YYYY-MM-DD HH:mm:ss')" :o-router="{name:'TaoYouGameCenterGameDetails',params:{id:item.gameID}}" :b-last="index == hadData.length-1" :n-border-type="1">
-          <inline-button-compontent slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="进入" :has-action="true" @inline-btn-clicked="tt"></tm-button>
         </list-item>
       </li>
     </ul>
@@ -114,7 +114,7 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in myGiftList" :key="index">
         <list-item :s-image="item.image" :s-title="item.name" :s-content="item.name" :s-extra="'兑换码:'+item.no" :o-router="{name: 'TaoYouPacksDetails', params: {id: item.id}}" :b-last="index == myGiftList.length-1" :n-border-type="1">
-          <inline-button-compontent slot="one" s-text="查看" @inline-btn-clicked="tt"></inline-button-compontent>
+          <tm-button slot="one" s-text="查看" @inline-btn-clicked="tt"></tm-button>
         </list-item>
       </li>
     </ul>
@@ -124,8 +124,8 @@
     <ul class="list">
       <li class="list-item" v-for="(item, index) in platformGift" :key="index">
         <list-item :s-image="item.image" :s-title="item.title" :s-content="'兑换码:'+item.code" :s-extra="item.desc" :b-last="index == platformGift.length-1">
-          <inline-button-compontent slot="one" s-text="已使用" :b-disabled="true" v-if="item.status==3"></inline-button-compontent>
-          <inline-button-compontent slot="one" s-text="使用" :has-action="true" @inline-btn-clicked="tt" v-else></inline-button-compontent>
+          <tm-button slot="one" s-text="已使用" :b-disabled="true" v-if="item.status==3"></tm-button>
+          <tm-button slot="one" s-text="使用" :has-action="true" @inline-btn-clicked="tt" v-else></tm-button>
         </list-item>
       </li>
     </ul>
@@ -133,9 +133,11 @@
 </template>
 <script>
 /* eslint-disable */
-import ListItem from '../common/list-item/list-item.component';
+import TmButton from '../../components/basic/button/button.component';
+import ListItem from '../../components/combine/list-item.component';
 export default {
   components: {
+    TmButton,
     ListItem
   },
   data(){
