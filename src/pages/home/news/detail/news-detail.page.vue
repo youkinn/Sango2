@@ -49,14 +49,28 @@ export default {
       inited: false
     };
   },
+  created() {
+    this.news.comment = new LoadData(Vue.ClientUrl.getNewsCommentList, {
+      newsID: this.$route.params.id,
+      fromType: 1,
+      showType: 2,
+      limit: 3,
+      nologin: 1
+    });
+    this.news.related = new LoadData(Vue.ClientUrl.getNewsRelated, {
+      newsID: this.$route.params.id,
+      limit: 2,
+      nologin: 1
+    });
+  },
   mounted() {
     bus.$on('click-action', () => {
       bus.$emit('showCommentDialog');
     });
-    this.unwatch = this.$watch('$route', this.fetchData);
   },
   activated() {
     this.fetchData();
+    this.unwatch = this.$watch('$route', this.fetchData);
   },
   deactivated() {
     this.inited = false;
@@ -64,10 +78,7 @@ export default {
   },
   methods: {
     fetchData() {
-      var promises = [this.getDetail, this.getRelateNews, this.getNewsCommentList].map((fn) => {
-        return fn();
-      });
-      Promise.all(promises).then(() => {
+      Promise.all([this.getDetail(), this.getRelateNews(), this.getNewsCommentList()]).then(() => {
         this.inited = true;
       });
     },
@@ -83,21 +94,10 @@ export default {
         });
     },
     getRelateNews() {
-      this.news.related = new LoadData(Vue.ClientUrl.getNewsRelated, {
-        newsID: this.$route.params.id,
-        limit: 2,
-        nologin: 1
-      });
+      debugger;
       return this.news.related.getList();
     },
     getNewsCommentList() {
-      this.news.comment = new LoadData(Vue.ClientUrl.getNewsCommentList, {
-        newsID: this.$route.params.id,
-        fromType: 1,
-        showType: 2,
-        limit: 3,
-        nologin: 1
-      });
       return this.news.comment.getList(this, result => {
         this.news.comment.total = parseInt(result.count);
       });
@@ -106,9 +106,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.action-button{
+.action-button {
   background-color: red;
 }
+
 .container {
   .section {
     background-color: #fff;

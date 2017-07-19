@@ -49,7 +49,7 @@ export default {
     margin-left: 30px;
     padding-right: 30px;
     background-color: #fff;
-    border-bottom: solid #a5a5a5 1px;
+    border-bottom: solid #e5e5e5 1px;
     /*no*/
     &--last {
         border-bottom: none;

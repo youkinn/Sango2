@@ -41,28 +41,28 @@ export default {
       title: '首页',
       swiper: {},
       news: {},
-      activated: false,
       inited: false
     };
   },
   created() {
+    this.swiper = new LoadData(Vue.ClientUrl.getSwiperList, {
+      type: 4,
+      limit: 8,
+      nologin: 1
+    });
+    this.news = new LoadData(Vue.ClientUrl.getNewsList, {
+      limit: 20,
+      nologin: 1
+    });
     this.fetchData();
   },
   methods: {
     fetchData() {
-      var promises = [this.getSwiperList, this.getNewsList].map((fn) => {
-        return fn();
-      });
-      Promise.all(promises).then(() => {
+      Promise.all([this.getSwiperList(), this.getNewsList()]).then(() => {
         this.inited = true;
       });
     },
     getSwiperList() {
-      this.swiper = new LoadData(Vue.ClientUrl.getSwiperList, {
-        type: 4,
-        limit: 8,
-        nologin: 1
-      });
       return this.swiper.getList(this, () => {
         setTimeout(() => {
           new Swiper('.swiper-container', {
@@ -75,19 +75,16 @@ export default {
       });
     },
     getNewsList() {
-      this.news = new LoadData(Vue.ClientUrl.getNewsList, {
-        limit: 200,
-        nologin: 1
-      });
       return this.news.getList();
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.action-button{
+.action-button {
   background-color: yellow;
 }
+
 .container {
   .section {
     background-color: #fff;

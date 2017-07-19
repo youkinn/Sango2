@@ -14,6 +14,7 @@ export default {
   },
   production: {
     doLogin: '/User/Login/login',                               // 登陆
+    doLogout: '/User/Login/login_out',                          // 登出
     getSwiperList: '/Game/Index/get_banner_ad',                 // 轮播列表
     getGameList: '/Game/Index/get_game_list',                   // 游戏列表
     getNewsList: '/News/Index/get_news_list',                   // 资讯列表

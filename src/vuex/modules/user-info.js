@@ -1,13 +1,15 @@
 /**
- *  demo
+ *  用户信息
  */
 'use strict';
 import * as types from '../mutation-types';
 
 const state = {
+  userId: '',
   username: '',
   avatar: '',
-  bindphone: ''
+  bindphone: '',
+  isCanUpdateName: '',
 };
 
 const mutations = {

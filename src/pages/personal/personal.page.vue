@@ -54,11 +54,11 @@ export default {
   },
   methods: {
     logout() {
-      Vue.ClientHttp(this).POST({}, '/api/logout')
+      Vue.ClientHttp(this).POST({}, Vue.ClientUrl.doLogout)
         .then((res) => {
           if (res.code === 10000) {
             bus.$cookie.delete('activeTime');
-            this.$router.push({ name: 'home' });
+            this.$router.replace({ name: 'home' });
             console.log('退出成功');
           }
         });
