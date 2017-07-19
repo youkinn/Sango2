@@ -1,16 +1,26 @@
-
 <template>
-  <div class="progress" :class="{'progress--disabled': bDisabled}" slot="one">
-    <svg width="100%" height="100%" class="progress__circle" viewBox="0 0 44 44">
-      <circle class="progress__bg" fill="none" r="18" cx="22" cy="22" stroke-width="4"></circle>
+  <div class="tm-progress" slot="one">
+    <svg width="100%" height="100%" class="tm-progress__circle" viewBox="0 0 44 44">
+      <circle class="tm-progress__bg" :class="{'tm-progress__bg--disabled': bDisabled}" fill="none" r="18" cx="22" cy="22" stroke-width="4"></circle>
       <circle :fill="(!bDisabled) ? '#f2fcfb': '#fafafa'" r="18" cx="22" cy="22"></circle>
-      <circle class="progress__bar" fill="none" r="18" cx="22" cy="22" transform="rotate(-90, 22, 22)" stroke-width="4" stroke-dasharray="113.097334" :stroke-dashoffset="113.097334 * nProgress">
+      <circle class="tm-progress__bar" :class="{'tm-progress__bar--disabled': bDisabled}" fill="none" r="18" cx="22" cy="22" transform="rotate(-90, 22, 22)" stroke-width="4" stroke-dasharray="113.097334" :stroke-dashoffset="113.097334 * nProgress">
       </circle>
     </svg>
-    <span class="progress__text">{{text}}</span>
+    <span class="tm-progress__text" :class="{'tm-progress__text--disabled': bDisabled}">{{sText}}</span>
   </div>
 </template>
 <script>
+/**
+ * @module components/progress
+ * @desc 环形进度条
+ * @param {boolean} [bDisabled=true] - 状态，true的情况下灰色，不可点
+ * @param {string} [sText=''] - 显示文本
+ * @param {number} [nProgress=''] - 当前进度
+ *
+ * @example
+ * Toast('提示信息');
+ * 
+ */
 export default {
   props: {
     bDisabled: {
@@ -22,15 +32,14 @@ export default {
       default: ''
     },
     nProgress: {
-      type:Number,
+      type: Number,
       default: '',
       require: true
     }
   },
   data() {
     return {
-      ctx: {},
-      text: this.sText
+      ctx: {}
     };
   },
   methods: {
@@ -41,17 +50,21 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.progress {
+.tm-progress {
   position: relative;
   width: 78px;
   height: 78px;
 
-  .progress__bar {
+  &__bar {
     stroke: #00c1b3;
     transition: stroke-dashoffset .5s ease-out;
+
+    &--disabled {
+      stroke: #cccccc;
+    }
   }
 
-  .progress__text {
+  &__text {
     fill: #00c1b3;
     position: absolute;
     width: 48px;
@@ -63,24 +76,20 @@ export default {
     margin: auto;
     text-align: center;
     line-height: 1em;
-    font-size: 22px;/*px*/
+    font-size: 22px;
+    /*px*/
     color: #00c1b3;
-  }
-  .progress__bg {
-    stroke: #7fe0d9;
-  }
-}
 
-.progress--disabled {
-  .progress__bg {
-    stroke: #e5e5e5;
+    &--disabled {
+      color: #a5a5a5;
+    }
   }
-  .progress__bar {
-    stroke: #cccccc;
-    transition: stroke-dashoffset .5s ease-out;
-  }
-  .progress__text {
-    color: #a5a5a5;
+  &__bg {
+    stroke: #7fe0d9;
+
+    &--disabled {
+      stroke: #e5e5e5;
+    }
   }
 }
 </style>

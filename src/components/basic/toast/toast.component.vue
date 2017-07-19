@@ -1,4 +1,3 @@
-
 <template>
   <transition name="tm-toast-pop">
     <div class="tm-toast" v-show="visible" :class="customClass">
@@ -7,7 +6,62 @@
     </div>
   </transition>
 </template>
+<script>
+/**
+ * @module components/toast
+ * @desc 轻提示
+ * @param {string} [message=''] - 消息内容
+ * @param {string} [position='middle'] - 提示位置，接受 middle, bottom
+ * @param {boolean} [iconType=''] - icon，默认不带，接受success，failed，offline，loading
+ *
+ * @example
+ * Toast('提示信息');
+ * 
+ */
+export default {
+  props: {
+    message: String,
+    className: {
+      type: String,
+      default: ''
+    },
+    position: {
+      type: String,
+      default: 'middle',
+      validator(value) {
+        return ['middle', 'bottom'].indexOf(value) > -1;
+      }
+    },
+    iconType: {
+      type: String,
+      default: '',
+      validator(value) {
+        return ['success', 'failed', 'offline', 'loading'].indexOf(value) > -1;
+      }
+    }
+  },
 
+  data() {
+    return {
+      visible: false
+    };
+  },
+
+  computed: {
+    customClass() {
+      let classes = {};
+      classes[`tm-toast--place${this.position}`] = true;
+      classes['tm-toast--with-icon'] = this.iconType != '';
+      return classes;
+    },
+    iconClass() {
+      let classes = {};
+      classes[`icon-${this.iconType}`] = true;
+      return classes;
+    }
+  }
+};
+</script>
 <style lang="scss" scoped>
 .tm-toast {
   position: fixed;
@@ -78,50 +132,3 @@
   }
 }
 </style>
-
-<script>
-
-export default {
-  props: {
-    message: String,
-    className: {
-      type: String,
-      default: ''
-    },
-    position: {
-      type: String,
-      default: 'middle',
-      validator(value) {
-        return ['top', 'middle', 'bottom'].indexOf(value) > -1;
-      }
-    },
-    iconType: {
-      type: String,
-      default: '',
-      validator(value) {
-        return ['success', 'failed', 'offline', 'loading'].indexOf(value) > -1;
-      }
-    }
-  },
-
-  data() {
-    return {
-      visible: false
-    };
-  },
-
-  computed: {
-    customClass() {
-      let classes = {};
-      classes[`tm-toast--place${this.position}`] = true;
-      classes['tm-toast--with-icon'] = this.iconType != '';
-      return classes;
-    },
-    iconClass() {
-      let classes = {};
-      classes[`icon-${this.iconType}`] = true;
-      return classes;
-    }
-  }
-};
-</script>
